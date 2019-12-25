@@ -1,0 +1,17 @@
+# Don't track content of these folders
+node_modules/
+dist/
+lib/
+config/sslcert/
+temp/
+config/dynudns/
+config/scripts
+client/node_modules
+client/build
+
+#files
+client/.env
+.env
+config/database/seeders/*.js
+config/bunq/*.json
+*.sqlite
