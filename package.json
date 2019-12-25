@@ -4,10 +4,25 @@
   "description": "Administratie app",
   "main": "./dist/index.js",
   "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
     "test": "test",
+    "lint": "eslint --ext=jsx,ts,tsx,js src",
+    "lint:fix": "eslint --ext=jsx,ts,tsx,js src --fix",
     "start": "ts-node src/server.ts",
+    "start:watch": "nodemon --exec ts-node ./src/server",
     "serve": "ts-node dist/server.js",
-    "build": "tsc -p ."
+    "build": "npm run lint && tsc"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/app/bunq/*",
+      "*.sqlite"
+    ],
+    "watch": [
+      "src"
+    ],
+    "delay": "2500"
   },
   "repository": {
     "type": "git",
@@ -23,11 +38,30 @@
   },
   "homepage": "https://github.com/ericjansen1988/administratie-app#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.9.0",
+    "https": "^1.0.0",
+    "morgan": "^1.9.1",
+    "swagger-ui-express": "^4.1.2"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.29",
+    "@types/cookie-parser": "^1.4.2",
     "@types/express": "^4.17.2",
+    "@types/http-errors": "^1.6.3",
+    "@types/morgan": "^1.7.37",
     "@types/node": "^13.1.0",
+    "@types/swagger-ui-express": "^4.1.0",
+    "@types/validator": "^12.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   }
