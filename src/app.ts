@@ -74,7 +74,9 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
 firebaseDB
     .collection('env/' + process.env.REACT_APP_FIRESTORE_ENVIRONMENT + '/oauthproviders')
     .get()
+    // eslint-disable-next-line
     .then((providers: any) => {
+        // eslint-disable-next-line
         providers.forEach((provider: any) => {
             const data = provider.data();
             console.log(provider.id + ': ', data);
