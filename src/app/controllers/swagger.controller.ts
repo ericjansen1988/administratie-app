@@ -1,4 +1,9 @@
-export = {
+import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+
+const router = express.Router();
+
+const apiDocs: any = {
     openapi: '3.0.1',
     info: {
         version: '1.3.0',
@@ -216,3 +221,7 @@ export = {
         },
     },
 };
+
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
+
+export default router;

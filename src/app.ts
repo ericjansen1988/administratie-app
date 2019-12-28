@@ -1,11 +1,9 @@
-import createError from 'http-errors';
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import ApiDocumentation from './app/modules/swagger';
-import swaggerUi from 'swagger-ui-express';
+import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
 
 //TODO: import { oauthproviders } from './app/modules/application_cache';
 //TODO: import OAuth from './app/modules/Oauth';
@@ -85,6 +83,7 @@ firebaseDB
         });
     });
 const app = express();
+export default app;
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -100,49 +99,20 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 /* Express configuration */
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(lowerCaseQueryParams); // Makes all query params lowercase
+app.use(LoggerMiddleware); //Logs requests on console
 
-//Routes
-//First make all query params lowercase
-app.use(function(req, res, next) {
-    for (const key in req.query) {
-        req.query[key.toLowerCase()] = req.query[key];
-    }
-    next();
-});
-app.get('/health-check', (req: Request, res: Response) => res.sendStatus(200)); //certificate route
+app.get('/health-check', (req: Request, res: Response) => res.sendStatus(200)); //certificate route & simple health check
 
-//Swagger documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(ApiDocumentation));
+import './app/routes';
 
-//TODO: require('./app/routes.js')(app);
+app.use(create404Error); //If route isnt found throw 404
+app.use(errorHandler); // If error throw Error object
 
-// Use logger
-app.use((req: Request, resp: Response, next: NextFunction) => {
-    console.log('Request logged:', req.method, req.path);
-    next();
-});
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    next(createError(404));
-});
-
-interface Error {
-    message?: string;
-    status?: number;
-}
-
-// error handler
-app.use(function(err: Error, req: Request, res: Response) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    console.log(err);
-    // render the error page
-    res.status(err.status || 500);
-    //res.render('error');
-    const errormessage = err.message ? err.message : err;
-    return res.json({ success: false, message: errormessage });
-});
-
-export default app;
+export const appData: any = {};
+export const setAppData = (key: string, value: any): void => {
+    appData[key] = value;
+};
+export const getAppData = (key: string): any => {
+    return appData[key] ?? undefined;
+};

@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { Dialect } from 'sequelize';
 dotenv.config();
 
 type DatabaseConfig = {
@@ -7,7 +8,7 @@ type DatabaseConfig = {
         password?: string;
         database?: string;
         ssl?: boolean;
-        dialect: string;
+        dialect: Dialect;
         use_env_variable?: string;
         storage?: string;
         dialectOptions?: {
@@ -19,8 +20,8 @@ type DatabaseConfig = {
 const databases: DatabaseConfig = {
     development: {
         database: 'mainDB',
-        username: '',
-        password: '',
+        username: null,
+        password: null,
         dialect: 'sqlite',
         storage: './database.sqlite',
     },
