@@ -4,6 +4,10 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
+import { Bunq } from 'bunq-client';
+
+import db from './app/models';
+import store from './app/modules/Store';
 
 /**
  * Application cache
@@ -18,24 +22,25 @@ export const getAppData = (key: string): any => {
     return get(appData, key);
 };
 
-//TODO: import { oauthproviders } from './app/modules/application_cache';
-//TODO: import OAuth from './app/modules/Oauth';
-//TODO: import { bunq } from './app/modules/Bunq';
-
 //Load firebase
 import { db as firebaseDB } from './app/modules/Firebase';
 
 /* Database configuratie */
-//TODO: const db = require('./app/models');
-
 // force: true will drop the table if it already exists
-/*
-const forceUpdate = process.env.NODE_ENV.toLowerCase() === 'test';
+const forceUpdate = process.env.NODE_ENV === 'test' ? true : false;
 db.sequelize.sync({ force: forceUpdate }).then(async () => {
     console.log('Drop and Resync with { force: ' + forceUpdate + ' }');
 
+    /**
+     * Bunq clients laden
+     * inclusief genericClient
+     */
+    const bunq = new Bunq();
+    // Generieke client starten
+    bunq.loadGenericClient(store(path.resolve(__dirname, '../config/bunq/genericClient.json')));
+
     //laden van de BUNQ clients
-    (async () => {
+    (async (): Promise<void> => {
         //alle clients laden
         const allclients = await db.bunq.findAll();
         if (allclients.length === 0) return;
@@ -59,7 +64,7 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
 
         //rest laden
         await Promise.all(
-            allclients.map(async clientsetting => {
+            allclients.map(async (clientsetting: any) => {
                 console.log('loading client ' + clientsetting.userId);
                 try {
                     await bunq.load(
@@ -78,9 +83,9 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
                 }
             }),
         );
+        setAppData('bunq', bunq);
     })();
 });
-*/
 
 // import Oauth module and load into cache
 import OAuth from './app/modules/Oauth';

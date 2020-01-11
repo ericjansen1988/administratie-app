@@ -84,12 +84,6 @@ import db from './models';
     };
     console.log(walkSync(startDir));
     */
-const forceUpdate = process.env.NODE_ENV === 'test' ? true : false;
-db.sequelize.sync({ force: forceUpdate }).then(async () => {
-    db.events.findAll().then((results: any) => {
-        //console.log(results);
-    });
-});
 
 app.get('/api/events/:id', /*basicAuthentication,*/ get(db.events));
 app.get('/api/events', /*basicAuthentication,*/ list(db.events));

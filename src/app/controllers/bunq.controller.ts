@@ -1,13 +1,11 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-
-import { basicAuthentication } from '../middleware/authentication';
 import { asyncHandler } from 'express-collection';
-
 import Encryption from 'simple-encrypt-js';
 
-import { bunq } from '../modules/Bunq';
+import { basicAuthentication } from '../middleware/authentication';
 import db from '../models';
+import { appData, getAppData } from '../../app';
 
 const encryption = new Encryption();
 
@@ -18,7 +16,7 @@ interface CustomRequest extends Request {
 }
 
 const saveBunqSettings = async (
-    user: number,
+    user: string,
     authorizationCode: string,
     encryptionKey: string,
     environment: BunqEnvironment = 'PRODUCTION',
@@ -44,8 +42,8 @@ const exchangeOAuthTokens = async (req: CustomRequest, res: Response): Promise<R
         return res.send('Geen auth code meegegeven');
     } else {
         try {
-            const bunqoauth = oauthproviders['bunq'];
-            const authorizationCode = await bunq
+            const bunqoauth = getAppData('oauth.bunq');
+            const authorizationCode = await appData.bunq
                 .getGenericClient()
                 .exchangeOAuthToken(
                     bunqoauth.options.client_id,
@@ -60,7 +58,7 @@ const exchangeOAuthTokens = async (req: CustomRequest, res: Response): Promise<R
                 encryption.generateRandomKey(32),
                 'PRODUCTION',
             );
-            await bunq.load(req.uid, req.uid, authorizationCode, entry.encryption_key, 'PRODUCTION', {});
+            await appData.bunq.load(req.uid, req.uid, authorizationCode, entry.encryption_key, 'PRODUCTION', {});
             return res.send({ success: true });
         } catch (error) {
             console.log(error);
@@ -70,7 +68,7 @@ const exchangeOAuthTokens = async (req: CustomRequest, res: Response): Promise<R
 };
 
 const doRequestSandboxMoney = async (uid: string) => {
-    const client = bunq.getClient(uid);
+    const client = appData.bunq.getClient(uid);
     if (client.environment !== 'SANDBOX')
         throw new Error(
             'You can only request money on a sandbox environment. Bunq environment is: ' + client.environment,
@@ -109,11 +107,11 @@ const doRequestSandboxMoney = async (uid: string) => {
 };
 
 const createSandboxAPIKey = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const key = await bunq.getGenericClient().api.sandboxUser.post();
+    const key = await appData.bunq.getGenericClient().api.sandboxUser.post();
     const userentry = await saveBunqSettings(req.uid, key, encryption.generateRandomKey(32), 'SANDBOX');
     //console.log(userentry);
-    await bunq.load(req.uid, req.uid, key, userentry.encryption_key, 'SANDBOX');
-    const client = bunq.getClient(req.uid);
+    await appData.bunq.load(req.uid, req.uid, key, userentry.encryption_key, 'SANDBOX');
+    const client = appData.bunq.getClient(req.uid);
     const users = await client.getUser();
     try {
         await doRequestSandboxMoney(req.uid);
@@ -140,7 +138,7 @@ const requestSandboxMoney = async (req: CustomRequest, res: Response): Promise<R
 };
 
 const getMonetaryAccounts = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     const forceUpdate = req.query.forceupdate !== undefined ? true : false;
     console.log('forceUpdate', forceUpdate);
     const data = await bunqClient.getAccounts(true);
@@ -148,53 +146,53 @@ const getMonetaryAccounts = async (req: CustomRequest, res: Response): Promise<R
 };
 
 const getMonetaryAccountByName = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     const accounts = await bunqClient.getAccounts();
-    const result = accounts.find(account => account.description === req.params.name);
+    const result = accounts.find((account: any) => account.description === req.params.name);
     if (result === null) return res.status(404).send({});
     res.send(result);
 };
 
 const getEvents = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     const forceUpdate = req.query.forceupdate !== undefined ? true : false;
     const events = await bunqClient.getEvents(forceUpdate);
     return res.send(events);
 };
 
 const postPaymentInternal = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     const payment = await bunqClient.makePaymentInternal(
         req.body.from,
         req.body.to,
         req.body.description,
         req.body.amount,
     );
-    res.send(payment);
+    return res.send(payment);
 };
 
 const postDraftPayment = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     const payment = await bunqClient.makeDraftPayment(
         req.body.from,
         req.body.to,
         req.body.description,
         req.body.amount,
     );
-    res.send(payment);
+    return res.send(payment);
 };
 
 const getCards = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     return res.send(await bunqClient.getBunqJSClient().api.card.list(bunqClient.getUser().id));
 };
 
 const test = async (req: CustomRequest, res: Response): Promise<Response> => {
-    const bunqClient = bunq.getClient(req.uid);
+    const bunqClient = appData.bunq.getClient(req.uid);
     const accounts = await bunqClient.getAccounts();
     const request = await bunqClient
         .createBunqMeTab({ type: 'id', value: accounts[0].id }, 'Gimme money', { value: '500', currency: 'EUR' })
-        .catch(err => {
+        .catch((err: any) => {
             console.log(err);
         });
     return res.send(request);
