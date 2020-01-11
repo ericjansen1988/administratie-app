@@ -3,7 +3,7 @@ import swaggerUi from 'swagger-ui-express';
 
 const router = express.Router();
 
-const apiDocs: any = {
+const apiDocs: any = { //eslint-disable-line
     openapi: '3.0.1',
     info: {
         version: '1.3.0',

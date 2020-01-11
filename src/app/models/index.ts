@@ -29,6 +29,8 @@ export default db;
 
 import Events from './events.model';
 db.events = Events;
+import Bunq from './bunq.model';
+db.bunq = Bunq;
 
 /*
 fs.readdirSync(__dirname)
@@ -48,8 +50,6 @@ Object.keys(db).forEach(modelName => {
     }
 });
 */
-
-
 
 /*
 const basename = path.basename(__filename);

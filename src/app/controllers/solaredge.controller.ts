@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import SolarEdge from 'solaredge';
+import SolarEdge, { Period } from 'solaredge';
 
 import { basicAuthentication } from '../middleware/authentication';
 import { cacheMiddleware, asyncHandler } from 'express-collection';
@@ -8,10 +8,13 @@ import Cache from 'simple-cache-js';
 
 const solarEdgeCache = new Cache();
 
-type TypePeriod = 'HOUR' | 'DAY' | 'MONTH' | 'QUARTER_OF_AN_HOUR' | 'YEAR';
-
 const timeUnits = ['HOUR', 'DAY', 'MONTH', 'QUARTER_OF_AN_HOUR', 'YEAR'];
 
+/**
+ * Get SolarEdge data
+ * @param req {Request}
+ * @param res {Response}
+ */
 const getData = async (req: Request, res: Response): Promise<Response> => {
     if (req.query.access_token === undefined)
         return res.send({ success: false, message: 'No query param access_token present' });
@@ -25,8 +28,8 @@ const getData = async (req: Request, res: Response): Promise<Response> => {
         parseInt(req.params.site),
         req.params.start,
         req.params.end,
-        'MONTH',
-        //req.params.period as Period,
+        //'MONTH',
+        req.params.period as Period,
     );
     return res.send({ success: true, data });
 };

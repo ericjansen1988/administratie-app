@@ -18,7 +18,7 @@ Event.init(
         datetime: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
-            get(this: any): Date {
+            get(this: Event): Date {
                 return moment(this.getDataValue('datetime'))
                     .tz('Europe/Amsterdam')
                     .toDate();

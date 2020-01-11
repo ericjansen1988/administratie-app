@@ -99,13 +99,16 @@ app.put('/api/events/:id', /*basicAuthentication,*/ update(db.events));
 app.delete('/api/events/:id', /*basicAuthentication,*/ destroy(db.events));
 
 //OAuth routes
-//TODO: app.use('/api/oauth', controllers.oauth);
+import oauthController from './controllers/oauth.controller';
+app.use('/api/oauth', oauthController);
 
 //Meterstanden bijwerken en Enelogic routes
-//TODO: app.use('/api/enelogic', controllers.enelogic);
+import enelogicController from './controllers/enelogic.controller';
+app.use('/api/enelogic', enelogicController);
 
 //Bunq routes
-//TODO: app.use('/api/bunq', controllers.bunq);
+import bunqController from './controllers/bunq.controller';
+app.use('/api/bunq', bunqController);
 
 //SolarEdge
 import solarEdgeController from './controllers/solaredge.controller';

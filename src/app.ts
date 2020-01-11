@@ -5,6 +5,19 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
 
+/**
+ * Application cache
+ */
+import set from 'set-value';
+import get from 'get-value';
+export const appData: any = {};
+export const setAppData = (key: string, value: any): void => {
+    set(appData, key, value);
+};
+export const getAppData = (key: string): any => {
+    return get(appData, key);
+};
+
 //TODO: import { oauthproviders } from './app/modules/application_cache';
 //TODO: import OAuth from './app/modules/Oauth';
 //TODO: import { bunq } from './app/modules/Bunq';
@@ -69,17 +82,20 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
 });
 */
 
+// import Oauth module and load into cache
+import OAuth from './app/modules/Oauth';
 firebaseDB
     .collection('env/' + process.env.REACT_APP_FIRESTORE_ENVIRONMENT + '/oauthproviders')
     .get()
     // eslint-disable-next-line
     .then((providers: any) => {
+        setAppData('oauth', {});
         // eslint-disable-next-line
         providers.forEach((provider: any) => {
             const data = provider.data();
             console.log(provider.id + ': ', data);
-            //const oauthprovider = new OAuth(data.client_id, data.client_secret, data);
-            //oauthproviders[provider.id] = oauthprovider;
+            const oauthprovider = new OAuth(data);
+            setAppData('oauth.' + provider.id, oauthprovider);
         });
     });
 const app = express();
@@ -108,11 +124,3 @@ import './app/routes';
 
 app.use(create404Error); //If route isnt found throw 404
 app.use(errorHandler); // If error throw Error object
-
-export const appData: any = {};
-export const setAppData = (key: string, value: any): void => {
-    appData[key] = value;
-};
-export const getAppData = (key: string): any => {
-    return appData[key] ?? undefined;
-};
