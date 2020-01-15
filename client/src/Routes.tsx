@@ -23,7 +23,7 @@ import {
     // Rekeningen,
     // Bunq,
     // TestPage,
-    Events
+    Events,
     // Meterstanden,
     // OAuthPage,
     // NotFound
@@ -35,13 +35,7 @@ const Routes: FunctionComponent = () => {
             <Redirect exact from="/" to="/account" />
             <RouteWithLayout component={SignIn} exact layout={MinimalLayout} path="/sign-in" />
             <RouteWithLayout component={Account} exact layout={MainLayout} path="/account" protectedRoute />
-            <RouteWithLayout 
-              component={Events}
-              exact
-              layout={MainLayout}
-              path="/events"
-              protectedRoute
-            />
+            <RouteWithLayout component={Events} exact layout={MainLayout} path="/events" protectedRoute />
             {/*
       <RouteWithLayout 
         component={Home}

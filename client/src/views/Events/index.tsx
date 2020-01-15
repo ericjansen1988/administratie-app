@@ -57,10 +57,10 @@ const Events = (): any => {
     ];
 
     useEffect(() => {
-      if(error){
-        enqueueSnackbar(JSON.stringify(error), { variant: 'error' });
-      }
-    }, [error])
+        if (error) {
+            enqueueSnackbar(JSON.stringify(error), { variant: 'error' });
+        }
+    }, [error]);
 
     return (
         <div className={classes.root}>

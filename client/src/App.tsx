@@ -131,7 +131,7 @@ const App: FunctionComponent = () => {
                     }}
                 >
                     <ThemeProvider theme={theme}>
-                        <SnackbarProvider maxSnack={3} >
+                        <SnackbarProvider maxSnack={3}>
                             <Router history={browserHistory}>
                                 <Routes />
                             </Router>
