@@ -71,7 +71,7 @@ const SidebarNav: any = (props: InferProps<typeof SidebarNav.propTypes>): JSX.El
     return (
         <List {...rest} className={clsx(classes.root, className)} subheader={<li />}>
             {pages.map((group: any) => (
-                <li>
+                <li key={group.groupname}>
                     <ul className={classes.ul}>
                         {group.groupname && (
                             <>

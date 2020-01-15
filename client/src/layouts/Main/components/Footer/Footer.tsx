@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     root: {
         padding: theme.spacing(4),
     },
-})); 
+}));
 
 const Footer: any = (props: InferProps<typeof Footer.propTypes>): JSX.Element => {
     const { className, ...rest } = props;

@@ -109,7 +109,7 @@ const SignIn: any = (props: InferProps<typeof SignIn>): JSX.Element => {
     const classes = useStyles();
     const { t } = useTranslation();
 
-    const handleBack = () => {
+    const handleBack = (): void => {
         history.goBack();
     };
 
@@ -130,7 +130,7 @@ const SignIn: any = (props: InferProps<typeof SignIn>): JSX.Element => {
         credentialHelper: 'none',
         callbacks: {
             // Avoid redirects after sign-in.
-            signInSuccessWithAuthResult: () => false,
+            signInSuccessWithAuthResult: (): boolean => false,
         },
     };
 

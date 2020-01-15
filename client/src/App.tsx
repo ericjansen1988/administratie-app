@@ -6,6 +6,7 @@ import validate from 'validate.js';
 import { I18nextProvider } from 'react-i18next';
 import * as firebase from 'firebase';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import { SnackbarProvider } from 'notistack';
 
 import i18n from './modules/I18NEXT';
 import theme from './theme';
@@ -130,7 +131,11 @@ const App: FunctionComponent = () => {
                     }}
                 >
                     <ThemeProvider theme={theme}>
-                        <Router history={browserHistory}><Routes /></Router>
+                        <SnackbarProvider maxSnack={3} >
+                            <Router history={browserHistory}>
+                                <Routes />
+                            </Router>
+                        </SnackbarProvider>
                     </ThemeProvider>
                 </CacheContext.Provider>
             </FirebaseContext.Provider>

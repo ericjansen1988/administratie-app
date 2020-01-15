@@ -6,35 +6,42 @@ import { RouteWithLayout } from './components';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 
 import {
-  // ThemeDashboard,
-  // ThemeProductList,
-  // ThemeUserList,
-  // ThemeTypography,
-  // ThemeIcons,
-  // ThemeAccount,
-  // ThemeSettings,
-  // ThemeSignUp,
-  // ThemeSignIn,
-  // ThemeNotFound,
-  // Demo,
-  // Home,
-  SignIn
-  // Account,
-  // Rekeningen,
-  // Bunq,
-  // TestPage,
-  // Events,
-  // Meterstanden,
-  // OAuthPage,
-  // NotFound
+    // ThemeDashboard,
+    // ThemeProductList,
+    // ThemeUserList,
+    // ThemeTypography,
+    // ThemeIcons,
+    // ThemeAccount,
+    // ThemeSettings,
+    // ThemeSignUp,
+    // ThemeSignIn,
+    // ThemeNotFound,
+    // Demo,
+    // Home,
+    SignIn,
+    Account,
+    // Rekeningen,
+    // Bunq,
+    // TestPage,
+    Events
+    // Meterstanden,
+    // OAuthPage,
+    // NotFound
 } from './views';
 
 const Routes: FunctionComponent = () => {
-  console.log(12345);  
-  return (
+    return (
         <Switch>
             <Redirect exact from="/" to="/account" />
             <RouteWithLayout component={SignIn} exact layout={MinimalLayout} path="/sign-in" />
+            <RouteWithLayout component={Account} exact layout={MainLayout} path="/account" protectedRoute />
+            <RouteWithLayout 
+              component={Events}
+              exact
+              layout={MainLayout}
+              path="/events"
+              protectedRoute
+            />
             {/*
       <RouteWithLayout 
         component={Home}
@@ -51,13 +58,7 @@ const Routes: FunctionComponent = () => {
         path="/private"
         protectedRoute
       />
-      <RouteWithLayout 
-        component={Account}
-        exact
-        layout={MainLayout}
-        path="/account"
-        protectedRoute
-      />
+
       <RouteWithLayout 
         component={Rekeningen}
         exact
@@ -79,13 +80,7 @@ const Routes: FunctionComponent = () => {
         path="/bunq"
         protectedRoute
       />
-      <RouteWithLayout 
-        component={Events}
-        exact
-        layout={MainLayout}
-        path="/events"
-        protectedRoute
-      />
+
       <RouteWithLayout 
         component={Meterstanden}
         exact

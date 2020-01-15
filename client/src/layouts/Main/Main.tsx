@@ -33,11 +33,11 @@ const Main: any = (props: InferProps<typeof Main>): JSX.Element => {
 
     const [openSidebar, setOpenSidebar] = useState(false);
 
-    const handleSidebarOpen = () => {
+    const handleSidebarOpen = (): void => {
         setOpenSidebar(true);
     };
 
-    const handleSidebarClose = () => {
+    const handleSidebarClose = (): void => {
         setOpenSidebar(false);
     };
 

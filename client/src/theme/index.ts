@@ -3,6 +3,7 @@ import typography from './typography';
 import overrides from './overrides';
 import { createMuiTheme } from '@material-ui/core/styles';
 
+/*
 declare module '@material-ui/core/styles/createMuiTheme' {
     export interface Theme {
         //palette: any;
@@ -12,6 +13,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
         //palette: any;
     }
 }
+*/
 
 declare module '@material-ui/core/styles/createPalette' {
     interface Palette {
