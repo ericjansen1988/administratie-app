@@ -1,4 +1,3 @@
-
 /*
 
 export const getObject = object => {
@@ -45,31 +44,34 @@ export const fetchBackend = async (url, options) => {
 }
 */
 
-
-
 const fetchBackend = async (url: string, options: any) => {
   const token = await options.user.getIdToken();
-  if(options.body === null){options.body = undefined}
-  if(options.method === undefined) options.method = 'GET';
+  if (options.body === null) {
+    options.body = undefined;
+  }
+  if (options.method === undefined) options.method = 'GET';
   console.log('Making ' + options.method + ' API call to ' + url, options.body);
-  return fetch(url, {    
-	  method: options.method ,
+  return fetch(url, {
+    method: options.method,
     headers: {
-	       Authorization: 'Firebase ' + token,
-	      'Accept': 'application/json',
-	      'Content-Type': 'application/json'
+      Authorization: 'Firebase ' + token,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-	    body: JSON.stringify(options.body)
-  })//.catch(error => console.error(error))
+    body: JSON.stringify(options.body),
+  }) //.catch(error => console.error(error))
     .then(async response => {
       if (!response.ok) {
-        console.log(response)
+        console.log(response);
         throw await response.json();
       }
       return response;
     })
-    .then(response => 
-	    response.clone().json().catch(() => response.text())
-    )
-}
+    .then(response =>
+      response
+        .clone()
+        .json()
+        .catch(() => response.text()),
+    );
+};
 export default fetchBackend;

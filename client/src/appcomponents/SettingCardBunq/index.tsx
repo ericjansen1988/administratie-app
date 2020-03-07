@@ -1,32 +1,25 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
-import { Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Divider,
-  Typography,
-  CircularProgress
-} from '@material-ui/core';
+import { Card, CardHeader, CardContent, CardActions, Divider, Typography, CircularProgress } from '@material-ui/core';
 
 import { useSession } from 'hooks';
 import { fetchBackend } from 'helpers';
 import { Button, OauthAuthorize } from 'components';
-import { deleteBunqSettings } from 'modules/Bunq';
 
-
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   deleteButton: {
-    color: 'red'
+    color: 'red',
   },
   progress: {},
-  button: {}
+  button: {},
 }));
 
+const deleteBunqSettings = async (ref: any) => {
+  await ref.update({ bunq: { success: false } });
+};
 
-const SettingCardBunq = ({}) => {
+const SettingCardBunq: any = ({}): any => {
   const classes = useStyles();
   const { user, userInfo, ref } = useSession();
   const { t } = useTranslation();
@@ -35,42 +28,36 @@ const SettingCardBunq = ({}) => {
 
   const createBunqSandbox = async () => {
     setLoadingToken(true);
-    const data = await fetchBackend('/api/bunq/sandbox', {user});
+    const data = await fetchBackend('/api/bunq/sandbox', { user });
     console.log(data);
-    await ref.update({bunq: {'success': true, 'environment': 'SANDBOX'}})
+    await ref.update({ bunq: { success: true, environment: 'SANDBOX' } });
     setLoadingToken(false);
-  }
+  };
 
-  
-  if(loadingToken) return <CircularProgress className={classes.progress} />
+  if (loadingToken) return <CircularProgress className={classes.progress} />;
 
   return (
     <Card>
-      <CardHeader
-        subheader="Connect"
-        title="Bunq"
-      />
+      <CardHeader subheader="Connect" title="Bunq" />
       <Divider />
       <CardContent>
-        <Typography>{userInfo.bunq.success ? 'Connectie succesvol' : 'Bunq connectie is niet gemaakt. Deze is nodig om de data op te kunnen halen.'}</Typography>
+        <Typography>
+          {userInfo.bunq.success
+            ? 'Connectie succesvol'
+            : 'Bunq connectie is niet gemaakt. Deze is nodig om de data op te kunnen halen.'}
+        </Typography>
       </CardContent>
       <Divider />
       <CardActions>
-        <OauthAuthorize
-          formatUrl="/api/oauth/formaturl/bunq"
-          title={t('buttons.connect') + ' bunq'}
-        />
-        <Button
-          className={classes.button}
-          color ="primary"
-          onClick={createBunqSandbox}
-          variant="contained"
-        >
+        <OauthAuthorize formatUrl="/api/oauth/formaturl/bunq" title={t('buttons.connect') + ' bunq'} />
+        <Button className={classes.button} color="primary" onClick={createBunqSandbox} variant="contained">
           {t('buttons.delete') + ' bunq sandbox'}
         </Button>
         <Button
           className={classes.deleteButton}
-          onClick={() => {deleteBunqSettings(ref)}}
+          onClick={() => {
+            deleteBunqSettings(ref);
+          }}
           variant="outlined"
         >
           {t('buttons.delete')}
@@ -79,6 +66,5 @@ const SettingCardBunq = ({}) => {
     </Card>
   );
 };
-
 
 export default SettingCardBunq;

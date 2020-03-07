@@ -8,14 +8,14 @@ const groupData = (key: string) => (xs: any) => {
   //let result = []
   const result = Object.entries(object).map((item: any) => {
     //const sum = this.sum(item[1], 'month_1')
-    let array: any = {rekening: item[0], entries: item[1]}
-    for(var i = 1; i<13; i++){
+    const array: any = { rekening: item[0], entries: item[1] };
+    for (let i = 1; i < 13; i++) {
       const sumvalue: any = _.sumBy(item[1], 'month_' + i);
-      array['month_' + i] = sumvalue
+      array['month_' + i] = sumvalue;
     }
     return array;
   });
-  return result
-}
+  return result;
+};
 
 export default groupData;

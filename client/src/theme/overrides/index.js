@@ -6,10 +6,10 @@ import MuiTableHead from './MuiTableHead';
 import MuiTypography from './MuiTypography';
 
 export default {
-    MuiButton,
-    MuiIconButton,
-    MuiPaper,
-    MuiTableCell,
-    MuiTableHead,
-    MuiTypography,
+  MuiButton,
+  MuiIconButton,
+  MuiPaper,
+  MuiTableCell,
+  MuiTableHead,
+  MuiTypography,
 };

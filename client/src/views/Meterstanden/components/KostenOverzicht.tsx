@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useForm } from 'react-simple-hooks';
-import { TextField, 
-  Theme
-} from '@material-ui/core';
+import { TextField, Theme } from '@material-ui/core';
 
 import { useSession, useFirestoreCollectionData } from 'hooks';
 import { Table, Button } from 'components';
@@ -13,99 +11,129 @@ import { updateEnelogicSettings, getEnelogicData } from 'modules/Enelogic';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   },
   textfields: {
     marginRight: theme.spacing(1),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   button: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
-  row: {
-    
-  }
+  row: {},
 }));
 
 const KostenOverzicht = ({}) => {
   const classes = useStyles();
-  const {user, userInfo, ref} = useSession();
-  const {data} = useFirestoreCollectionData(ref.collection('energiekosten'));
+  const { user, userInfo, ref } = useSession();
+  const { data } = useFirestoreCollectionData(ref.collection('energiekosten'));
 
-  const {state, handleOnChange, setFormValue}: any = useForm({dal: 1000, normaal: 1000, gas: 0, netbeheer: 0, verlaging_energiebelasting: 0}, {}, () => {}, {localStorage: user.uid + '_energiekosten'});
+  const { state, handleOnChange, setFormValue }: any = useForm(
+    { dal: 1000, normaal: 1000, gas: 0, netbeheer: 0, verlaging_energiebelasting: 0 },
+    {},
+    () => {},
+    { localStorage: user.uid + '_energiekosten' },
+  );
 
-  const columns = [{
-    title: 'Leverancier',
-    field: 'leverancier',
-    required: true,
-    editable: 'onAdd'
-  },{
-    title: 'Aanbieder',
-    field: 'aanbieder'
-  },{
-    title: 'Looptijd',
-    field: 'looptijd'
-  },{
-    title: 'Vaste kosten per jaar',
-    field: 'vaste_kosten_jaar',
-    type: 'numeric',
-    required: true,
-    initialEditValue: 0
-  },{
-    title: 'Prijs per KwH daltarief',
-    field: 'kwh_prijs_dal'
-  },{
-    title: 'Prijs per KwH normaaltarief',
-    field: 'kwh_prijs_normaal'
-  },{
-    title: 'Prijs per M3 gas',
-    field: 'gas_prijs'
-  },{
-    title: 'Korting per jaar',
-    field: 'korting',
-    required: true,
-    initialEditValue: 0
-  },{
-    title: 'Totaal',
-    render: (rowData: any) => rowData ? '€' + (Math.round(
-      (
-        (rowData.vaste_kosten_jaar || 0) + 
-        (Number(rowData.gas_prijs) * state.gas.value || 0) + 
-        (Number(rowData.kwh_prijs_dal) * state.dal.value || 0) + 
-        (Number(rowData.kwh_prijs_normaal) * state.normaal.value || 0) - 
-        (rowData.korting || 0) - 
-        (state.verlaging_energiebelasting.value || 0) + 
-        (state.netbeheer.value || 0)
-      ) * 100) / 100): '€0' ,
-    editable: 'never'
-  },{
-    title: 'Per maand',
-    render: (rowData: any) => rowData ? '€' + (Math.round(
-      (
-        (rowData.vaste_kosten_jaar || 0) + 
-        (Number(rowData.gas_prijs) * state.gas.value || 0) + 
-        (Number(rowData.kwh_prijs_dal) * state.dal.value || 0) + 
-        (Number(rowData.kwh_prijs_normaal) * state.normaal.value || 0) - 
-        (rowData.korting || 0) - 
-        (state.verlaging_energiebelasting.value || 0) + 
-        (state.netbeheer.value || 0)
-      ) * 100) / 100 / 12): '€0' ,
-    editable: 'never'
-  }]
+  const columns = [
+    {
+      title: 'Leverancier',
+      field: 'leverancier',
+      required: true,
+      editable: 'onAdd',
+    },
+    {
+      title: 'Aanbieder',
+      field: 'aanbieder',
+    },
+    {
+      title: 'Looptijd',
+      field: 'looptijd',
+    },
+    {
+      title: 'Vaste kosten per jaar',
+      field: 'vaste_kosten_jaar',
+      type: 'numeric',
+      required: true,
+      initialEditValue: 0,
+    },
+    {
+      title: 'Prijs per KwH daltarief',
+      field: 'kwh_prijs_dal',
+    },
+    {
+      title: 'Prijs per KwH normaaltarief',
+      field: 'kwh_prijs_normaal',
+    },
+    {
+      title: 'Prijs per M3 gas',
+      field: 'gas_prijs',
+    },
+    {
+      title: 'Korting per jaar',
+      field: 'korting',
+      required: true,
+      initialEditValue: 0,
+    },
+    {
+      title: 'Totaal',
+      render: (rowData: any) =>
+        rowData
+          ? '€' +
+            Math.round(
+              ((rowData.vaste_kosten_jaar || 0) +
+                (Number(rowData.gas_prijs) * state.gas.value || 0) +
+                (Number(rowData.kwh_prijs_dal) * state.dal.value || 0) +
+                (Number(rowData.kwh_prijs_normaal) * state.normaal.value || 0) -
+                (rowData.korting || 0) -
+                (state.verlaging_energiebelasting.value || 0) +
+                (state.netbeheer.value || 0)) *
+                100,
+            ) /
+              100
+          : '€0',
+      editable: 'never',
+    },
+    {
+      title: 'Per maand',
+      render: (rowData: any) =>
+        rowData
+          ? '€' +
+            Math.round(
+              ((rowData.vaste_kosten_jaar || 0) +
+                (Number(rowData.gas_prijs) * state.gas.value || 0) +
+                (Number(rowData.kwh_prijs_dal) * state.dal.value || 0) +
+                (Number(rowData.kwh_prijs_normaal) * state.normaal.value || 0) -
+                (rowData.korting || 0) -
+                (state.verlaging_energiebelasting.value || 0) +
+                (state.netbeheer.value || 0)) *
+                100,
+            ) /
+              100 /
+              12
+          : '€0',
+      editable: 'never',
+    },
+  ];
 
   const getYearConsumption = async () => {
     console.log(userInfo.enelogic);
-    try{
-      await refreshOauth(user, '/api/oauth/refresh/enelogic', userInfo.enelogic.token, updateEnelogicSettings(ref, userInfo.enelogic))
-      let data = await getEnelogicData(user, '/api/enelogic/consumption', userInfo.enelogic);
+    try {
+      await refreshOauth(
+        user,
+        '/api/oauth/refresh/enelogic',
+        userInfo.enelogic.token,
+        updateEnelogicSettings(ref, userInfo.enelogic),
+      );
+      const data = await getEnelogicData(user, '/api/enelogic/consumption', userInfo.enelogic);
       const dal = Math.round(data.consumption_181 - data.consumption_281);
       const normaal = Math.round(data.consumption_182 - data.consumption_282);
       console.log('Jaardata', data);
-      setFormValue({dal, normaal})
-    }catch(err){
+      setFormValue({ dal, normaal });
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -150,21 +178,24 @@ const KostenOverzicht = ({}) => {
           type="number"
           value={state.verlaging_energiebelasting.value || 0}
         />
-        {userInfo.enelogic.success && <Button className={classes.button} variant="contained" color="primary" onClick={getYearConsumption}>Haal jaarinfo op</Button>}
+        {userInfo.enelogic.success && (
+          <Button className={classes.button} variant="contained" color="primary" onClick={getYearConsumption}>
+            Haal jaarinfo op
+          </Button>
+        )}
       </div>
-      <Table 
+      <Table
         columns={columns}
         data={data}
         editable={{
           onRowAdd: addData(ref.collection('energiekosten'), 'leverancier', columns),
           onRowUpdate: updateData(ref.collection('energiekosten'), 'leverancier', columns),
-          onRowDelete: deleteData(ref.collection('energiekosten'), 'leverancier', columns)
+          onRowDelete: deleteData(ref.collection('energiekosten'), 'leverancier', columns),
         }}
         title="Aanbiedingen"
       />
     </div>
   );
 };
-
 
 export default KostenOverzicht;

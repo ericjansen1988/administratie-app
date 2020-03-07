@@ -6,23 +6,23 @@ import { InferProps } from 'prop-types';
 import { Theme } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        marginLeft: theme.spacing(3),
-    },
-    spinner: {
-        color: 'white',
-    },
+  root: {
+    marginLeft: theme.spacing(3),
+  },
+  spinner: {
+    color: 'white',
+  },
 }));
 
 const LoadingButton: any = (props: InferProps<typeof LoadingButton.propTypes>): JSX.Element => {
-    const classes = useStyles();
-    const { children, loading, ...rest } = props;
-    return (
-        <Button disabled={loading} {...rest}>
-            {!loading && children}
-            {loading && <CircularProgress className={classes.spinner} size={20} />}
-        </Button>
-    );
+  const classes = useStyles();
+  const { children, loading, ...rest } = props;
+  return (
+    <Button disabled={loading} {...rest}>
+      {!loading && children}
+      {loading && <CircularProgress className={classes.spinner} size={20} />}
+    </Button>
+  );
 };
 
 export default LoadingButton;

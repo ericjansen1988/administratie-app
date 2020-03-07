@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
-import { Bunq } from 'bunq-client';
+import Bunq from './app/modules/temp/Bunq';
 
 import db from './app/models';
 import store from './app/modules/Store';
@@ -35,9 +35,9 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
      * Bunq clients laden
      * inclusief genericClient
      */
-    const bunq = new Bunq();
+    const bunq = new Bunq(path.resolve(__dirname, '../config/bunq'));
     // Generieke client starten
-    bunq.loadGenericClient(store(path.resolve(__dirname, '../config/bunq/genericClient.json')));
+    bunq.loadGenericClient();
 
     //laden van de BUNQ clients
     (async (): Promise<void> => {
@@ -83,8 +83,8 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
                 }
             }),
         );
-        setAppData('bunq', bunq);
     })();
+    setAppData('bunq', bunq);
 });
 
 // import Oauth module and load into cache

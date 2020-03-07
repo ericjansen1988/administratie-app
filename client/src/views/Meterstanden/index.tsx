@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import {AppBar, Tab, Tabs} from '@material-ui/core'
+import { AppBar, Tab, Tabs } from '@material-ui/core';
 
 import { OauthReceiver, TabPanel } from 'components';
 import { useQueryParams, useSession, useTabs } from 'hooks';
@@ -10,36 +9,40 @@ import KostenOverzicht from './components/KostenOverzicht';
 import Settings from './components/Settings';
 import { saveEnelogicSettings } from 'modules/Enelogic';
 
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     //padding: theme.spacing(3)
-  }
+  },
 }));
-
 
 const Meterstanden = () => {
   const classes = useStyles();
-  const {user, userInfo, ref} = useSession();
+  const { user, userInfo, ref } = useSession();
   const params = useQueryParams();
 
   const { tab, handleTabChange } = useTabs('overzicht');
 
   //if there is a query-param named code, the OauthReceiver is returned
-  if(params.code) {
-    return <OauthReceiver code={params.code} exchangeUrl="/api/oauth/exchange/enelogic" saveFunction={saveEnelogicSettings(user, ref, userInfo.enelogic)} />
+  console.log(params);
+  if (params.code) {
+    return (
+      <OauthReceiver
+        code={params.code}
+        exchangeUrl="/api/oauth/exchange/enelogic"
+        saveFunction={saveEnelogicSettings(user, ref, userInfo.enelogic)}
+      />
+    );
   }
 
-  if((!userInfo.enelogic.success)){
-    if(tab !== 'settings' && tab !== 'kostenoverzicht') handleTabChange(null, 'settings')
+  if (!userInfo.enelogic.success) {
+    if (tab !== 'settings' && tab !== 'kostenoverzicht') handleTabChange(null, 'settings');
   }
 
   return (
     <div>
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs 
+          <Tabs
             aria-label="simple tabs example"
             onChange={handleTabChange}
             scrollButtons="auto"
@@ -63,7 +66,6 @@ const Meterstanden = () => {
       </div>
     </div>
   );
+};
 
-}
-
-export default Meterstanden
+export default Meterstanden;

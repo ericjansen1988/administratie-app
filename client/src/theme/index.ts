@@ -16,21 +16,21 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 */
 
 declare module '@material-ui/core/styles/createPalette' {
-    interface Palette {
-        white?: any;
-        neutral?: any;
-        icon?: any;
-    }
+  interface Palette {
+    white?: any;
+    neutral?: any;
+    icon?: any;
+  }
 }
 
 const theme = createMuiTheme({
-    palette,
-    typography,
-    overrides,
-    zIndex: {
-        appBar: 1200,
-        drawer: 1100,
-    },
+  palette,
+  typography,
+  overrides,
+  zIndex: {
+    appBar: 1200,
+    drawer: 1100,
+  },
 });
 
 export default theme;

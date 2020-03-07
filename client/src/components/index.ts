@@ -4,7 +4,7 @@ export { default as Button } from './Button';
 export { default as OauthAuthorize } from './OauthAuthorize';
 export { default as OauthReceiver } from './OauthReceiver';
 // export { default as OAuthToken } from './OAuthToken';
-// export { default as ResponsiveDialog } from './ResponsiveDialog';
+export { default as ResponsiveDialog } from './ResponsiveDialog';
 export { default as ResponsiveSelect } from './ResponsiveSelect';
 export { default as ResponsiveSelectItem } from './ResponsiveSelectItem';
 export { default as RouteWithLayout } from './RouteWithLayout';

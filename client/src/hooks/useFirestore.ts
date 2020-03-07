@@ -1,124 +1,124 @@
 import React from 'react';
 
 import {
-    useDocument,
-    useDocumentOnce,
-    useDocumentData,
-    useDocumentDataOnce,
-    useCollection,
-    useCollectionOnce,
-    useCollectionData,
-    useCollectionDataOnce,
+  useDocument,
+  useDocumentOnce,
+  useDocumentData,
+  useDocumentDataOnce,
+  useCollection,
+  useCollectionOnce,
+  useCollectionData,
+  useCollectionDataOnce,
 } from 'react-firebase-hooks/firestore';
 
 import { useSession } from 'hooks';
 
 const getPath = (path: string): string => {
-    return '/env/' + process.env.REACT_APP_FIRESTORE_ENVIRONMENT + '/' + path;
+  return '/env/' + process.env.REACT_APP_FIRESTORE_ENVIRONMENT + '/' + path;
 };
 
 export const useFirestoreDocument = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.doc(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useDocument(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.doc(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useDocument(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreDocumentOnce = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.doc(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useDocumentOnce(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.doc(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useDocumentOnce(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreDocumentData = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.doc(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useDocumentData(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.doc(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useDocumentData(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreDocumentDataOnce = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.doc(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useDocumentDataOnce(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.doc(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useDocumentDataOnce(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreCollection = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.collection(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useCollection(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.collection(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useCollection(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreCollectionOnce = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.collection(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useCollectionOnce(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.collection(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useCollectionOnce(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreCollectionData = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.collection(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useCollectionData(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.collection(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useCollectionData(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 export const useFirestoreCollectionDataOnce = (refpath: any, options: any = null): any => {
-    const { firebase } = useSession();
-    let ref;
-    if (typeof refpath === 'string') {
-        refpath = getPath(refpath);
-        ref = firebase.db.collection(refpath);
-    } else {
-        ref = refpath;
-    }
-    const [data, loading, error] = useCollectionDataOnce(ref, options);
-    return Object.assign([data, loading, error, ref], { data, loading, error, ref });
+  const { firebase } = useSession();
+  let ref;
+  if (typeof refpath === 'string') {
+    refpath = getPath(refpath);
+    ref = firebase.db.collection(refpath);
+  } else {
+    ref = refpath;
+  }
+  const [data, loading, error] = useCollectionDataOnce(ref, options);
+  return Object.assign([data, loading, error, ref], { data, loading, error, ref });
 };
 
 /*
