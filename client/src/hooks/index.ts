@@ -14,6 +14,7 @@ export { default as useForm } from './useForm';
 export { default as useLocalStorage } from './useLocalStorage';
 export { useMaterialUIMenu } from 'react-simple-hooks';
 export { default as useModal } from './useModal';
+export { default as useQueryParams } from './useQueryParams';
 // export { default as useSimpleFetch } from './useSimpleFetch';
 export { default as useStateExtended } from './useStateExtended';
 export { default as useTabs } from './useTabs';

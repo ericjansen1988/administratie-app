@@ -82,7 +82,7 @@ export function useFetch(arg1: any, arg2: any): any {
                         .json()
                         .catch(() => response.text());
                     console.log('error request', responsedata);
-                    throw response.status + ' - ' + response.statusText;
+                    throw new Error(response.status + ' - ' + response.statusText);
                 } else {
                     responsedata = await response
                         .clone()
@@ -142,7 +142,7 @@ export function useFetch(arg1: any, arg2: any): any {
                     .json()
                     .catch(() => response.text());
                 console.log('error request', responsedata);
-                throw response.status + ' - ' + response.statusText;
+                throw new Error(response.status + ' - ' + response.statusText);
             } else {
                 responsedata = await response
                     .clone()

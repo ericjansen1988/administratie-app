@@ -16,15 +16,15 @@ import {
     // ThemeSignUp,
     // ThemeSignIn,
     // ThemeNotFound,
-    // Demo,
+    Demo,
     // Home,
     SignIn,
     Account,
     // Rekeningen,
     // Bunq,
-    // TestPage,
+    TestPage,
     Events,
-    // Meterstanden,
+    Meterstanden,
     // OAuthPage,
     // NotFound
 } from './views';
@@ -36,6 +36,9 @@ const Routes: FunctionComponent = () => {
             <RouteWithLayout component={SignIn} exact layout={MinimalLayout} path="/sign-in" />
             <RouteWithLayout component={Account} exact layout={MainLayout} path="/account" protectedRoute />
             <RouteWithLayout component={Events} exact layout={MainLayout} path="/events" protectedRoute />
+            <RouteWithLayout component={Meterstanden} exact layout={MainLayout} path="/meterstanden" protectedRoute />
+            <RouteWithLayout component={TestPage} exact layout={MainLayout} path="/testpage" protectedRoute />
+            <RouteWithLayout component={Demo} exact layout={MainLayout} path="/demo" protectedRoute />
             {/*
       <RouteWithLayout 
         component={Home}
@@ -75,27 +78,9 @@ const Routes: FunctionComponent = () => {
         protectedRoute
       />
 
-      <RouteWithLayout 
-        component={Meterstanden}
-        exact
-        layout={MainLayout}
-        path="/meterstanden"
-        protectedRoute
-      />
-      <RouteWithLayout 
-        component={TestPage}
-        exact
-        layout={MainLayout}
-        path="/testpage"
-        protectedRoute
-      />
-      <RouteWithLayout 
-        component={Demo}
-        exact
-        layout={MainLayout}
-        path="/demo"
-        protectedRoute
-      />
+
+
+
       <RouteWithLayout 
         component={OAuthPage}
         exact

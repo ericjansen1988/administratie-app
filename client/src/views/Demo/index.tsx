@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Grid, TextField, Theme } from '@material-ui/core';
+import { Grid, Theme } from '@material-ui/core';
 
-import { useSession, useCache, useFetch } from 'hooks';
+import { useFetch } from 'hooks';
 import { Button, Table } from 'components';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Demo = (): JSX.Element => {
     const classes = useStyles();
-    const { userInfo } = useSession();
     const { data, loading, error, request } = useFetch('/api/demo', {});
 
     console.log(data, loading, error);
