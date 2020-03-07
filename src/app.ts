@@ -4,10 +4,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
-import Bunq from './app/modules/temp/Bunq';
+import Bunq from 'bunq-client';
 
 import db from './app/models';
-import store from './app/modules/Store';
 
 /**
  * Application cache
@@ -56,7 +55,7 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
                 client1.environment,
                 {},
             );
-            const requestLimiter = bunq.getClient(client1.userId).getBunqJSClient().ApiAdapter.RequestLimitFactory;
+            //const requestLimiter = bunq.getClient(client1.userId).getBunqJSClient().ApiAdapter.RequestLimitFactory;
         } catch (err) {
             await client1.destroy();
             console.log('Error loading client ' + client1.userId);

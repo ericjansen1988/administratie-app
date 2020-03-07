@@ -12,7 +12,12 @@
     "start": "ts-node src/server.ts",
     "start:watch": "nodemon --exec ts-node ./src/server",
     "serve": "ts-node dist/server.js",
-    "build": "npm run lint && tsc"
+    "install:server": "npm install --ignore-scripts",
+    "install:client": "npm install --prefix ./client",
+    "postinstall": "npm install --prefix ./client",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "npm run lint && tsc",
+    "build:client": "cd client && react-scripts build"
   },
   "nodemonConfig": {
     "ext": "js, ts",
@@ -40,7 +45,7 @@
   "homepage": "https://github.com/ericjansen1988/administratie-app#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "bunq-client": "^0.6.1",
+    "bunq-client": "^0.6.3",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "enelogic": "^0.1.7",
@@ -54,7 +59,9 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
     "morgan": "^1.9.1",
+    "node-sass": "^4.13.1",
     "pg": "^7.18.2",
+    "react-scripts": "^3.4.0",
     "sequelize": "^5.21.5",
     "set-value": "^3.0.1",
     "simple-cache-js": "^0.1.1",

@@ -23,9 +23,9 @@ export default class Oauth {
     public redirectUrl: string;
 
     constructor(options: CustomModuleOptions) {
-        const { flow, redirect_url, defaultScope, ...credentials } = options;
+        const { flow, redirect_url, defaultScope, ...credentials } = options; //eslint-disable-line
         this.flow = flow;
-        this.redirectUrl = redirect_url;
+        this.redirectUrl = redirect_url; //eslint-disable-line
         this.defaultScope = defaultScope;
         this.credentials = credentials;
         if (options.flow === 'authorization') {
