@@ -40,7 +40,7 @@
   "homepage": "https://github.com/ericjansen1988/administratie-app#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "bunq-client": "^0.6.1",
+    "bunq-client": "^0.6.3",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "enelogic": "^0.1.7",

@@ -67,7 +67,7 @@ const exchangeOAuthTokens = async (req: CustomRequest, res: Response): Promise<R
     }
 };
 
-const doRequestSandboxMoney = async (uid: string) => {
+const doRequestSandboxMoney = async (uid: string): Promise<void> => {
     const client = appData.bunq.getClient(uid);
     if (client.environment !== 'SANDBOX')
         throw new Error(

@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { Sequelize } from 'sequelize';
 import pg from 'pg';
 
