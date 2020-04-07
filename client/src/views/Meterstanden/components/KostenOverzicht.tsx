@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useForm } from 'react-simple-hooks';
 import { TextField, Theme } from '@material-ui/core';
+import { useSnackbar } from 'notistack';
 
 import { useSession, useFirestoreCollectionData } from 'hooks';
 import { Table, Button } from 'components';
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const KostenOverzicht = ({}) => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
   const { user, userInfo, ref } = useSession();
   const { data } = useFirestoreCollectionData(ref.collection('energiekosten'));
 
@@ -128,10 +130,10 @@ const KostenOverzicht = ({}) => {
       const data = await getEnelogicData(user, '/api/enelogic/consumption', userInfo.enelogic);
       const dal = Math.round(data.consumption_181 - data.consumption_281);
       const normaal = Math.round(data.consumption_182 - data.consumption_282);
-      console.log('Jaardata', data);
+      console.log('Jaardata', data, dal, normaal);
       setFormValue({ dal, normaal });
     } catch (err) {
-      console.log(err);
+      enqueueSnackbar(err);
     }
   };
 

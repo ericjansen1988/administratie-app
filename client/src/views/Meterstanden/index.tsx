@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import { AppBar, Tab, Tabs, Theme } from '@material-ui/core';
 
 import { OauthReceiver, TabPanel } from 'components';
 import { useQueryParams, useSession, useTabs } from 'hooks';
@@ -9,7 +9,7 @@ import KostenOverzicht from './components/KostenOverzicht';
 import Settings from './components/Settings';
 import { saveEnelogicSettings } from 'modules/Enelogic';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     //padding: theme.spacing(3)
   },
@@ -23,12 +23,12 @@ const Meterstanden = () => {
   const { tab, handleTabChange } = useTabs('overzicht');
 
   //if there is a query-param named code, the OauthReceiver is returned
-  console.log(params);
   if (params.code) {
     return (
       <OauthReceiver
         code={params.code}
         exchangeUrl="/api/oauth/exchange/enelogic"
+        redirectUrl="/meterstanden"
         saveFunction={saveEnelogicSettings(user, ref, userInfo.enelogic)}
       />
     );

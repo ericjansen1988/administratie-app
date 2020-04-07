@@ -40,7 +40,8 @@ export function useFetch(arg1: any, arg2: any): any {
     handleOptions(arg1);
   }
 
-  const [data, setData] = useState(arg2.initialData || []);
+  const initialData = arg2.initialData === undefined ? [] : arg2.initialData;
+  const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(onMount);
   const [methodLoading, setMethodLoading] = useState(false);
   const [error, setError] = useState<any>(null);

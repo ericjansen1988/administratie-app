@@ -8,15 +8,23 @@ import { basicAuthentication } from '../middleware/authentication';
 import Cache from 'simple-cache-js';
 const oauthCache = new Cache();
 
+/**
+ * Format the OAuth Url
+ * @param req Request object from Express
+ * @param res Response object from Express
+ */
 const formatUrl = (req: Request, res: Response): Response => {
-    const oauthobject = getAppData('oauth.' + req.params.application); //oauthproviders[req.params.application];
+    const oauthobject = getAppData('oauth.' + req.params.application);
     // Authorization oauth2 URI
     const authorizationUri = oauthobject.formatUrl();
-
-    // Redirect example using Express (see http://expressjs.com/api.html#res.redirect)
     return res.send(authorizationUri);
 };
 
+/**
+ * Exchange Oauth tokens
+ * @param req Request object from Express
+ * @param res Response object from Express
+ */
 const exchange = async (req: Request, res: Response): Promise<Response> => {
     const oauthobject = getAppData('oauth.' + req.params.application);
 
@@ -39,10 +47,14 @@ const exchange = async (req: Request, res: Response): Promise<Response> => {
     }
 };
 
+/**
+ * Refresh oauth token
+ * @param req Request object from Express
+ * @param res Response object from Express
+ */
 const refresh = async (req: Request, res: Response): Promise<Response> => {
     try {
         const oauthobject = getAppData('oauth.' + req.params.application);
-
         const accessToken = await oauthobject.refresh(req.body);
         const accessTokenObject = {
             access_token: accessToken.token.access_token,
@@ -54,6 +66,7 @@ const refresh = async (req: Request, res: Response): Promise<Response> => {
         };
         return res.send({ success: true, data: accessTokenObject });
     } catch (error) {
+        console.log(error);
         return res.status(400).send({ success: false, message: error.message, output: error.output });
     }
 };

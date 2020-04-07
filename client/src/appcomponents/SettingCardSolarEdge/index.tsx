@@ -49,7 +49,7 @@ const SettingCardSolaredge = ({}) => {
         <Button
           className={classes.deleteButton}
           onClick={() => {
-            deleteSolarEdgeSettings(ref);
+            ref.update({ solaredge: { success: false } });
             setInitial();
           }}
           variant="outlined"

@@ -4,7 +4,7 @@ import { get, find, list, create, update, destroy } from 'express-sequelize-rout
 import app from '../app';
 import db from './models';
 
-//import { basicAuthentication } from './middleware/authentication';
+import { basicAuthentication } from './middleware/authentication';
 
 //
 //import Cache from 'simple-cache-js';
@@ -85,12 +85,12 @@ import db from './models';
     console.log(walkSync(startDir));
     */
 
-app.get('/api/events/:id', /*basicAuthentication,*/ get(db.events));
-app.get('/api/events', /*basicAuthentication,*/ list(db.events));
-app.get('/api/events/:column/:value', /*basicAuthentication,*/ find(db.events));
-app.post('/api/events', /*basicAuthentication,*/ create(db.events));
-app.put('/api/events/:id', /*basicAuthentication,*/ update(db.events));
-app.delete('/api/events/:id', /*basicAuthentication,*/ destroy(db.events));
+app.get('/api/events/:id', basicAuthentication, get(db.events));
+app.get('/api/events', basicAuthentication, list(db.events));
+app.get('/api/events/:column/:value', basicAuthentication, find(db.events));
+app.post('/api/events', basicAuthentication, create(db.events));
+app.put('/api/events/:id', basicAuthentication, update(db.events));
+app.delete('/api/events/:id', basicAuthentication, destroy(db.events));
 
 //OAuth routes
 import oauthController from './controllers/oauth.controller';

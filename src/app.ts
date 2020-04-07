@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
-import Bunq from 'bunq-client';
+import Bunq from './app/modules/temp';
 
 import db from './app/models';
 
@@ -47,14 +47,7 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
         const client1 = allclients.shift();
         console.log('Eerste client laden', client1.userId);
         try {
-            await bunq.load(
-                client1.userId,
-                client1.userId,
-                client1.access_token,
-                client1.encryption_key,
-                client1.environment,
-                {},
-            );
+            await bunq.load(client1.userId, client1.access_token, client1.encryption_key, client1.environment, {});
             //const requestLimiter = bunq.getClient(client1.userId).getBunqJSClient().ApiAdapter.RequestLimitFactory;
         } catch (err) {
             await client1.destroy();
@@ -67,7 +60,6 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
                 console.log('loading client ' + clientsetting.userId);
                 try {
                     await bunq.load(
-                        clientsetting.userId,
                         clientsetting.userId,
                         clientsetting.access_token,
                         clientsetting.encryption_key,

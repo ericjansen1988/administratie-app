@@ -7,6 +7,9 @@ import { basicAuthentication } from '../middleware/authentication';
 import db from '../models';
 import { appData, getAppData } from '../../app';
 
+import bunqJSClient from '@bunq-community/bunq-js-client';
+import JSONFileStore from "@bunq-community/bunq-js-client/dist/Stores/JSONFileStore"; 
+
 const encryption = new Encryption();
 
 type BunqEnvironment = 'PRODUCTION' | 'SANDBOX';
@@ -108,9 +111,9 @@ const doRequestSandboxMoney = async (uid: string): Promise<void> => {
 
 const createSandboxAPIKey = async (req: CustomRequest, res: Response): Promise<Response> => {
     const key = await appData.bunq.getGenericClient().api.sandboxUser.post();
-    const userentry = await saveBunqSettings(req.uid, key, encryption.generateRandomKey(32), 'SANDBOX');
+    const randomKey = encryption.generateRandomKey(16);
     //console.log(userentry);
-    await appData.bunq.load(req.uid, req.uid, key, userentry.encryption_key, 'SANDBOX');
+    await appData.bunq.load(req.uid, key, randomKey, 'SANDBOX');
     const client = appData.bunq.getClient(req.uid);
     const users = await client.getUser();
     try {
@@ -125,7 +128,9 @@ const createSandboxAPIKey = async (req: CustomRequest, res: Response): Promise<R
     await client.createAccount('Spaarrekening');
     await client.createAccount('Afschrijvingen');
     await client.createAccount('Vrije tijd');
+    await saveBunqSettings(req.uid, key, randomKey, 'SANDBOX');
     return res.send({ success: true, data: { users } });
+
 };
 
 const requestSandboxMoney = async (req: CustomRequest, res: Response): Promise<Response> => {

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardContent, CardActions, Divider, Typography, CircularProgress } from '@material-ui/core';
 
 import { useSession } from 'hooks';
-import { fetchBackend } from 'helpers';
-import { Button, OauthAuthorize } from 'components';
+import { fetchBackend, refreshOauth } from 'helpers';
+import { Button, OauthAuthorize, OauthReceiver } from 'components';
 
 const useStyles = makeStyles(() => ({
   deleteButton: {
@@ -15,11 +15,26 @@ const useStyles = makeStyles(() => ({
   button: {},
 }));
 
-const deleteBunqSettings = async (ref: any) => {
-  await ref.update({ bunq: { success: false } });
+export const bunqSettings = {
+  redirectUrl: '/bunq',
+  exchangeUrl: '/api/bunq/oauth/exchange',
+  refreshUrl: '/api/bunq/oauth/refresh',
+  formatUrl: '/api/oauth/formaturl/bunq',
+  saveSettings: (ref: any, bunqConfig: any) => async (accesstoken: any) => {
+    if (bunqConfig === undefined) bunqConfig = {};
+    bunqConfig['success'] = accesstoken.success;
+    bunqConfig['environment'] = 'PRODUCTION';
+    ref.update({ bunq: bunqConfig });
+    if (accesstoken.success) {
+      //setLoadBunqData(true);
+    }
+  },
+  deleteSettings: async (ref: any) => {
+    await ref.update({ bunq: { success: false } });
+  },
 };
 
-const SettingCardBunq: any = ({}): any => {
+const SettingCardBunq: any = ({ action }: any): any => {
   const classes = useStyles();
   const { user, userInfo, ref } = useSession();
   const { t } = useTranslation();
@@ -49,14 +64,18 @@ const SettingCardBunq: any = ({}): any => {
       </CardContent>
       <Divider />
       <CardActions>
-        <OauthAuthorize formatUrl="/api/oauth/formaturl/bunq" title={t('buttons.connect') + ' bunq'} />
+        <OauthAuthorize
+          formatUrl={bunqSettings.formatUrl}
+          formatUrlKey="format_url_bunq"
+          title={t('buttons.connect') + ' bunq'}
+        />
         <Button className={classes.button} color="primary" onClick={createBunqSandbox} variant="contained">
           {t('buttons.delete') + ' bunq sandbox'}
         </Button>
         <Button
           className={classes.deleteButton}
           onClick={() => {
-            deleteBunqSettings(ref);
+            bunqSettings.deleteSettings(ref);
           }}
           variant="outlined"
         >
