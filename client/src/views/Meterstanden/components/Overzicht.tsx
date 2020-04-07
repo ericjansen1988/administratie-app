@@ -45,6 +45,19 @@ const Overzicht = () => {
   const userInfoRef = useRef(userInfo);
   //userInfoRef.current = userInfo;
 
+  const datefrom = (moment().date() < 3
+    ? moment()
+        .startOf('month')
+        .add(-1, 'month')
+    : moment().startOf('month')
+  ).toDate(); //
+  const dateto = moment()
+    .add(-1, 'days')
+    .toDate();
+
+  const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp);
+  const [data, setData] = useState([]);
+
   const haalDataOp = async () => {
     console.log(userInfo.enelogic);
     try {
@@ -62,19 +75,6 @@ const Overzicht = () => {
       console.log(err);
     }
   };
-
-  const datefrom = (moment().date() < 3
-    ? moment()
-        .startOf('month')
-        .add(-1, 'month')
-    : moment().startOf('month')
-  ).toDate(); //
-  const dateto = moment()
-    .add(-1, 'days')
-    .toDate();
-
-  const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp);
-  const [data, setData] = useState([]);
 
   if (!userInfo.enelogic || !userInfo.enelogic.success) return <div></div>;
 

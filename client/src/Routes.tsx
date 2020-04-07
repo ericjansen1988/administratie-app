@@ -26,7 +26,7 @@ import {
   Events,
   Meterstanden,
   OAuthPage,
-  NotFound
+  NotFound,
 } from './views';
 
 const Routes: FunctionComponent = () => {

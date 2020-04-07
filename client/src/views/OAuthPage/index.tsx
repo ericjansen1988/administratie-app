@@ -57,7 +57,7 @@ const OAuthPage = (): JSX.Element => {
     return (
       <div>
         <Typography variant="h1">OAuth 2.0</Typography>
-        <Button onClick={() => {}}>Refresh</Button>
+        <Button>Refresh</Button>
       </div>
     );
   }
@@ -84,7 +84,7 @@ const OAuthPage = (): JSX.Element => {
     <div>
       <Typography variant="h1">OAuth 2.0</Typography>
       {!loading && <Redirect to={oauthSettings.redirectUrl} />}
-      <Button onClick={() => {}}>Refresh</Button>
+      <Button>Refresh</Button>
     </div>
   );
 };

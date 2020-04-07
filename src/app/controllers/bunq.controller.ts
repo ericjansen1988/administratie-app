@@ -8,7 +8,7 @@ import db from '../models';
 import { appData, getAppData } from '../../app';
 
 import bunqJSClient from '@bunq-community/bunq-js-client';
-import JSONFileStore from "@bunq-community/bunq-js-client/dist/Stores/JSONFileStore"; 
+import JSONFileStore from '@bunq-community/bunq-js-client/dist/Stores/JSONFileStore';
 
 const encryption = new Encryption();
 
@@ -130,7 +130,6 @@ const createSandboxAPIKey = async (req: CustomRequest, res: Response): Promise<R
     await client.createAccount('Vrije tijd');
     await saveBunqSettings(req.uid, key, randomKey, 'SANDBOX');
     return res.send({ success: true, data: { users } });
-
 };
 
 const requestSandboxMoney = async (req: CustomRequest, res: Response): Promise<Response> => {
