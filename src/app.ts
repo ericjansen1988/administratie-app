@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
-import Bunq from './app/modules/temp';
+import Bunq from './app/modules/Bunq';
 
 import db from './app/models';
 

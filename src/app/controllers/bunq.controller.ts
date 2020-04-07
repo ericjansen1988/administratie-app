@@ -7,9 +7,6 @@ import { basicAuthentication } from '../middleware/authentication';
 import db from '../models';
 import { appData, getAppData } from '../../app';
 
-import bunqJSClient from '@bunq-community/bunq-js-client';
-import JSONFileStore from '@bunq-community/bunq-js-client/dist/Stores/JSONFileStore';
-
 const encryption = new Encryption();
 
 type BunqEnvironment = 'PRODUCTION' | 'SANDBOX';
