@@ -43,6 +43,7 @@ const Overzicht = () => {
   const classes = useStyles();
   const { user, userInfo, ref } = useSession();
   const userInfoRef = useRef(userInfo);
+  const [data, setData] = useState([]);
   //userInfoRef.current = userInfo;
 
   const datefrom = (moment().date() < 3
@@ -55,10 +56,7 @@ const Overzicht = () => {
     .add(-1, 'days')
     .toDate();
 
-  const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp);
-  const [data, setData] = useState([]);
-
-  const haalDataOp = async () => {
+  const haalDataOp = () => async (state: any) => {
     console.log(userInfo.enelogic);
     try {
       const refreshedtoken = await refreshOauth(
@@ -75,6 +73,8 @@ const Overzicht = () => {
       console.log(err);
     }
   };
+
+  const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp());
 
   if (!userInfo.enelogic || !userInfo.enelogic.success) return <div></div>;
 
