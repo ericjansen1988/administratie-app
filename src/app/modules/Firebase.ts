@@ -1,11 +1,15 @@
 import firebase from 'firebase-admin';
 
+const firebaseCredentials = {
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+};
+
+console.log(firebaseCredentials);
+
 firebase.initializeApp({
-    credential: firebase.credential.cert({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    }),
+    credential: firebase.credential.cert(firebaseCredentials),
     databaseURL: process.env.FIREBASE_DATABASE_URL, //'https://administratie-app.firebaseio.com',
 });
 
