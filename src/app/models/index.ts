@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import pg from 'pg';
 
-import configs from './../../../config/database/config';
+import configs from './../../config/database/config';
 const config = configs[process.env.NODE_ENV];
 
 let sequelizeconnection: any;

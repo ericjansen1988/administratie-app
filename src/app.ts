@@ -34,7 +34,7 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
      * Bunq clients laden
      * inclusief genericClient
      */
-    const bunq = new Bunq(path.resolve(__dirname, '../config/bunq'));
+    const bunq = new Bunq(path.resolve(__dirname, './config/bunq'));
     // Generieke client starten
     bunq.loadGenericClient();
 

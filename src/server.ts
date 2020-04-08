@@ -6,7 +6,7 @@ dotenv.config();
 const NODE_ENV = (process.env.NODE_ENV || 'development').toLowerCase();
 
 console.log('Starting env ' + NODE_ENV);
-import configs from '../config/database/config';
+import configs from './config/database/config';
 const config = configs[NODE_ENV];
 if (!config) {
     throw 'No environment with name ' + NODE_ENV + ' found';
