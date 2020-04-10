@@ -4,7 +4,7 @@ import { asyncHandler } from 'express-collection';
 import Encryption from 'simple-encrypt-js';
 
 import { basicAuthentication } from '../middleware/authentication';
-import db from '../models';
+import { Bunq } from '../models';
 import { appData, getAppData } from '../../app';
 
 const encryption = new Encryption();
@@ -28,11 +28,11 @@ const saveBunqSettings = async (
         encryption_key: encryptionKey, //eslint-disable-line
         environment: environment,
     };
-    let entry = await db.bunq.findOne(conditions);
+    let entry = await Bunq.findOne(conditions);
     if (entry) {
         entry = await entry.update(body);
     } else {
-        entry = await db.bunq.create(body);
+        entry = await Bunq.create(body);
     }
     return entry;
 };

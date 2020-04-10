@@ -6,28 +6,27 @@ import bodyParser from 'body-parser';
 import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
 import Bunq from './app/modules/Bunq';
 
-import db from './app/models';
+import Sequelize, { Bunq as BunqModel } from './app/models';
 
 /**
  * Application cache
  */
-import set from 'set-value';
-import get from 'get-value';
+import _ from 'lodash';
 export const appData: any = {};
 export const setAppData = (key: string, value: any): void => {
-    set(appData, key, value);
+    _.set(appData, key, value);
 };
 export const getAppData = (key: string): any => {
-    return get(appData, key);
+    return _.get(appData, key);
 };
 
 //Load firebase
-import { db as firebaseDB } from './app/modules/Firebase';
+import { firestore } from './app/modules/Firebase';
 
 /* Database configuratie */
 // force: true will drop the table if it already exists
 const forceUpdate = process.env.NODE_ENV === 'test' ? true : false;
-db.sequelize.sync({ force: forceUpdate }).then(async () => {
+Sequelize.sync({ force: forceUpdate }).then(async () => {
     console.log('Drop and Resync with { force: ' + forceUpdate + ' }');
 
     /**
@@ -41,7 +40,7 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
     //laden van de BUNQ clients
     (async (): Promise<void> => {
         //alle clients laden
-        const allclients = await db.bunq.findAll();
+        const allclients = await BunqModel.findAll();
         if (allclients.length === 0) return;
         //eerste client laden
         const client1 = allclients.shift();
@@ -80,7 +79,7 @@ db.sequelize.sync({ force: forceUpdate }).then(async () => {
 
 // import Oauth module and load into cache
 import OAuth from './app/modules/Oauth';
-firebaseDB
+firestore
     .collection('env/' + process.env.REACT_APP_FIRESTORE_ENVIRONMENT + '/oauthproviders')
     .get()
     // eslint-disable-next-line
@@ -110,7 +109,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 /* Express configuration */
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // Parses JSON in body
 app.use(lowerCaseQueryParams); // Makes all query params lowercase
 app.use(LoggerMiddleware); //Logs requests on console
 

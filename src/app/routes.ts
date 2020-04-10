@@ -1,10 +1,7 @@
 import { Request, Response } from 'express';
 import path from 'path';
-import { get, find, list, create, update, destroy } from 'express-sequelize-routes';
 import app from '../app';
-import db from './models';
 
-import { basicAuthentication } from './middleware/authentication';
 
 //
 //import Cache from 'simple-cache-js';
@@ -85,12 +82,13 @@ import { basicAuthentication } from './middleware/authentication';
     console.log(walkSync(startDir));
     */
 
-app.get('/api/events/:id', basicAuthentication, get(db.events));
-app.get('/api/events', basicAuthentication, list(db.events));
-app.get('/api/events/:column/:value', basicAuthentication, find(db.events));
-app.post('/api/events', basicAuthentication, create(db.events));
-app.put('/api/events/:id', basicAuthentication, update(db.events));
-app.delete('/api/events/:id', basicAuthentication, destroy(db.events));
+//Events routes
+import eventsController from './controllers/events.controller';
+app.use('/api/events', eventsController);
+
+//Meterstanden routes
+import meterstandenController from './controllers/meterstanden.controller';
+app.use('/api/meterstanden', meterstandenController);
 
 //OAuth routes
 import oauthController from './controllers/oauth.controller';

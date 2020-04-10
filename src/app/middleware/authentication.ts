@@ -1,4 +1,4 @@
-import admin, { db } from '../modules/Firebase';
+import admin, { firestore } from '../modules/Firebase';
 import { Request, Response, NextFunction } from 'express';
 
 interface CustomRequest extends Request {
@@ -40,7 +40,7 @@ const checkAuthenticated = async (req: CustomRequest, res: Response, options: an
 
     if (!firebasematch && req.query.api_key !== undefined) {
         console.log('Authenticatie op basis van apikey');
-        const userdoc = await db
+        const userdoc = await firestore
             .collection('env')
             .doc(process.env.REACT_APP_FIRESTORE_ENVIRONMENT)
             .collection('users')

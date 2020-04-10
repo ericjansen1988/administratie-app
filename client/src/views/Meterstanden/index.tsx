@@ -7,6 +7,7 @@ import { useQueryParams, useSession, useTabs } from 'hooks';
 import Overzicht from './components/Overzicht';
 import KostenOverzicht from './components/KostenOverzicht';
 import Settings from './components/Settings';
+import Live from './components/Live';
 import { saveEnelogicSettings } from 'modules/Enelogic';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -35,7 +36,7 @@ const Meterstanden = () => {
   }
 
   if (!userInfo.enelogic.success) {
-    if (tab !== 'settings' && tab !== 'kostenoverzicht') handleTabChange(null, 'settings');
+    if (tab === 'overzicht') handleTabChange(null, 'settings');
   }
 
   return (
@@ -49,11 +50,15 @@ const Meterstanden = () => {
             value={tab}
             variant="scrollable"
           >
+            <Tab label="Live" value="live" />
             <Tab label="Overzicht" value="overzicht" disabled={!userInfo.enelogic.success} />
             <Tab label="Kosten overzicht" value="kostenoverzicht" />
             <Tab label="Instellingen" value="settings" />
           </Tabs>
         </AppBar>
+        <TabPanel visible={tab === 'live'} tab="live">
+          <Live />
+        </TabPanel>
         <TabPanel visible={tab === 'overzicht'} tab="overzicht">
           <Overzicht />
         </TabPanel>

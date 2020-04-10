@@ -23,13 +23,18 @@ if (config.use_env_variable) {
 }
 
 const db: any = {};
-db.sequelize = sequelizeconnection;
-export default db;
+//db.sequelize = sequelizeconnection;
+export default sequelizeconnection;
+//export default sequelizeconnection;
 
 import Events from './events.model';
 db.events = Events;
 import Bunq from './bunq.model';
 db.bunq = Bunq;
+export { default as Bunq } from './bunq.model';
+export { default as Demo } from './demo.model';
+export { default as Events } from './events.model';
+export { default as Meterstanden } from './meterstanden.model';
 
 /*
 fs.readdirSync(__dirname)

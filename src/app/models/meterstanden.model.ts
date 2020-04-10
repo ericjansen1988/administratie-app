@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { Model, DataTypes } from 'sequelize';
 
-import db from './index';
+import Sequelize from './index';
 
 export default class Meterstand extends Model {
     public datetime: Date;
@@ -21,10 +21,12 @@ Meterstand.init(
                     .tz('Europe/Amsterdam')
                     .toDate();
             },
+            unique: 'compositeIndex',
         },
         userId: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: 'compositeIndex',
         },
         180: {
             type: DataTypes.STRING,
@@ -47,48 +49,6 @@ Meterstand.init(
     },
     {
         tableName: 'meterstanden',
-        sequelize: db.sequelize,
+        sequelize: Sequelize,
     },
 );
-/*
-module.exports = (sequelize, Sequelize) => {
-    const meterstanden = sequelize.define(
-        'meterstanden',
-        {
-            datetime: {
-                type: Sequelize.DATE,
-                get: function() {
-                    return Moment(this.getDataValue('datetime')).tz('Europe/Amsterdam'); //.format('YYYY-MM-DD HH:mm:ss');
-                },
-            },
-            userId: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
-            180: {
-                type: Sequelize.STRING,
-            },
-            181: {
-                type: Sequelize.STRING,
-            },
-            182: {
-                type: Sequelize.STRING,
-            },
-            280: {
-                type: Sequelize.STRING,
-            },
-            281: {
-                type: Sequelize.STRING,
-            },
-            282: {
-                type: Sequelize.STRING,
-            },
-        },
-        {
-            tableName: 'meterstanden',
-        },
-    );
-
-    return meterstanden;
-};
-*/

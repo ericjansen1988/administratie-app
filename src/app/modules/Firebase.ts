@@ -6,15 +6,13 @@ const firebaseCredentials = {
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
 };
 
-console.log(firebaseCredentials);
-
 firebase.initializeApp({
     credential: firebase.credential.cert(firebaseCredentials),
     databaseURL: process.env.FIREBASE_DATABASE_URL, //'https://administratie-app.firebaseio.com',
 });
 
 export default firebase;
-export const db = firebase.firestore();
+export const firestore = firebase.firestore();
 export const auth = firebase.auth();
 
 export class FirebaseClass {
