@@ -877,3 +877,102 @@
 [2020-04-11 19:33:48] - info: Sync sequelize models with { force: false }
 [2020-04-11 19:33:48] - info: OAuth provider bunq loaded
 [2020-04-11 19:33:48] - info: OAuth provider enelogic loaded
+[2020-04-11 19:34:14] - info: Starting application (environment: development)
+[2020-04-11 19:34:14] - info: HTTP Poort: 3001
+[2020-04-11 19:34:14] - info: HTTPS Poort: 3002
+[2020-04-11 19:34:14] - info: HTTP redirect: false
+[2020-04-11 19:34:19] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:34:19] - info: OAuth provider bunq loaded
+[2020-04-11 19:34:19] - info: OAuth provider enelogic loaded
+[2020-04-11 19:34:27] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:34:27] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:34:27] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:34:27] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:34:33] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:34:33] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:34:33] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lc3RhbXAiOiIyMDIwLTA0LTExVDE3OjM0OjI3LjI5MFoiLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvbWV0ZXJzdGFuZGVuIiwiaWF0IjoxNTg2NjI2NDY3fQ.5vZZLdNSRJfKxlHXr0YM0GvJrShT0pbB4DasFK8iLrg
+[2020-04-11 19:34:34] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:34:34] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:34:34] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:34:34] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:35:40] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:35:40] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:35:41] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:35:41] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:35:51] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:35:51] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:35:51] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lc3RhbXAiOiIyMDIwLTA0LTExVDE3OjM0OjI3LjI5MFoiLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvbWV0ZXJzdGFuZGVuIiwiaWF0IjoxNTg2NjI2NDY3fQ.5vZZLdNSRJfKxlHXr0YM0GvJrShT0pbB4DasFK8iLrg
+[2020-04-11 19:35:52] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:35:52] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:35:52] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:35:52] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:36:53] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:36:53] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:36:53] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:36:53] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:36:59] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:36:59] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:00] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:37:00] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:07] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:37:07] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:07] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lc3RhbXAiOiIyMDIwLTA0LTExVDE3OjM0OjI3LjI5MFoiLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvbWV0ZXJzdGFuZGVuIiwiaWF0IjoxNTg2NjI2NDY3fQ.5vZZLdNSRJfKxlHXr0YM0GvJrShT0pbB4DasFK8iLrg
+[2020-04-11 19:37:07] - info: Request logged: GET /api/enelogic/measuringpoints
+[2020-04-11 19:37:07] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:08] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:37:08] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:08] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:37:08] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:24] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:37:24] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:24] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:37:24] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:30] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:37:30] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:30] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lc3RhbXAiOiIyMDIwLTA0LTExVDE3OjM0OjI3LjI5MFoiLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvbWV0ZXJzdGFuZGVuIiwiaWF0IjoxNTg2NjI2NDY3fQ.5vZZLdNSRJfKxlHXr0YM0GvJrShT0pbB4DasFK8iLrg
+[2020-04-11 19:37:30] - info: Request logged: GET /api/enelogic/measuringpoints
+[2020-04-11 19:37:30] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:31] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:37:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:37:31] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:37:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:32] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:38:32] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:32] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:38:32] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:37] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:38:37] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:37] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lc3RhbXAiOiIyMDIwLTA0LTExVDE3OjM0OjI3LjI5MFoiLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvbWV0ZXJzdGFuZGVuIiwiaWF0IjoxNTg2NjI2NDY3fQ.5vZZLdNSRJfKxlHXr0YM0GvJrShT0pbB4DasFK8iLrg
+[2020-04-11 19:38:38] - info: Request logged: GET /api/enelogic/measuringpoints
+[2020-04-11 19:38:38] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:39] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:38:39] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:39] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:38:39] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:45] - info: Request logged: GET /api/enelogic/data/DAY/2020-04-01/2020-04-11
+[2020-04-11 19:38:45] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:38:45] - info: Request logged: GET /api/solaredge/1013066/data/DAY/2020-04-01/2020-04-10
+[2020-04-11 19:38:45] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:43:31] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:43:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:43:31] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:43:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:43:38] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:43:38] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:43:38] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:43:38] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:45:22] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:45:22] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:45:22] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:45:22] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:45:36] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:45:36] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:45:36] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:45:36] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 20:17:29] - info: Starting application (environment: development)
+[2020-04-11 20:17:29] - info: HTTP Poort: 3001
+[2020-04-11 20:17:29] - info: HTTPS Poort: 3002
+[2020-04-11 20:17:29] - info: HTTP redirect: false
+[2020-04-11 20:17:35] - info: Sync sequelize models with { force: false }
+[2020-04-11 20:17:35] - info: OAuth provider bunq loaded
+[2020-04-11 20:17:35] - info: OAuth provider enelogic loaded

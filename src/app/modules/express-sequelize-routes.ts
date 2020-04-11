@@ -9,7 +9,7 @@ type Options = {
 export default class SequelizeRoutes {
     private globalOptions: Options;
 
-    constructor(options: Options){
+    constructor(options: Options) {
         this.globalOptions = options;
     }
 
@@ -101,7 +101,7 @@ export default class SequelizeRoutes {
         try {
             //If no UID property on request object then return with forbidden error
             //if (req.uid === undefined) return res.status(401).send({ success: false, message: 'No token given' });
-            options = checkOptions(options);
+            options = this.checkOptions(options);
             console.log(2);
             const body = req.body;
             if (options.userColumnName) {
@@ -127,7 +127,9 @@ export default class SequelizeRoutes {
             if (options.userColumnName) {
                 body[options.userColumnName] = req[options.reqUserProperty];
             }
-            const entry = await model.update(body, { where: { [options.idColumnName]: req.params[options.idColumnName] } });
+            const entry = await model.update(body, {
+                where: { [options.idColumnName]: req.params[options.idColumnName] },
+            });
             return res.send({ success: true, data: entry });
         } catch (err) {
             return res.status(500).send({ success: false, message: err });
@@ -181,7 +183,6 @@ export default class SequelizeRoutes {
             return res.status(500).send({ success: false, message: err });
         }
     };
-
 }
 
 const checkOptions = (options: Options): Options => {
