@@ -2,12 +2,14 @@
 import { useEffect, useState, useCallback } from 'react';
 //import {auth} from '../helpers/Firebase';
 import { useSession, useCache } from 'hooks';
+import { useSnackbar } from 'notistack';
 
 const isObject = (obj: any): boolean => Object.prototype.toString.call(obj) === '[object Object]';
 
 export function useFetch(arg1: any, arg2: any): any {
   const { user } = useSession();
   const cache = useCache();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   let url: any = null;
   let options = {};
@@ -93,6 +95,15 @@ export function useFetch(arg1: any, arg2: any): any {
         }
       } catch (err) {
         console.log('Error with method ' + method + ': ', err, { data: responsedata });
+        const key = enqueueSnackbar(
+          'Error with method ' + method + ': ' + JSON.stringify(err) + ' ---> ' + JSON.stringify(responsedata),
+          {
+            variant: 'error',
+            onClick: () => {
+              closeSnackbar(key);
+            },
+          },
+        );
         throw err;
       } finally {
         setMethodLoading(false);
@@ -160,6 +171,15 @@ export function useFetch(arg1: any, arg2: any): any {
     } catch (err) {
       console.log('error request', err, responsedata);
       fError = err;
+      const key = enqueueSnackbar(
+        'Error with method ' + method + ': ' + JSON.stringify(err) + ' ---> ' + JSON.stringify(responsedata),
+        {
+          variant: 'error',
+          onClick: () => {
+            closeSnackbar(key);
+          },
+        },
+      );
       setError({ error: err, responsedata });
     } finally {
       setLoading(false);

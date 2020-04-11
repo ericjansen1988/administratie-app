@@ -1,11 +1,18 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import { cacheMiddleware, asyncHandler } from 'express-collection';
+import Cache from 'simple-cache-js';
+import jwt from 'jsonwebtoken';
+import Encryption from 'simple-encrypt-js';
+import { logging } from '../../server';
+
+const encryption = new Encryption();
+const key = encryption.generateRandomKey(32);
 
 import { getAppData } from '../../app';
 import { basicAuthentication } from '../middleware/authentication';
-import Cache from 'simple-cache-js';
+import { cacheMiddleware, asyncHandler } from '../modules/express-collection';
+
 const oauthCache = new Cache();
 
 /**
@@ -16,7 +23,15 @@ const oauthCache = new Cache();
 const formatUrl = (req: Request, res: Response): Response => {
     const oauthobject = getAppData('oauth.' + req.params.application);
     // Authorization oauth2 URI
-    const authorizationUri = oauthobject.formatUrl();
+    const token = jwt.sign(
+        {
+            //exp: Math.floor(Date.now() / 1000) + 60,
+            timestamp: new Date(),
+            origin: req.headers.referer,
+        },
+        key,
+    );
+    const authorizationUri = oauthobject.formatUrl(token);
     return res.send(authorizationUri);
 };
 
@@ -28,10 +43,20 @@ const formatUrl = (req: Request, res: Response): Response => {
 const exchange = async (req: Request, res: Response): Promise<Response> => {
     const oauthobject = getAppData('oauth.' + req.params.application);
 
+    let decoded;
+    if (req.body.state) {
+        logging.info('State paramter is' + req.body.state);
+        try {
+            decoded = jwt.verify(req.body.state, key);
+        } catch (err) {
+            logging.error('Unable to verify JWT');
+            return res.status(400).send({ success: false, message: err });
+        }
+    }
+
     // Save the access token
     try {
         const accessToken = await oauthobject.getToken(req.body.code);
-        console.log(accessToken);
         const accessTokenObject = {
             access_token: accessToken.token.access_token,
             expires_at: accessToken.token.expires_at,
@@ -40,7 +65,7 @@ const exchange = async (req: Request, res: Response): Promise<Response> => {
             scope: accessToken.token.scope,
             token_type: accessToken.token.token_type,
         };
-        return res.send({ success: true, data: accessTokenObject });
+        return res.send({ success: true, data: { token: accessTokenObject, state: decoded } });
     } catch (error) {
         console.log(error.message, error.output);
         return res.status(400).send({ success: false, message: error.message, output: error.output });

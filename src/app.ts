@@ -3,8 +3,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import { lowerCaseQueryParams, logger as LoggerMiddleware, create404Error, errorHandler } from 'express-collection';
+import { lowerCaseQueryParams, loggerMiddleware, create404Error, errorHandler } from './app/modules/express-collection';
 import Bunq from './app/modules/Bunq';
+import { logging } from './server';
 
 import Sequelize, { Bunq as BunqModel } from './app/models';
 
@@ -27,7 +28,7 @@ import { firestore } from './app/modules/Firebase';
 // force: true will drop the table if it already exists
 const forceUpdate = process.env.NODE_ENV === 'test' ? true : false;
 Sequelize.sync({ force: forceUpdate }).then(async () => {
-    console.log('Drop and Resync with { force: ' + forceUpdate + ' }');
+    logging.info('Sync sequelize models with { force: ' + forceUpdate + ' }');
 
     /**
      * Bunq clients laden
@@ -44,19 +45,19 @@ Sequelize.sync({ force: forceUpdate }).then(async () => {
         if (allclients.length === 0) return;
         //eerste client laden
         const client1 = allclients.shift();
-        console.log('Eerste client laden', client1.userId);
+        logging.info('Eerste client laden', client1.userId);
         try {
             await bunq.load(client1.userId, client1.access_token, client1.encryption_key, client1.environment, {});
             //const requestLimiter = bunq.getClient(client1.userId).getBunqJSClient().ApiAdapter.RequestLimitFactory;
         } catch (err) {
             await client1.destroy();
-            console.log('Error loading client ' + client1.userId);
+            logging.info('Error loading client ' + client1.userId);
         }
 
         //rest laden
         await Promise.all(
             allclients.map(async (clientsetting: any) => {
-                console.log('loading client ' + clientsetting.userId);
+                logging.info('loading client ' + clientsetting.userId);
                 try {
                     await bunq.load(
                         clientsetting.userId,
@@ -66,10 +67,10 @@ Sequelize.sync({ force: forceUpdate }).then(async () => {
                         {},
                     );
                     //await bunq.load(clientsetting.userId, clientsetting.data1, clientsetting.access_token, clientsetting.refresh_token, { environment: 'PRODUCTION', requestLimiter: requestLimiter });
-                    console.log('client loaded ' + clientsetting.userId);
+                    logging.info('client loaded ' + clientsetting.userId);
                 } catch (err) {
                     await clientsetting.destroy();
-                    console.log('Error loading client ' + clientsetting.userId);
+                    logging.info('Error loading client ' + clientsetting.userId);
                 }
             }),
         );
@@ -88,7 +89,7 @@ firestore
         // eslint-disable-next-line
         providers.forEach((provider: any) => {
             const data = provider.data();
-            console.log(provider.id + ': ', data);
+            logging.info('OAuth provider ' + provider.id + ' loaded');
             const oauthprovider = new OAuth(data);
             setAppData('oauth.' + provider.id, oauthprovider);
         });
@@ -111,7 +112,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // Parses JSON in body
 app.use(lowerCaseQueryParams); // Makes all query params lowercase
-app.use(LoggerMiddleware); //Logs requests on console
+app.use(loggerMiddleware(logging.info)); //Logs requests on console
 
 app.get('/health-check', (req: Request, res: Response) => res.sendStatus(200)); //certificate route & simple health check
 

@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   button: {},
 }));
 
-export const bunqSettings = {
+export const settings = {
   redirectUrl: '/bunq',
   exchangeUrl: '/api/bunq/oauth/exchange',
   refreshUrl: '/api/bunq/oauth/refresh',
@@ -65,7 +65,7 @@ const SettingCardBunq: any = ({ action }: any): any => {
       <Divider />
       <CardActions>
         <OauthAuthorize
-          formatUrl={bunqSettings.formatUrl}
+          formatUrl={settings.formatUrl}
           formatUrlKey="format_url_bunq"
           title={t('buttons.connect') + ' bunq'}
         />
@@ -75,7 +75,7 @@ const SettingCardBunq: any = ({ action }: any): any => {
         <Button
           className={classes.deleteButton}
           onClick={() => {
-            bunqSettings.deleteSettings(ref);
+            settings.deleteSettings(ref);
           }}
           variant="outlined"
         >

@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 const KostenOverzicht = ({}) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-  const { user, userInfo, ref } = useSession();
-  const { data } = useFirestoreCollectionData(ref.collection('energiekosten'));
+  const session = useSession();
+  const { data } = useFirestoreCollectionData(session.ref.collection('energiekosten'));
 
   const { state, handleOnChange, setFormValue }: any = useForm(
     { dal: 1000, normaal: 1000, gas: 0, netbeheer: 0, verlaging_energiebelasting: 0 },
     {},
     () => {},
-    { localStorage: user.uid + '_energiekosten' },
+    { localStorage: session.user.uid + '_energiekosten' },
   );
 
   const columns = [
@@ -119,15 +119,15 @@ const KostenOverzicht = ({}) => {
   ];
 
   const getYearConsumption = async () => {
-    console.log(userInfo.enelogic);
+    console.log(session.userInfo.enelogic);
     try {
       await refreshOauth(
-        user,
+        session,
         '/api/oauth/refresh/enelogic',
-        userInfo.enelogic.token,
-        updateEnelogicSettings(ref, userInfo.enelogic),
+        session.userInfo.enelogic.token,
+        updateEnelogicSettings,
       );
-      const data = await getEnelogicData(user, '/api/enelogic/consumption', userInfo.enelogic);
+      const data = await getEnelogicData(session.user, '/api/enelogic/consumption', session.userInfo.enelogic);
       const dal = Math.round(data.consumption_181 - data.consumption_281);
       const normaal = Math.round(data.consumption_182 - data.consumption_282);
       console.log('Jaardata', data, dal, normaal);
@@ -180,7 +180,7 @@ const KostenOverzicht = ({}) => {
           type="number"
           value={state.verlaging_energiebelasting.value || 0}
         />
-        {userInfo.enelogic.success && (
+        {session.userInfo.enelogic.success && (
           <Button className={classes.button} variant="contained" color="primary" onClick={getYearConsumption}>
             Haal jaarinfo op
           </Button>
@@ -190,9 +190,9 @@ const KostenOverzicht = ({}) => {
         columns={columns}
         data={data}
         editable={{
-          onRowAdd: addData(ref.collection('energiekosten'), 'leverancier', columns),
-          onRowUpdate: updateData(ref.collection('energiekosten'), 'leverancier', columns),
-          onRowDelete: deleteData(ref.collection('energiekosten'), 'leverancier', columns),
+          onRowAdd: addData(session.ref.collection('energiekosten'), 'leverancier', columns),
+          onRowUpdate: updateData(session.ref.collection('energiekosten'), 'leverancier', columns),
+          onRowDelete: deleteData(session.ref.collection('energiekosten'), 'leverancier', columns),
         }}
         title="Aanbiedingen"
       />

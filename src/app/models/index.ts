@@ -9,9 +9,8 @@ if (config.use_env_variable) {
     if (config.ssl) {
         pg.defaults.ssl = true;
     }
-    sequelizeconnection = new Sequelize(process.env[config.use_env_variable]);
+    sequelizeconnection = new Sequelize(process.env[config.use_env_variable], { logging: false });
 } else if (config.dialect === 'sqlite') {
-    console.log(config);
     sequelizeconnection = new Sequelize({
         database: config.database,
         username: config.username,
@@ -19,6 +18,7 @@ if (config.use_env_variable) {
         dialect: config.dialect,
         storage: config.storage,
         dialectOptions: config.dialectOptions,
+        logging: false,
     });
 }
 

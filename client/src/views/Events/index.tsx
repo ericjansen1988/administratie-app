@@ -58,7 +58,7 @@ const Events = (): any => {
 
   useEffect(() => {
     if (error) {
-      enqueueSnackbar(JSON.stringify(error), { variant: 'error' });
+      //enqueueSnackbar(JSON.stringify(error), { variant: 'error' });
     }
   }, [error]);
 

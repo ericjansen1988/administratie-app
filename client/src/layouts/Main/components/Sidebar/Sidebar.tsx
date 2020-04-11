@@ -12,7 +12,7 @@ import { useSession } from 'hooks';
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawer: {
-    width: 250,
+    width: 225,
     [theme.breakpoints.up('lg')]: {
       marginTop: 64,
       height: 'calc(100% - 64px)',

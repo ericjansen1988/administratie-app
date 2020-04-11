@@ -1,0 +1,879 @@
+{"message":"Starting application","level":"info","service":"user-service"}
+{"message":"Starting application","level":"info"}
+{"message":"Starting application","level":"info"}
+{"message":"Starting application","level":"info"}
+[2020-04-11 12:07:34] - info: Starting application
+[2020-04-11 12:08:32] - info: Starting application
+[2020-04-11 12:09:34] - info: Starting application
+[2020-04-11 12:09:36] - info: Drop and Resync with { force: false }
+[2020-04-11 12:09:36] - info: OAuth provider bunq loaded
+[2020-04-11 12:09:36] - info: OAuth provider enelogic loaded
+[2020-04-11 12:09:59] - info: Starting application
+[2020-04-11 12:10:01] - info: Drop and Resync with { force: false }
+[2020-04-11 12:10:01] - info: OAuth provider bunq loaded[object Object]
+[2020-04-11 12:10:01] - info: OAuth provider enelogic loaded[object Object]
+[2020-04-11 12:10:24] - info: Starting application
+[2020-04-11 12:10:26] - info: Drop and Resync with { force: false }
+[2020-04-11 12:10:27] - info: OAuth provider bunq loaded
+[2020-04-11 12:10:27] - info: OAuth provider enelogic loaded
+[2020-04-11 12:14:45] - info: Starting application
+[2020-04-11 12:14:47] - info: Drop and Resync with { force: false }
+[2020-04-11 12:14:47] - info: OAuth provider bunq loaded
+[2020-04-11 12:14:47] - info: OAuth provider enelogic loaded
+[2020-04-11 12:15:39] - info: Starting application
+[2020-04-11 12:15:42] - info: Drop and Resync with { force: false }
+[2020-04-11 12:15:42] - info: OAuth provider bunq loaded
+[2020-04-11 12:15:42] - info: OAuth provider enelogic loaded
+[2020-04-11 12:17:26] - info: Starting application
+[2020-04-11 12:17:29] - info: Drop and Resync with { force: false }
+[2020-04-11 12:17:29] - info: OAuth provider bunq loaded
+[2020-04-11 12:17:29] - info: OAuth provider enelogic loaded
+[2020-04-11 12:17:35] - info: Request logged: GET /api/events
+[2020-04-11 12:17:35] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 12:20:06] - info: Starting application
+[2020-04-11 12:20:08] - info: Starting application
+[2020-04-11 12:20:11] - info: Drop and Resync with { force: false }
+[2020-04-11 12:20:11] - info: OAuth provider bunq loaded
+[2020-04-11 12:20:11] - info: OAuth provider enelogic loaded
+[2020-04-11 12:20:31] - info: Starting application (environment: development)
+[2020-04-11 12:20:34] - info: Starting application
+[2020-04-11 12:20:36] - info: Drop and Resync with { force: false }
+[2020-04-11 12:20:36] - info: OAuth provider bunq loaded
+[2020-04-11 12:20:36] - info: OAuth provider enelogic loaded
+[2020-04-11 12:21:14] - info: Starting application (environment: development)
+[2020-04-11 12:21:19] - info: Drop and Resync with { force: false }
+[2020-04-11 12:21:19] - info: OAuth provider bunq loaded
+[2020-04-11 12:21:19] - info: OAuth provider enelogic loaded
+[2020-04-11 12:21:50] - info: Starting application (environment: development)
+[2020-04-11 12:21:55] - info: Drop and Resync with { force: false }
+[2020-04-11 12:21:55] - info: OAuth provider bunq loaded
+[2020-04-11 12:21:55] - info: OAuth provider enelogic loaded
+[2020-04-11 12:22:29] - info: Starting application (environment: development)
+[2020-04-11 12:22:34] - info: Drop and Resync with { force: false }
+[2020-04-11 12:22:34] - info: OAuth provider bunq loaded
+[2020-04-11 12:22:34] - info: OAuth provider enelogic loaded
+[2020-04-11 12:22:51] - info: Starting application (environment: development)
+[2020-04-11 12:22:51] - info: HTTP Poort: 3001
+[2020-04-11 12:22:51] - info: HTTPS Poort: 3002
+[2020-04-11 12:22:51] - info: HTTP redirect: false
+[2020-04-11 12:22:56] - info: Drop and Resync with { force: false }
+[2020-04-11 12:22:56] - info: OAuth provider bunq loaded
+[2020-04-11 12:22:56] - info: OAuth provider enelogic loaded
+[2020-04-11 12:23:22] - info: Starting application (environment: development)
+[2020-04-11 12:23:22] - info: HTTP Poort: 3001
+[2020-04-11 12:23:22] - info: HTTPS Poort: 3002
+[2020-04-11 12:23:22] - info: HTTP redirect: false
+[2020-04-11 12:23:27] - info: Sync sequelize models with { force: false }
+[2020-04-11 12:23:27] - info: OAuth provider bunq loaded
+[2020-04-11 12:23:27] - info: OAuth provider enelogic loaded
+[2020-04-11 14:28:55] - info: Starting application (environment: development)
+[2020-04-11 14:28:55] - info: HTTP Poort: 3001
+[2020-04-11 14:28:55] - info: HTTPS Poort: 3002
+[2020-04-11 14:28:55] - info: HTTP redirect: false
+[2020-04-11 14:29:00] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:29:00] - info: OAuth provider bunq loaded
+[2020-04-11 14:29:00] - info: OAuth provider enelogic loaded
+[2020-04-11 14:32:50] - info: Starting application (environment: development)
+[2020-04-11 14:32:50] - info: HTTP Poort: 3001
+[2020-04-11 14:32:50] - info: HTTPS Poort: 3002
+[2020-04-11 14:32:50] - info: HTTP redirect: false
+[2020-04-11 14:32:55] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:32:55] - info: OAuth provider bunq loaded
+[2020-04-11 14:32:55] - info: OAuth provider enelogic loaded
+[2020-04-11 14:32:57] - info: Request logged: GET /api-docs
+[2020-04-11 14:32:57] - info: Request logged: GET /api-docs/
+[2020-04-11 14:32:57] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:32:57] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:32:57] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:32:57] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:32:58] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:34:07] - info: Starting application (environment: development)
+[2020-04-11 14:34:07] - info: HTTP Poort: 3001
+[2020-04-11 14:34:07] - info: HTTPS Poort: 3002
+[2020-04-11 14:34:07] - info: HTTP redirect: false
+[2020-04-11 14:34:12] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:34:12] - info: OAuth provider bunq loaded
+[2020-04-11 14:34:12] - info: OAuth provider enelogic loaded
+[2020-04-11 14:34:13] - info: Request logged: GET /api-docs/
+[2020-04-11 14:34:13] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:34:13] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:34:13] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:34:13] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:34:14] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:35:21] - info: Starting application (environment: development)
+[2020-04-11 14:35:21] - info: HTTP Poort: 3001
+[2020-04-11 14:35:21] - info: HTTPS Poort: 3002
+[2020-04-11 14:35:21] - info: HTTP redirect: false
+[2020-04-11 14:35:26] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:35:27] - info: OAuth provider bunq loaded
+[2020-04-11 14:35:27] - info: OAuth provider enelogic loaded
+[2020-04-11 14:36:53] - info: Starting application (environment: development)
+[2020-04-11 14:36:53] - info: HTTP Poort: 3001
+[2020-04-11 14:36:53] - info: HTTPS Poort: 3002
+[2020-04-11 14:36:53] - info: HTTP redirect: false
+[2020-04-11 14:36:58] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:36:59] - info: OAuth provider bunq loaded
+[2020-04-11 14:36:59] - info: OAuth provider enelogic loaded
+[2020-04-11 14:37:19] - info: Starting application (environment: development)
+[2020-04-11 14:37:19] - info: HTTP Poort: 3001
+[2020-04-11 14:37:19] - info: HTTPS Poort: 3002
+[2020-04-11 14:37:19] - info: HTTP redirect: false
+[2020-04-11 14:37:24] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:37:24] - info: OAuth provider bunq loaded
+[2020-04-11 14:37:24] - info: OAuth provider enelogic loaded
+[2020-04-11 14:37:30] - info: Request logged: GET /api-docs/
+[2020-04-11 14:37:30] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:37:30] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:37:30] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:37:30] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:37:30] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:38:07] - info: Request logged: GET /api-docs/
+[2020-04-11 14:38:07] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:38:07] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:38:07] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:38:07] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:38:08] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:40:06] - info: Starting application (environment: development)
+[2020-04-11 14:40:06] - info: HTTP Poort: 3001
+[2020-04-11 14:40:06] - info: HTTPS Poort: 3002
+[2020-04-11 14:40:06] - info: HTTP redirect: false
+[2020-04-11 14:40:11] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:40:11] - info: OAuth provider bunq loaded
+[2020-04-11 14:40:11] - info: OAuth provider enelogic loaded
+[2020-04-11 14:40:15] - info: Request logged: GET /api-docs/
+[2020-04-11 14:40:15] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:40:15] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:40:15] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:40:15] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:40:15] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:44:35] - info: Starting application (environment: development)
+[2020-04-11 14:44:35] - info: HTTP Poort: 3001
+[2020-04-11 14:44:35] - info: HTTPS Poort: 3002
+[2020-04-11 14:44:35] - info: HTTP redirect: false
+[2020-04-11 14:44:40] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:44:40] - info: OAuth provider bunq loaded
+[2020-04-11 14:44:40] - info: OAuth provider enelogic loaded
+[2020-04-11 14:44:46] - info: Request logged: GET /api-docs/
+[2020-04-11 14:44:46] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:44:46] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:44:46] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:44:46] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:44:47] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:45:54] - info: Starting application (environment: development)
+[2020-04-11 14:45:54] - info: HTTP Poort: 3001
+[2020-04-11 14:45:54] - info: HTTPS Poort: 3002
+[2020-04-11 14:45:54] - info: HTTP redirect: false
+[2020-04-11 14:45:59] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:46:00] - info: OAuth provider bunq loaded
+[2020-04-11 14:46:00] - info: OAuth provider enelogic loaded
+[2020-04-11 14:46:04] - info: Request logged: GET /api-docs/
+[2020-04-11 14:46:04] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:46:04] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:46:04] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:46:04] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:46:04] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:48:17] - info: Starting application (environment: development)
+[2020-04-11 14:48:17] - info: HTTP Poort: 3001
+[2020-04-11 14:48:17] - info: HTTPS Poort: 3002
+[2020-04-11 14:48:17] - info: HTTP redirect: false
+[2020-04-11 14:48:22] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:48:23] - info: OAuth provider bunq loaded
+[2020-04-11 14:48:23] - info: OAuth provider enelogic loaded
+[2020-04-11 14:48:56] - info: Starting application (environment: development)
+[2020-04-11 14:48:56] - info: HTTP Poort: 3001
+[2020-04-11 14:48:56] - info: HTTPS Poort: 3002
+[2020-04-11 14:48:56] - info: HTTP redirect: false
+[2020-04-11 14:48:57] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:48:58] - info: OAuth provider bunq loaded
+[2020-04-11 14:48:58] - info: OAuth provider enelogic loaded
+[2020-04-11 14:49:07] - info: Request logged: GET /api-docs/
+[2020-04-11 14:49:07] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:49:07] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:49:07] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:49:07] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:49:08] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:53:01] - info: Starting application (environment: development)
+[2020-04-11 14:53:01] - info: HTTP Poort: 3001
+[2020-04-11 14:53:01] - info: HTTPS Poort: 3002
+[2020-04-11 14:53:01] - info: HTTP redirect: false
+[2020-04-11 14:53:06] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:53:06] - info: OAuth provider bunq loaded
+[2020-04-11 14:53:06] - info: OAuth provider enelogic loaded
+[2020-04-11 14:53:21] - info: Request logged: GET /api-docs/
+[2020-04-11 14:53:21] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:53:21] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:53:21] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:53:21] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:53:22] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:53:47] - info: Starting application (environment: development)
+[2020-04-11 14:53:47] - info: HTTP Poort: 3001
+[2020-04-11 14:53:47] - info: HTTPS Poort: 3002
+[2020-04-11 14:53:47] - info: HTTP redirect: false
+[2020-04-11 14:53:52] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:53:52] - info: OAuth provider bunq loaded
+[2020-04-11 14:53:52] - info: OAuth provider enelogic loaded
+[2020-04-11 14:56:25] - info: Starting application (environment: development)
+[2020-04-11 14:56:26] - info: HTTP Poort: 3001
+[2020-04-11 14:56:26] - info: HTTPS Poort: 3002
+[2020-04-11 14:56:26] - info: HTTP redirect: false
+[2020-04-11 14:56:31] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:56:31] - info: OAuth provider bunq loaded
+[2020-04-11 14:56:31] - info: OAuth provider enelogic loaded
+[2020-04-11 14:56:33] - info: Request logged: GET /api-docs/
+[2020-04-11 14:56:33] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:56:33] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:56:33] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:56:33] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:56:34] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:56:38] - info: Request logged: GET /api-docs/
+[2020-04-11 14:56:38] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:56:38] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:56:38] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:56:38] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:56:38] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:56:55] - info: Starting application (environment: development)
+[2020-04-11 14:56:55] - info: HTTP Poort: 3001
+[2020-04-11 14:56:55] - info: HTTPS Poort: 3002
+[2020-04-11 14:56:55] - info: HTTP redirect: false
+[2020-04-11 14:57:00] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:57:00] - info: OAuth provider bunq loaded
+[2020-04-11 14:57:00] - info: OAuth provider enelogic loaded
+[2020-04-11 14:57:03] - info: Request logged: GET /api-docs/
+[2020-04-11 14:57:03] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:57:03] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:57:03] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:57:03] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:57:04] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:57:20] - info: Starting application (environment: development)
+[2020-04-11 14:57:20] - info: HTTP Poort: 3001
+[2020-04-11 14:57:20] - info: HTTPS Poort: 3002
+[2020-04-11 14:57:20] - info: HTTP redirect: false
+[2020-04-11 14:57:25] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:57:25] - info: OAuth provider bunq loaded
+[2020-04-11 14:57:25] - info: OAuth provider enelogic loaded
+[2020-04-11 14:57:27] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 14:57:27] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 14:57:27] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:57:27] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 14:57:32] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 14:57:33] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 14:58:03] - info: Starting application (environment: development)
+[2020-04-11 14:58:03] - info: HTTP Poort: 3001
+[2020-04-11 14:58:03] - info: HTTPS Poort: 3002
+[2020-04-11 14:58:03] - info: HTTP redirect: false
+[2020-04-11 14:58:08] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:58:08] - info: OAuth provider bunq loaded
+[2020-04-11 14:58:08] - info: OAuth provider enelogic loaded
+[2020-04-11 14:58:57] - info: Starting application (environment: development)
+[2020-04-11 14:58:57] - info: HTTP Poort: 3001
+[2020-04-11 14:58:57] - info: HTTPS Poort: 3002
+[2020-04-11 14:58:57] - info: HTTP redirect: false
+[2020-04-11 14:59:02] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:59:03] - info: OAuth provider bunq loaded
+[2020-04-11 14:59:03] - info: OAuth provider enelogic loaded
+[2020-04-11 14:59:17] - info: Starting application (environment: development)
+[2020-04-11 14:59:17] - info: HTTP Poort: 3001
+[2020-04-11 14:59:17] - info: HTTPS Poort: 3002
+[2020-04-11 14:59:17] - info: HTTP redirect: false
+[2020-04-11 14:59:22] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:59:22] - info: OAuth provider bunq loaded
+[2020-04-11 14:59:22] - info: OAuth provider enelogic loaded
+[2020-04-11 14:59:26] - info: Starting application (environment: development)
+[2020-04-11 14:59:26] - info: HTTP Poort: 3001
+[2020-04-11 14:59:26] - info: HTTPS Poort: 3002
+[2020-04-11 14:59:26] - info: HTTP redirect: false
+[2020-04-11 14:59:31] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:59:31] - info: OAuth provider bunq loaded
+[2020-04-11 14:59:31] - info: OAuth provider enelogic loaded
+[2020-04-11 14:59:33] - info: Starting application (environment: development)
+[2020-04-11 14:59:34] - info: HTTP Poort: 3001
+[2020-04-11 14:59:34] - info: HTTPS Poort: 3002
+[2020-04-11 14:59:34] - info: HTTP redirect: false
+[2020-04-11 14:59:39] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:59:39] - info: OAuth provider bunq loaded
+[2020-04-11 14:59:39] - info: OAuth provider enelogic loaded
+[2020-04-11 14:59:50] - info: Starting application (environment: development)
+[2020-04-11 14:59:50] - info: HTTP Poort: 3001
+[2020-04-11 14:59:50] - info: HTTPS Poort: 3002
+[2020-04-11 14:59:50] - info: HTTP redirect: false
+[2020-04-11 14:59:55] - info: Sync sequelize models with { force: false }
+[2020-04-11 14:59:55] - info: OAuth provider bunq loaded
+[2020-04-11 14:59:55] - info: OAuth provider enelogic loaded
+[2020-04-11 15:00:30] - info: Starting application (environment: development)
+[2020-04-11 15:00:30] - info: HTTP Poort: 3001
+[2020-04-11 15:00:30] - info: HTTPS Poort: 3002
+[2020-04-11 15:00:30] - info: HTTP redirect: false
+[2020-04-11 15:00:35] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:00:36] - info: OAuth provider bunq loaded
+[2020-04-11 15:00:36] - info: OAuth provider enelogic loaded
+[2020-04-11 15:00:47] - info: Starting application (environment: development)
+[2020-04-11 15:00:47] - info: HTTP Poort: 3001
+[2020-04-11 15:00:47] - info: HTTPS Poort: 3002
+[2020-04-11 15:00:47] - info: HTTP redirect: false
+[2020-04-11 15:00:53] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:00:53] - info: OAuth provider bunq loaded
+[2020-04-11 15:00:53] - info: OAuth provider enelogic loaded
+[2020-04-11 15:01:08] - info: Starting application (environment: development)
+[2020-04-11 15:01:08] - info: HTTP Poort: 3001
+[2020-04-11 15:01:08] - info: HTTPS Poort: 3002
+[2020-04-11 15:01:08] - info: HTTP redirect: false
+[2020-04-11 15:01:13] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:01:14] - info: OAuth provider bunq loaded
+[2020-04-11 15:01:14] - info: OAuth provider enelogic loaded
+[2020-04-11 15:01:23] - info: Starting application (environment: development)
+[2020-04-11 15:01:23] - info: HTTP Poort: 3001
+[2020-04-11 15:01:23] - info: HTTPS Poort: 3002
+[2020-04-11 15:01:23] - info: HTTP redirect: false
+[2020-04-11 15:01:28] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:01:28] - info: OAuth provider bunq loaded
+[2020-04-11 15:01:28] - info: OAuth provider enelogic loaded
+[2020-04-11 15:01:45] - info: Starting application (environment: development)
+[2020-04-11 15:01:45] - info: HTTP Poort: 3001
+[2020-04-11 15:01:45] - info: HTTPS Poort: 3002
+[2020-04-11 15:01:45] - info: HTTP redirect: false
+[2020-04-11 15:01:50] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:01:50] - info: OAuth provider bunq loaded
+[2020-04-11 15:01:50] - info: OAuth provider enelogic loaded
+[2020-04-11 15:02:08] - info: Starting application (environment: development)
+[2020-04-11 15:02:09] - info: HTTP Poort: 3001
+[2020-04-11 15:02:09] - info: HTTPS Poort: 3002
+[2020-04-11 15:02:09] - info: HTTP redirect: false
+[2020-04-11 15:02:14] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:02:14] - info: OAuth provider bunq loaded
+[2020-04-11 15:02:14] - info: OAuth provider enelogic loaded
+[2020-04-11 15:03:01] - info: Starting application (environment: development)
+[2020-04-11 15:03:01] - info: HTTP Poort: 3001
+[2020-04-11 15:03:01] - info: HTTPS Poort: 3002
+[2020-04-11 15:03:01] - info: HTTP redirect: false
+[2020-04-11 15:03:06] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:03:06] - info: OAuth provider bunq loaded
+[2020-04-11 15:03:06] - info: OAuth provider enelogic loaded
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 15:03:10] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 15:17:19] - info: Starting application (environment: development)
+[2020-04-11 15:17:19] - info: HTTP Poort: 3001
+[2020-04-11 15:17:19] - info: HTTPS Poort: 3002
+[2020-04-11 15:17:19] - info: HTTP redirect: false
+[2020-04-11 15:17:24] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:17:24] - info: OAuth provider bunq loaded
+[2020-04-11 15:17:24] - info: OAuth provider enelogic loaded
+[2020-04-11 15:18:02] - info: Starting application (environment: development)
+[2020-04-11 15:18:02] - info: HTTP Poort: 3001
+[2020-04-11 15:18:02] - info: HTTPS Poort: 3002
+[2020-04-11 15:18:02] - info: HTTP redirect: false
+[2020-04-11 15:18:07] - info: Sync sequelize models with { force: false }
+[2020-04-11 15:18:07] - info: OAuth provider bunq loaded
+[2020-04-11 15:18:07] - info: OAuth provider enelogic loaded
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 16:35:07] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 16:35:08] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 16:36:13] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 16:44:36] - info: Starting application (environment: development)
+[2020-04-11 16:44:37] - info: HTTP Poort: 3001
+[2020-04-11 16:44:37] - info: HTTPS Poort: 3002
+[2020-04-11 16:44:37] - info: HTTP redirect: false
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 16:44:43] - info: Sync sequelize models with { force: false }
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 16:44:43] - info: OAuth provider bunq loaded
+[2020-04-11 16:44:43] - info: OAuth provider enelogic loaded
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 16:44:43] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 17:38:45] - info: Starting application (environment: development)
+[2020-04-11 17:38:45] - info: HTTP Poort: 3001
+[2020-04-11 17:38:45] - info: HTTPS Poort: 3002
+[2020-04-11 17:38:45] - info: HTTP redirect: false
+[2020-04-11 17:38:51] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:38:51] - info: OAuth provider bunq loaded
+[2020-04-11 17:38:51] - info: OAuth provider enelogic loaded
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 17:38:55] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 17:38:56] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 17:41:32] - info: Starting application (environment: development)
+[2020-04-11 17:41:32] - info: HTTP Poort: 3001
+[2020-04-11 17:41:32] - info: HTTPS Poort: 3002
+[2020-04-11 17:41:32] - info: HTTP redirect: false
+[2020-04-11 17:41:37] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:41:37] - info: OAuth provider bunq loaded
+[2020-04-11 17:41:37] - info: OAuth provider enelogic loaded
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 17:41:39] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 17:41:40] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 17:42:02] - info: Starting application (environment: development)
+[2020-04-11 17:42:03] - info: HTTP Poort: 3001
+[2020-04-11 17:42:03] - info: HTTPS Poort: 3002
+[2020-04-11 17:42:03] - info: HTTP redirect: false
+[2020-04-11 17:42:07] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:42:08] - info: OAuth provider bunq loaded
+[2020-04-11 17:42:08] - info: OAuth provider enelogic loaded
+[2020-04-11 17:42:43] - info: Starting application (environment: development)
+[2020-04-11 17:42:43] - info: HTTP Poort: 3001
+[2020-04-11 17:42:43] - info: HTTPS Poort: 3002
+[2020-04-11 17:42:43] - info: HTTP redirect: false
+[2020-04-11 17:42:48] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:42:48] - info: OAuth provider bunq loaded
+[2020-04-11 17:42:48] - info: OAuth provider enelogic loaded
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/swagger-ui.css
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/swagger-ui-bundle.js
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/swagger-ui-init.js
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/swagger-ui-bundle.js.map
+[2020-04-11 17:42:50] - info: Request logged: GET /api-docs/swagger-ui.css.map
+[2020-04-11 17:42:51] - info: Request logged: GET /api-docs/swagger-ui-standalone-preset.js.map
+[2020-04-11 17:42:51] - info: Request logged: GET /api-docs/favicon-32x32.png
+[2020-04-11 17:43:07] - info: Starting application (environment: development)
+[2020-04-11 17:43:07] - info: HTTP Poort: 3001
+[2020-04-11 17:43:07] - info: HTTPS Poort: 3002
+[2020-04-11 17:43:07] - info: HTTP redirect: false
+[2020-04-11 17:43:11] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:43:12] - info: OAuth provider bunq loaded
+[2020-04-11 17:43:12] - info: OAuth provider enelogic loaded
+[2020-04-11 17:43:53] - info: Starting application (environment: development)
+[2020-04-11 17:43:53] - info: HTTP Poort: 3001
+[2020-04-11 17:43:53] - info: HTTPS Poort: 3002
+[2020-04-11 17:43:53] - info: HTTP redirect: false
+[2020-04-11 17:43:58] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:43:58] - info: OAuth provider bunq loaded
+[2020-04-11 17:43:58] - info: OAuth provider enelogic loaded
+[2020-04-11 17:46:45] - info: Starting application (environment: development)
+[2020-04-11 17:46:45] - info: HTTP Poort: 3001
+[2020-04-11 17:46:45] - info: HTTPS Poort: 3002
+[2020-04-11 17:46:45] - info: HTTP redirect: false
+[2020-04-11 17:46:50] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:46:50] - info: OAuth provider bunq loaded
+[2020-04-11 17:46:50] - info: OAuth provider enelogic loaded
+[2020-04-11 17:47:13] - info: Starting application (environment: development)
+[2020-04-11 17:47:13] - info: HTTP Poort: 3001
+[2020-04-11 17:47:13] - info: HTTPS Poort: 3002
+[2020-04-11 17:47:13] - info: HTTP redirect: false
+[2020-04-11 17:47:18] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:47:19] - info: OAuth provider bunq loaded
+[2020-04-11 17:47:19] - info: OAuth provider enelogic loaded
+[2020-04-11 17:48:58] - info: Starting application (environment: development)
+[2020-04-11 17:48:58] - info: HTTP Poort: 3001
+[2020-04-11 17:48:58] - info: HTTPS Poort: 3002
+[2020-04-11 17:48:58] - info: HTTP redirect: false
+[2020-04-11 17:49:04] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:49:04] - info: OAuth provider bunq loaded
+[2020-04-11 17:49:04] - info: OAuth provider enelogic loaded
+[2020-04-11 17:50:00] - info: Request logged: GET /api/events
+[2020-04-11 17:50:00] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:50:00] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:50:27] - info: Request logged: GET /api/events
+[2020-04-11 17:50:27] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:50:27] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:50:37] - info: Request logged: GET /api/events
+[2020-04-11 17:50:37] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:50:37] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:50:37] - info: Request logged: GET /api/events
+[2020-04-11 17:50:37] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:50:37] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:50:38] - info: Request logged: GET /api/events
+[2020-04-11 17:50:38] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:50:38] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:51:00] - info: Starting application (environment: development)
+[2020-04-11 17:51:00] - info: HTTP Poort: 3001
+[2020-04-11 17:51:00] - info: HTTPS Poort: 3002
+[2020-04-11 17:51:00] - info: HTTP redirect: false
+[2020-04-11 17:51:05] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:51:05] - info: OAuth provider bunq loaded
+[2020-04-11 17:51:05] - info: OAuth provider enelogic loaded
+[2020-04-11 17:51:07] - info: Request logged: GET /api/events
+[2020-04-11 17:51:07] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:51:07] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:51:38] - info: Starting application (environment: development)
+[2020-04-11 17:51:38] - info: HTTP Poort: 3001
+[2020-04-11 17:51:38] - info: HTTPS Poort: 3002
+[2020-04-11 17:51:38] - info: HTTP redirect: false
+[2020-04-11 17:51:43] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:51:43] - info: OAuth provider bunq loaded
+[2020-04-11 17:51:43] - info: OAuth provider enelogic loaded
+[2020-04-11 17:52:23] - info: Starting application (environment: development)
+[2020-04-11 17:52:23] - info: HTTP Poort: 3001
+[2020-04-11 17:52:23] - info: HTTPS Poort: 3002
+[2020-04-11 17:52:23] - info: HTTP redirect: false
+[2020-04-11 17:52:28] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:52:28] - info: OAuth provider bunq loaded
+[2020-04-11 17:52:28] - info: OAuth provider enelogic loaded
+[2020-04-11 17:52:32] - info: Request logged: GET /api/events
+[2020-04-11 17:52:32] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:52:32] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:58:07] - info: Starting application (environment: development)
+[2020-04-11 17:58:07] - info: HTTP Poort: 3001
+[2020-04-11 17:58:07] - info: HTTPS Poort: 3002
+[2020-04-11 17:58:07] - info: HTTP redirect: false
+[2020-04-11 17:58:12] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:58:12] - info: OAuth provider bunq loaded
+[2020-04-11 17:58:12] - info: OAuth provider enelogic loaded
+[2020-04-11 17:58:14] - info: Request logged: GET /api/events
+[2020-04-11 17:58:14] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:58:14] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 17:58:32] - info: Starting application (environment: development)
+[2020-04-11 17:58:33] - info: HTTP Poort: 3001
+[2020-04-11 17:58:33] - info: HTTPS Poort: 3002
+[2020-04-11 17:58:33] - info: HTTP redirect: false
+[2020-04-11 17:58:38] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:58:38] - info: OAuth provider bunq loaded
+[2020-04-11 17:58:38] - info: OAuth provider enelogic loaded
+[2020-04-11 17:59:03] - info: Starting application (environment: development)
+[2020-04-11 17:59:03] - info: HTTP Poort: 3001
+[2020-04-11 17:59:03] - info: HTTPS Poort: 3002
+[2020-04-11 17:59:03] - info: HTTP redirect: false
+[2020-04-11 17:59:08] - info: Sync sequelize models with { force: false }
+[2020-04-11 17:59:08] - info: OAuth provider bunq loaded
+[2020-04-11 17:59:08] - info: OAuth provider enelogic loaded
+[2020-04-11 17:59:20] - info: Request logged: GET /api/events
+[2020-04-11 17:59:20] - info: Authentication passed (ENV=dev)
+[2020-04-11 17:59:20] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 18:00:59] - info: Starting application (environment: development)
+[2020-04-11 18:00:59] - info: HTTP Poort: 3001
+[2020-04-11 18:00:59] - info: HTTPS Poort: 3002
+[2020-04-11 18:00:59] - info: HTTP redirect: false
+[2020-04-11 18:01:04] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:01:04] - info: OAuth provider bunq loaded
+[2020-04-11 18:01:04] - info: OAuth provider enelogic loaded
+[2020-04-11 18:01:08] - info: Request logged: GET /api/events
+[2020-04-11 18:01:08] - info: Authentication passed (ENV=dev)
+[2020-04-11 18:01:08] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 18:01:57] - info: Starting application (environment: development)
+[2020-04-11 18:01:57] - info: HTTP Poort: 3001
+[2020-04-11 18:01:57] - info: HTTPS Poort: 3002
+[2020-04-11 18:01:57] - info: HTTP redirect: false
+[2020-04-11 18:02:02] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:02:02] - info: OAuth provider bunq loaded
+[2020-04-11 18:02:02] - info: OAuth provider enelogic loaded
+[2020-04-11 18:02:07] - info: Request logged: GET /api/events
+[2020-04-11 18:02:07] - info: Authentication passed (ENV=dev)
+[2020-04-11 18:02:07] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 18:02:50] - info: Starting application (environment: development)
+[2020-04-11 18:02:50] - info: HTTP Poort: 3001
+[2020-04-11 18:02:50] - info: HTTPS Poort: 3002
+[2020-04-11 18:02:50] - info: HTTP redirect: false
+[2020-04-11 18:02:55] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:02:55] - info: OAuth provider bunq loaded
+[2020-04-11 18:02:55] - info: OAuth provider enelogic loaded
+[2020-04-11 18:03:02] - info: Request logged: GET /api/events
+[2020-04-11 18:03:02] - info: Authentication passed (ENV=dev)
+[2020-04-11 18:03:02] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 18:03:41] - info: Starting application (environment: development)
+[2020-04-11 18:03:41] - info: HTTP Poort: 3001
+[2020-04-11 18:03:41] - info: HTTPS Poort: 3002
+[2020-04-11 18:03:41] - info: HTTP redirect: false
+[2020-04-11 18:03:46] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:03:46] - info: OAuth provider bunq loaded
+[2020-04-11 18:03:46] - info: OAuth provider enelogic loaded
+[2020-04-11 18:03:51] - info: Request logged: GET /api/events
+[2020-04-11 18:03:51] - info: Authentication passed (ENV=dev)
+[2020-04-11 18:03:51] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 18:04:11] - info: Starting application (environment: development)
+[2020-04-11 18:04:11] - info: HTTP Poort: 3001
+[2020-04-11 18:04:11] - info: HTTPS Poort: 3002
+[2020-04-11 18:04:11] - info: HTTP redirect: false
+[2020-04-11 18:04:16] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:04:16] - info: OAuth provider bunq loaded
+[2020-04-11 18:04:16] - info: OAuth provider enelogic loaded
+[2020-04-11 18:13:39] - info: Starting application (environment: development)
+[2020-04-11 18:13:39] - info: HTTP Poort: 3001
+[2020-04-11 18:13:39] - info: HTTPS Poort: 3002
+[2020-04-11 18:13:39] - info: HTTP redirect: false
+[2020-04-11 18:13:44] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:13:44] - info: OAuth provider bunq loaded
+[2020-04-11 18:13:44] - info: OAuth provider enelogic loaded
+[2020-04-11 18:15:21] - info: Starting application (environment: development)
+[2020-04-11 18:15:21] - info: HTTP Poort: 3001
+[2020-04-11 18:15:21] - info: HTTPS Poort: 3002
+[2020-04-11 18:15:21] - info: HTTP redirect: false
+[2020-04-11 18:15:26] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:15:27] - info: OAuth provider bunq loaded
+[2020-04-11 18:15:27] - info: OAuth provider enelogic loaded
+[2020-04-11 18:15:37] - info: Starting application (environment: development)
+[2020-04-11 18:15:38] - info: HTTP Poort: 3001
+[2020-04-11 18:15:38] - info: HTTPS Poort: 3002
+[2020-04-11 18:15:38] - info: HTTP redirect: false
+[2020-04-11 18:15:43] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:15:43] - info: OAuth provider bunq loaded
+[2020-04-11 18:15:43] - info: OAuth provider enelogic loaded
+[2020-04-11 18:17:36] - info: Starting application (environment: development)
+[2020-04-11 18:17:37] - info: HTTP Poort: 3001
+[2020-04-11 18:17:37] - info: HTTPS Poort: 3002
+[2020-04-11 18:17:37] - info: HTTP redirect: false
+[2020-04-11 18:17:42] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:17:42] - info: OAuth provider bunq loaded
+[2020-04-11 18:17:42] - info: OAuth provider enelogic loaded
+[2020-04-11 18:17:54] - info: Starting application (environment: development)
+[2020-04-11 18:17:54] - info: HTTP Poort: 3001
+[2020-04-11 18:17:54] - info: HTTPS Poort: 3002
+[2020-04-11 18:17:54] - info: HTTP redirect: false
+[2020-04-11 18:18:00] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:18:00] - info: OAuth provider bunq loaded
+[2020-04-11 18:18:00] - info: OAuth provider enelogic loaded
+[2020-04-11 18:18:42] - info: Starting application (environment: development)
+[2020-04-11 18:18:42] - info: HTTP Poort: 3001
+[2020-04-11 18:18:42] - info: HTTPS Poort: 3002
+[2020-04-11 18:18:42] - info: HTTP redirect: false
+[2020-04-11 18:18:47] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:18:47] - info: OAuth provider bunq loaded
+[2020-04-11 18:18:47] - info: OAuth provider enelogic loaded
+[2020-04-11 18:32:11] - info: Request logged: GET /api/events
+[2020-04-11 18:32:11] - info: Authentication passed (ENV=dev)
+[2020-04-11 18:32:11] - info: User p1ezZHQBsyWQDYm9BrCm2wlpP1o1 successfully authenticated
+[2020-04-11 18:38:28] - info: Starting application (environment: development)
+[2020-04-11 18:38:28] - info: HTTP Poort: 3001
+[2020-04-11 18:38:28] - info: HTTPS Poort: 3002
+[2020-04-11 18:38:28] - info: HTTP redirect: false
+[2020-04-11 18:38:34] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:38:34] - info: OAuth provider bunq loaded
+[2020-04-11 18:38:34] - info: OAuth provider enelogic loaded
+[2020-04-11 18:49:00] - info: Starting application (environment: development)
+[2020-04-11 18:49:00] - info: HTTP Poort: 3001
+[2020-04-11 18:49:00] - info: HTTPS Poort: 3002
+[2020-04-11 18:49:00] - info: HTTP redirect: false
+[2020-04-11 18:49:05] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:49:05] - info: OAuth provider bunq loaded
+[2020-04-11 18:49:05] - info: OAuth provider enelogic loaded
+[2020-04-11 18:49:09] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 18:49:09] - info: Request logged: GET /api/meterstanden
+[2020-04-11 18:49:09] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 18:49:09] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 18:49:44] - info: Starting application (environment: development)
+[2020-04-11 18:49:44] - info: HTTP Poort: 3001
+[2020-04-11 18:49:44] - info: HTTPS Poort: 3002
+[2020-04-11 18:49:44] - info: HTTP redirect: false
+[2020-04-11 18:49:49] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:49:49] - info: OAuth provider bunq loaded
+[2020-04-11 18:49:49] - info: OAuth provider enelogic loaded
+[2020-04-11 18:50:05] - info: Starting application (environment: development)
+[2020-04-11 18:50:05] - info: HTTP Poort: 3001
+[2020-04-11 18:50:05] - info: HTTPS Poort: 3002
+[2020-04-11 18:50:05] - info: HTTP redirect: false
+[2020-04-11 18:50:10] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:50:11] - info: OAuth provider bunq loaded
+[2020-04-11 18:50:11] - info: OAuth provider enelogic loaded
+[2020-04-11 18:54:20] - info: Starting application (environment: development)
+[2020-04-11 18:54:20] - info: HTTP Poort: 3001
+[2020-04-11 18:54:20] - info: HTTPS Poort: 3002
+[2020-04-11 18:54:20] - info: HTTP redirect: false
+[2020-04-11 18:54:25] - info: Sync sequelize models with { force: false }
+[2020-04-11 18:54:26] - info: OAuth provider bunq loaded
+[2020-04-11 18:54:26] - info: OAuth provider enelogic loaded
+[2020-04-11 19:00:44] - info: Starting application (environment: development)
+[2020-04-11 19:00:44] - info: HTTP Poort: 3001
+[2020-04-11 19:00:44] - info: HTTPS Poort: 3002
+[2020-04-11 19:00:44] - info: HTTP redirect: false
+[2020-04-11 19:00:49] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:00:49] - info: OAuth provider bunq loaded
+[2020-04-11 19:00:49] - info: OAuth provider enelogic loaded
+[2020-04-11 19:01:07] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:01:08] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:03:02] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:03:02] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:03:02] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:03:02] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:03:10] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:03:10] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:03:10] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjQ2NDIsImRhdGEiOnt9LCJpYXQiOjE1ODY2MjQ1ODJ9.KzZ-olcQkRe8qUbRfGwFvKal_9XM2GDwAnQWqOnFWjA
+[2020-04-11 19:04:48] - info: Starting application (environment: development)
+[2020-04-11 19:04:48] - info: HTTP Poort: 3001
+[2020-04-11 19:04:48] - info: HTTPS Poort: 3002
+[2020-04-11 19:04:48] - info: HTTP redirect: false
+[2020-04-11 19:04:53] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:04:54] - info: OAuth provider bunq loaded
+[2020-04-11 19:04:54] - info: OAuth provider enelogic loaded
+[2020-04-11 19:04:55] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:04:55] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:04:55] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:04:55] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:06:34] - info: Starting application (environment: development)
+[2020-04-11 19:06:34] - info: HTTP Poort: 3001
+[2020-04-11 19:06:34] - info: HTTPS Poort: 3002
+[2020-04-11 19:06:34] - info: HTTP redirect: false
+[2020-04-11 19:06:39] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:06:39] - info: OAuth provider bunq loaded
+[2020-04-11 19:06:39] - info: OAuth provider enelogic loaded
+[2020-04-11 19:06:45] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:06:45] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:06:45] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:06:45] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:09:21] - info: Starting application (environment: development)
+[2020-04-11 19:09:21] - info: HTTP Poort: 3001
+[2020-04-11 19:09:21] - info: HTTPS Poort: 3002
+[2020-04-11 19:09:21] - info: HTTP redirect: false
+[2020-04-11 19:09:26] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:09:26] - info: OAuth provider bunq loaded
+[2020-04-11 19:09:26] - info: OAuth provider enelogic loaded
+[2020-04-11 19:09:31] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:09:31] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:09:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:09:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:10:21] - info: Starting application (environment: development)
+[2020-04-11 19:10:21] - info: HTTP Poort: 3001
+[2020-04-11 19:10:21] - info: HTTPS Poort: 3002
+[2020-04-11 19:10:21] - info: HTTP redirect: false
+[2020-04-11 19:10:26] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:10:26] - info: OAuth provider bunq loaded
+[2020-04-11 19:10:26] - info: OAuth provider enelogic loaded
+[2020-04-11 19:10:34] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:10:34] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:10:34] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:10:34] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:10:48] - info: Starting application (environment: development)
+[2020-04-11 19:10:48] - info: HTTP Poort: 3001
+[2020-04-11 19:10:48] - info: HTTPS Poort: 3002
+[2020-04-11 19:10:48] - info: HTTP redirect: false
+[2020-04-11 19:10:53] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:10:53] - info: OAuth provider bunq loaded
+[2020-04-11 19:10:53] - info: OAuth provider enelogic loaded
+[2020-04-11 19:11:03] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:11:03] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:11:03] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:11:03] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:11:08] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:11:08] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:11:08] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjUxMjMsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MTE6MDMuMzQ1WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjUwNjN9.QR-mxXhBm77Tz_Y2dIoNYMs7y5l5_0cU0SQYnH7VyXA
+[2020-04-11 19:11:48] - info: Starting application (environment: development)
+[2020-04-11 19:11:48] - info: HTTP Poort: 3001
+[2020-04-11 19:11:48] - info: HTTPS Poort: 3002
+[2020-04-11 19:11:48] - info: HTTP redirect: false
+[2020-04-11 19:11:53] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:11:53] - info: OAuth provider bunq loaded
+[2020-04-11 19:11:53] - info: OAuth provider enelogic loaded
+[2020-04-11 19:24:46] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:24:46] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:24:46] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjUxMjMsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MTE6MDMuMzQ1WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjUwNjN9.QR-mxXhBm77Tz_Y2dIoNYMs7y5l5_0cU0SQYnH7VyXA
+[2020-04-11 19:24:46] - error: Unable to verify JWT
+[2020-04-11 19:24:47] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:24:47] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:24:47] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:24:47] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:24:57] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:24:57] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:24:57] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjU5NDcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MjQ6NDcuMTE0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjU4ODd9.-aPCavmjTOr3ziJ4hXs2qvNkAuyCmCFzhvoUXUCtqmE
+[2020-04-11 19:24:57] - info: Request logged: GET /api/enelogic/measuringpoints
+[2020-04-11 19:24:57] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:24:58] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:24:58] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:24:58] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:24:58] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:27:00] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:27:00] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:27:00] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:27:00] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:27:09] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:27:09] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:27:09] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjU5NDcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MjQ6NDcuMTE0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjU4ODd9.-aPCavmjTOr3ziJ4hXs2qvNkAuyCmCFzhvoUXUCtqmE
+[2020-04-11 19:27:09] - error: Unable to verify JWT
+[2020-04-11 19:27:10] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:27:10] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:27:10] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:27:10] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:28:33] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:28:33] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:28:33] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:28:33] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:28:37] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:28:37] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:28:37] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjU5NDcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MjQ6NDcuMTE0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjU4ODd9.-aPCavmjTOr3ziJ4hXs2qvNkAuyCmCFzhvoUXUCtqmE
+[2020-04-11 19:28:37] - error: Unable to verify JWT
+[2020-04-11 19:28:38] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:28:38] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:28:38] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:28:38] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:29:21] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:29:21] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:29:21] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:29:21] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:29:31] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:29:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:29:31] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjU5NDcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MjQ6NDcuMTE0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjU4ODd9.-aPCavmjTOr3ziJ4hXs2qvNkAuyCmCFzhvoUXUCtqmE
+[2020-04-11 19:29:31] - error: Unable to verify JWT
+[2020-04-11 19:29:32] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:29:32] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:29:32] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:29:32] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:30:21] - info: Starting application (environment: development)
+[2020-04-11 19:30:21] - info: HTTP Poort: 3001
+[2020-04-11 19:30:21] - info: HTTPS Poort: 3002
+[2020-04-11 19:30:21] - info: HTTP redirect: false
+[2020-04-11 19:30:26] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:30:27] - info: OAuth provider bunq loaded
+[2020-04-11 19:30:27] - info: OAuth provider enelogic loaded
+[2020-04-11 19:30:36] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:30:37] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:30:37] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:30:37] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:31:03] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:31:03] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:31:03] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjYyOTcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MzA6MzcuMDY0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjYyMzd9.03VATlbsVJASvq_J1eV87iUSdQov9VFOhI48e1j0KTc
+[2020-04-11 19:32:09] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:32:09] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:09] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjYyOTcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MzA6MzcuMDY0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjYyMzd9.03VATlbsVJASvq_J1eV87iUSdQov9VFOhI48e1j0KTc
+[2020-04-11 19:32:09] - error: Unable to verify JWT
+[2020-04-11 19:32:09] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:32:09] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:09] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:32:09] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:24] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:32:24] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:24] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:32:24] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:31] - info: Request logged: POST /api/oauth/exchange/enelogic
+[2020-04-11 19:32:31] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:31] - info: State paramter iseyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjYyOTcsInRpbWVzdGFtcCI6IjIwMjAtMDQtMTFUMTc6MzA6MzcuMDY0WiIsIm9yaWdpbiI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9tZXRlcnN0YW5kZW4iLCJpYXQiOjE1ODY2MjYyMzd9.03VATlbsVJASvq_J1eV87iUSdQov9VFOhI48e1j0KTc
+[2020-04-11 19:32:31] - error: Unable to verify JWT
+[2020-04-11 19:32:32] - info: Request logged: GET /api/oauth/formaturl/enelogic
+[2020-04-11 19:32:32] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:32:32] - info: Request logged: GET /api/meterstanden
+[2020-04-11 19:32:32] - info: User fkkdEvpjgkhlhtQGqdkHTToWO233 successfully authenticated
+[2020-04-11 19:33:43] - info: Starting application (environment: development)
+[2020-04-11 19:33:43] - info: HTTP Poort: 3001
+[2020-04-11 19:33:43] - info: HTTPS Poort: 3002
+[2020-04-11 19:33:43] - info: HTTP redirect: false
+[2020-04-11 19:33:48] - info: Sync sequelize models with { force: false }
+[2020-04-11 19:33:48] - info: OAuth provider bunq loaded
+[2020-04-11 19:33:48] - info: OAuth provider enelogic loaded

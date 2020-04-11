@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import { asyncHandler } from 'express-collection';
 import Encryption from 'simple-encrypt-js';
 
+import { asyncHandler } from '../modules/express-collection';
 import { basicAuthentication } from '../middleware/authentication';
 import { Bunq } from '../models';
 import { appData, getAppData } from '../../app';

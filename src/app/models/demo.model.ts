@@ -3,6 +3,18 @@ import { Model, DataTypes } from 'sequelize';
 
 import Sequelize from './index';
 
+export const swaggerModel = {
+    type: 'object',
+    properties: {
+        datetime: {
+            type: 'string',
+        },
+        value: {
+            type: 'string',
+        },
+    },
+};
+
 export default class Demo extends Model {
     public datetime: Date;
     public userId: string;
@@ -34,5 +46,8 @@ Demo.init(
     {
         tableName: 'demo',
         sequelize: Sequelize,
+        defaultScope: {
+            attributes: { exclude: ['userId'] },
+        },
     },
 );

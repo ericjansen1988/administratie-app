@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import { asyncHandler } from 'express-collection';
 import axios from 'axios';
+
 import { basicAuthentication } from '../middleware/authentication';
+import { asyncHandler } from '../modules/express-collection';
 
 export const redirectCall = async (req: Request, res: Response): Promise<Response> => {
     const { body, headers, url, method } = req.body;

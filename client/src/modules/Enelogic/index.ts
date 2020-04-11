@@ -194,41 +194,41 @@ export const getData = async (user: any, datefrom: string, dateto: string, confi
   return data;
 };
 
-export const saveEnelogicSettings = (user: any, ref: any, enelogicConfig: any) => async (accesstoken: any) => {
-  if (enelogicConfig === undefined) enelogicConfig = {};
+export const saveEnelogicSettings = async (session: any, accesstoken: any) => {
+  console.log(123, 'beginSave', accesstoken);
+  const saveObject: any = {};
   if (!accesstoken.success) {
-    enelogicConfig.success = false;
-    await ref.update({ enelogic: enelogicConfig });
+    await session.ref.update({ enelogic: { success: false } });
     return;
   }
-  enelogicConfig['token'] = accesstoken.data;
+  saveObject['token'] = accesstoken.data.token;
   try {
     const measuringpoints = await fetchBackend(
-      '/api/enelogic/measuringpoints?access_token=' + accesstoken.data.access_token,
-      { user },
+      '/api/enelogic/measuringpoints?access_token=' + accesstoken.data.token.access_token,
+      { user: session.user },
     );
-    enelogicConfig.measuringpoints = {};
+    saveObject.measuringpoints = {};
     const mpointelectra = measuringpoints.data.find((item: any) => item.active === true && item.unitType === 0);
-    if (mpointelectra !== undefined) enelogicConfig.measuringpoints.electra = mpointelectra;
+    if (mpointelectra !== undefined) saveObject.measuringpoints.electra = mpointelectra;
     const mpointgas = measuringpoints.data.find((item: any) => item.active === true && item.unitType === 1);
-    if (mpointgas !== undefined) enelogicConfig.measuringpoints.gas = mpointgas;
-    enelogicConfig.success = true;
+    if (mpointgas !== undefined) saveObject.measuringpoints.gas = mpointgas;
+    saveObject.success = true;
   } catch (err) {
-    enelogicConfig.success = false;
+    saveObject.success = false;
   }
-  await ref.update({ enelogic: enelogicConfig });
+  console.log(saveObject);
+  await session.ref.update({ enelogic: saveObject });
 };
 
-export const updateEnelogicSettings = (ref: any, enelogicConfig: any) => async (accesstoken: any) => {
-  if (enelogicConfig === undefined) enelogicConfig = {};
+export const updateEnelogicSettings = async (session: any, accesstoken: any) => {
+  const saveObject: any = {};
   if (!accesstoken.success) {
-    enelogicConfig.success = false;
-    await ref.update({ enelogic: enelogicConfig });
+    await session.ref.update({ enelogic: { success: false } });
     return;
   }
-  enelogicConfig['token'] = accesstoken.data;
-  enelogicConfig['success'] = true;
-  await ref.update({ enelogic: enelogicConfig });
+  saveObject['token'] = accesstoken.data.token;
+  saveObject['success'] = true;
+  await session.ref.update({ enelogic: saveObject });
 };
 
 export const deleteEnelogicSettings = async (ref: any) => {

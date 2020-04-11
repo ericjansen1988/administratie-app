@@ -23,8 +23,6 @@ const Live = ({}) => {
   const classes = useStyles();
   const { data, loading, error, request } = useFetch('/api/meterstanden', { onMount: true });
 
-  console.log(data);
-
   const columns = [
     {
       title: 'Datum',

@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
 import Enelogic from 'enelogic';
+import Cache from 'simple-cache-js';
 
 import { basicAuthentication } from '../middleware/authentication';
-import { cacheMiddleware, asyncHandler } from 'express-collection';
-import Cache from 'simple-cache-js';
+import { cacheMiddleware, asyncHandler } from '../modules/express-collection';
 
 const enelogicCache = new Cache();
 

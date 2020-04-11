@@ -8,8 +8,8 @@ import { useSession, useQueryParams } from 'hooks';
 import { OauthAuthorize, OauthReceiver } from 'components';
 import { saveEnelogicSettings } from 'modules/Enelogic';
 
-import { enelogicSettings } from 'appcomponents/SettingCardEnelogic';
-import { bunqSettings } from 'appcomponents/SettingCardBunq';
+import { settings as enelogicSettings } from 'appcomponents/SettingCardEnelogic';
+import { settings as bunqSettings } from 'appcomponents/SettingCardBunq';
 
 const OAuthPage = (): JSX.Element => {
   const { user, ref, userInfo } = useSession();
@@ -46,7 +46,8 @@ const OAuthPage = (): JSX.Element => {
           code={queryParams.code}
           exchangeUrl={oauthSettings.exchangeUrl}
           redirectUrl={oauthSettings.redirectUrl}
-          saveFunction={oauthSettings.saveFunction}
+          saveFunction={oauthSettings.saveSettings}
+          state={queryParams.state}
         />
       );
     } else {

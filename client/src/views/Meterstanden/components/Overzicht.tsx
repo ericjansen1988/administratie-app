@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Overzicht = () => {
   const classes = useStyles();
-  const { user, userInfo, ref } = useSession();
-  const userInfoRef = useRef(userInfo);
+  const session = useSession();
+  const userInfoRef = useRef(session.userInfo);
   const [data, setData] = useState([]);
   //userInfoRef.current = userInfo;
 
@@ -57,16 +57,15 @@ const Overzicht = () => {
     .toDate();
 
   const haalDataOp = () => async (state: any) => {
-    console.log(userInfo.enelogic);
     try {
       const refreshedtoken = await refreshOauth(
-        user,
+        session,
         '/api/oauth/refresh/enelogic',
-        userInfoRef.current.enelogic.token,
-        updateEnelogicSettings(ref, userInfoRef.current.enelogic),
+        session.userInfo.enelogic.token,
+        updateEnelogicSettings,
       );
       console.log(refreshedtoken);
-      const data = await getData(user, state.datefrom.value, state.dateto.value, userInfoRef.current);
+      const data = await getData(session.user, state.datefrom.value, state.dateto.value, userInfoRef.current);
       console.log(data);
       setData(data);
     } catch (err) {
@@ -76,7 +75,7 @@ const Overzicht = () => {
 
   const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp());
 
-  if (!userInfo.enelogic || !userInfo.enelogic.success) return <div></div>;
+  if (!session?.userInfo?.enelogic?.success) return <div></div>;
 
   const columns = [
     {
@@ -126,7 +125,7 @@ const Overzicht = () => {
       field: 'netto',
     },
   ];
-  if (userInfo.solaredge.success)
+  if (session.userInfo.solaredge.success)
     columns.push(
       {
         title: 'Opwekking',
@@ -153,7 +152,7 @@ const Overzicht = () => {
               }}
               label="Datum vanaf"
               margin="normal"
-              minDate={new Date(userInfo.enelogic.measuringpoints.electra.dayMin)}
+              minDate={new Date(session.userInfo.enelogic.measuringpoints.electra.dayMin)}
               onChange={handleOnValueChange('datefrom')}
               value={state.datefrom.value}
               variant="inline"

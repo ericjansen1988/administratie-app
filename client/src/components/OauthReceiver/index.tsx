@@ -8,35 +8,36 @@ import { fetchBackend } from 'helpers';
 type OauthReceiverType = {
   code: string;
   exchangeUrl: string;
-  saveFunction: (token: any) => void;
-  redirectUrl?: string | null;
+  saveFunction: (session: any, token: any) => void;
+  redirectUrl?: string | undefined;
+  state?: string;
 };
 
 const OauthReceiver: React.FC<OauthReceiverType> = ({
   code,
   exchangeUrl,
   saveFunction,
-  redirectUrl = null,
+  redirectUrl,
+  state,
 }: OauthReceiverType) => {
-  const { user } = useSession();
-  const [loadingToken, setLoadingToken] = useState(true);
+  const session = useSession();
+  const [newRedirectUrl, setNewRedirectUrl] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     let isMounted = true;
     const getToken = async () => {
       if (code !== undefined) {
-        setLoadingToken(true);
-        const body = { code };
-        const accesstoken = await fetchBackend(exchangeUrl, { method: 'POST', body, user }).catch(err => {
+        const body = { code, state };
+        const accesstoken = await fetchBackend(exchangeUrl, { method: 'POST', body, user: session.user }).catch(err => {
           console.log(err);
         });
         console.log(88888888888, accesstoken);
-        if (accesstoken === undefined) return setLoadingToken(false);
-
+        if (accesstoken === undefined) return setNewRedirectUrl(redirectUrl);
         if (accesstoken.success) {
-          await saveFunction(accesstoken);
+          await saveFunction(session, accesstoken);
         }
-        if (isMounted) setLoadingToken(false);
+
+        if (isMounted) setNewRedirectUrl(accesstoken?.data?.state?.origin ?? redirectUrl);
       }
     };
     getToken();
@@ -46,11 +47,11 @@ const OauthReceiver: React.FC<OauthReceiverType> = ({
     };
   }, []);
 
-  if (loadingToken) return <CircularProgress />;
+  if (newRedirectUrl === undefined) return <CircularProgress />;
 
-  if (redirectUrl) return <Redirect to={redirectUrl} />;
+  return <Redirect to={newRedirectUrl} />;
 
-  return <Redirect to={window.location.pathname} />;
+  //return <Redirect to={window.location.pathname} />;
 };
 
 export default OauthReceiver;

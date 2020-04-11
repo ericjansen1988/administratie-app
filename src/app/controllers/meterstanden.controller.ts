@@ -1,11 +1,11 @@
 import express from 'express';
 const router = express.Router();
 
-import { get, find, list, create, update, destroy } from 'express-sequelize-routes';
-import { basicAuthentication } from '../middleware/authentication';
-import { cacheMiddleware, asyncHandler } from 'express-collection';
 import Cache from 'simple-cache-js';
 
+import { get, find, list, create, update, destroy } from '../modules/express-sequelize-routes';
+import { basicAuthentication } from '../middleware/authentication';
+import { cacheMiddleware, asyncHandler } from '../modules/express-collection';
 import { Meterstanden } from '../models';
 
 const longCache = new Cache();

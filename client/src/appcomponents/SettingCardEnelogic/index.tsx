@@ -2,11 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { Card, CardHeader, CardContent, CardActions, Divider, Typography, Theme } from '@material-ui/core';
+import { Card, CardHeader, CardContent, CardActions, Divider, Typography } from '@material-ui/core';
 
-import { useSession, useQueryParams } from 'hooks';
+import { useSession } from 'hooks';
 import { saveEnelogicSettings } from 'modules/Enelogic';
-import { Button, OauthAuthorize, OauthReceiver } from 'components';
+import { Button, OauthAuthorize } from 'components';
 
 const useStyles = makeStyles(() => ({
   deleteButton: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const enelogicSettings = {
+export const settings = {
   redirectUrl: '/meterstanden',
   exchangeUrl: '/api/oauth/exchange/enelogic',
   refreshUrl: '/api/oauth/refresh/enelogic',
@@ -48,7 +48,7 @@ const SettingCardEnelogic = () => {
           formatUrlKey="format_url_enelogic"
           title={t('buttons.connect') + ' Enelogic'}
         />
-        <Button className={classes.deleteButton} onClick={enelogicSettings.deleteSettings(ref)} variant="outlined">
+        <Button className={classes.deleteButton} onClick={settings.deleteSettings(ref)} variant="outlined">
           {t('buttons.delete')}
         </Button>
       </CardActions>

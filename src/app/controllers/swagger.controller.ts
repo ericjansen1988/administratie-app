@@ -3,6 +3,10 @@ import swaggerUi from 'swagger-ui-express';
 
 const router = express.Router();
 
+import { swaggerModel as Event } from '../models/events.model';
+import { swaggerModel as Meterstand } from '../models/meterstanden.model';
+import { swaggerModel as Demo } from '../models/demo.model';
+
 const apiDocs: any = { //eslint-disable-line
     openapi: '3.0.1',
     info: {
@@ -199,6 +203,13 @@ const apiDocs: any = { //eslint-disable-line
                     },
                 },
             },
+            Event,
+            Events: {
+                type: 'array',
+                items: {
+                    $ref: '#/components/schemas/Event',
+                },
+            },
             Error: {
                 type: 'object',
                 properties: {
@@ -222,6 +233,5 @@ const apiDocs: any = { //eslint-disable-line
     },
 };
 
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
-
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs, { explorer: true }));
 export default router;

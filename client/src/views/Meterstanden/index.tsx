@@ -30,7 +30,7 @@ const Meterstanden = () => {
         code={params.code}
         exchangeUrl="/api/oauth/exchange/enelogic"
         redirectUrl="/meterstanden"
-        saveFunction={saveEnelogicSettings(user, ref, userInfo.enelogic)}
+        saveFunction={saveEnelogicSettings}
       />
     );
   }

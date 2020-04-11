@@ -3,6 +3,33 @@ import { Model, DataTypes } from 'sequelize';
 
 import Sequelize from './index';
 
+export const swaggerModel = {
+    type: 'object',
+    properties: {
+        datetime: {
+            type: 'string',
+        },
+        180: {
+            type: 'number',
+        },
+        181: {
+            type: 'number',
+        },
+        182: {
+            type: 'number',
+        },
+        280: {
+            type: 'number',
+        },
+        281: {
+            type: 'number',
+        },
+        282: {
+            type: 'number',
+        },
+    },
+};
+
 export default class Meterstand extends Model {
     public datetime: Date;
     public userId: string;
@@ -29,26 +56,29 @@ Meterstand.init(
             unique: 'compositeIndex',
         },
         180: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
         181: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
         182: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
         280: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
         281: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
         282: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
     },
     {
         tableName: 'meterstanden',
         sequelize: Sequelize,
+        defaultScope: {
+            attributes: { exclude: ['userId'] },
+        },
     },
 );
