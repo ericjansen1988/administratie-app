@@ -27,7 +27,6 @@ const Rekeningen = () => {
   useEffect(() => {
     if (userInfo.bunq.success) request.get();
   }, []);
-  console.log(accountdata);
 
   const columns: any = [
     {

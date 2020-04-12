@@ -11,7 +11,6 @@ export const getEnelogicData = async (user: any, url: string, config: any) => {
     url += '&mpointgas=' + config.measuringpoints.gas.id;
   }
   const data = await fetchBackend(url, { user });
-  console.log(url, data);
   return data;
 };
 
@@ -56,7 +55,6 @@ const setVerbruikDates = async (data: any, timeframe: any) => {
     return item;
   });
   newData = newData.filter((item: any, index: number) => index > 0);
-  console.log(newData);
   return newData;
 };
 
@@ -131,7 +129,6 @@ export const getData = async (user: any, datefrom: string, dateto: string, confi
       : 'MONTH'
     : 'DAY';
 
-  console.log(isDayQuery, timeframe, daysBetween);
   //if(timeframe === 'QUARTER_OF_AN_HOUR') momentdateto = momentdatefrom.clone().add(1, 'days');
   let dataUrl = '/api/enelogic/data/' + timeframe + '/';
   if (isDayQuery) {
@@ -174,7 +171,6 @@ export const getData = async (user: any, datefrom: string, dateto: string, confi
         .add(1, 'days')
         .format('YYYY-MM-DD');
   }
-  console.log(dataUrl);
   let data = await getEnelogicData(user, dataUrl, config.enelogic);
   data = await getDifferenceArray(data, 'datetime', ['180', '181', '182', '280', '281', '282']);
   data = await setVerbruikDates(data, timeframe);

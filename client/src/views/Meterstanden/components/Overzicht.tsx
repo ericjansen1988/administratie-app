@@ -64,12 +64,12 @@ const Overzicht = () => {
         session.userInfo.enelogic.token,
         updateEnelogicSettings,
       );
-      session.trace(refreshedtoken);
+      session.log.trace(refreshedtoken);
       const data = await getData(session.user, state.datefrom.value, state.dateto.value, userInfoRef.current);
-      session.trace(data);
+      session.log.trace(data);
       setData(data);
     } catch (err) {
-      session.error(err);
+      session.log.error(err);
     }
   };
 
