@@ -13,9 +13,17 @@ import theme from './theme';
 import './assets/scss/index.scss';
 import validators from './common/validators';
 import Routes from './Routes';
+import Log from 'modules/Log';
 
 import FirebaseContext from './context/FirebaseContext';
 import { CacheContext, getCache, setCache, clearCache, clearKey } from './context/CacheContext';
+
+// Create logger
+if (process.env.NODE_ENV !== 'production') {
+  localStorage.setItem('debug', 'administratie-app:*');
+}
+const log = new Log(process.env.NODE_ENV !== 'production');
+log.info('Starting application');
 
 const browserHistory = createBrowserHistory();
 
@@ -45,6 +53,7 @@ type AuthDataType = {
   ref?: firebase.firestore.DocumentReference | null;
   userInfo?: any;
   userDataRef?: firebase.firestore.CollectionReference | null;
+  log: InstanceType<typeof Log>;
 };
 
 const App: FunctionComponent = () => {
@@ -60,13 +69,13 @@ const App: FunctionComponent = () => {
     ref: null,
     userDataRef: null,
     userInfo: {},
+    log,
   });
   const [cacheData, setCacheData] = useState({});
 
   useEffect(() => {
     // listen for auth state changes
     const unsubscribe = firebase.auth().onAuthStateChanged(async returnedUser => {
-      console.log(returnedUser);
       clearCache(setCacheData);
       let ref = null;
       let userDataRef = null;
@@ -85,7 +94,6 @@ const App: FunctionComponent = () => {
   //TODO  del   const [userInfo, setUserInfo] = useState<{} | undefined>(undefined);
 
   useEffect(() => {
-    console.log('check', authData);
     if (authData.isInitializing || authData.user === null || authData.user === undefined) return;
     const ref = firebase
       .firestore()
@@ -110,7 +118,7 @@ const App: FunctionComponent = () => {
         userInfoData.solaredge = { success: false };
       }
       if (changed) ref.set(userInfoData);
-      console.log('UserInfo wijziging', userInfoData);
+      log.log('UserInfo wijziging', userInfoData);
       setAuthData({ ...authData, userInfo: userInfoData });
     });
     }, [authData.isInitializing, authData.user]); //eslint-disable-line
@@ -118,8 +126,6 @@ const App: FunctionComponent = () => {
   if (authData.isInitializing || (authData.user !== null && !authData.userInfo?.enelogic)) {
     return <div>Loading</div>;
   }
-
-  console.log(authData);
 
   return (
     <I18nextProvider i18n={i18n}>

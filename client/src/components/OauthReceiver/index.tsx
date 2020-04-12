@@ -22,22 +22,31 @@ const OauthReceiver: React.FC<OauthReceiverType> = ({
 }: OauthReceiverType) => {
   const session = useSession();
   const [newRedirectUrl, setNewRedirectUrl] = useState<string | undefined>(undefined);
+  const [error, setError] = useState<string | undefined>(undefined);
 
+  console.log(redirectUrl, newRedirectUrl);
   useEffect(() => {
     let isMounted = true;
     const getToken = async () => {
       if (code !== undefined) {
-        const body = { code, state };
-        const accesstoken = await fetchBackend(exchangeUrl, { method: 'POST', body, user: session.user }).catch(err => {
-          console.log(err);
-        });
-        console.log(88888888888, accesstoken);
-        if (accesstoken === undefined) return setNewRedirectUrl(redirectUrl);
-        if (accesstoken.success) {
-          await saveFunction(session, accesstoken);
+        try {
+          const body = { code, state };
+          const accesstoken = await fetchBackend(exchangeUrl, { method: 'POST', body, user: session.user });
+          if (accesstoken === undefined) return setNewRedirectUrl(redirectUrl);
+          if (accesstoken.success) {
+            await saveFunction(session, accesstoken);
+          }
+          let pathname;
+          if (accesstoken?.data?.state?.origin) {
+            const reg = /.+?\:\/\/.+?(\/.+?)(?:#|\?|$)/;
+            const result = reg.exec('asdhgas');
+            pathname = result ? result[1] : redirectUrl;
+          }
+          if (isMounted) setNewRedirectUrl(pathname ?? redirectUrl);
+        } catch (error) {
+          console.log(error);
+          setError(JSON.stringify(error));
         }
-
-        if (isMounted) setNewRedirectUrl(accesstoken?.data?.state?.origin ?? redirectUrl);
       }
     };
     getToken();
@@ -47,9 +56,15 @@ const OauthReceiver: React.FC<OauthReceiverType> = ({
     };
   }, []);
 
+  if (error) {
+    return <div>Mislukt: {error}</div>;
+  }
+
   if (newRedirectUrl === undefined) return <CircularProgress />;
 
+  alert('New redirectUrl: ' + newRedirectUrl);
   return <Redirect to={newRedirectUrl} />;
+  //return <div></div>;
 
   //return <Redirect to={window.location.pathname} />;
 };

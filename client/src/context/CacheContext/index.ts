@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
-import get from 'get-value';
+import _ from 'lodash';
 
 export const CacheContext = React.createContext({});
 
 export const useCache = (): any => useContext(CacheContext);
 
 export const getCache = (cacheData: any) => (key: string): any => {
-  console.log('Getting value from cache with key ' + key, cacheData);
-  return get(cacheData, key);
+  return _.get(cacheData, key);
 };
 
 export const setCache = (setFunction: Function) => (key: string, data: any): void => {
