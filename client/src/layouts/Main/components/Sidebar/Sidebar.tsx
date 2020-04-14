@@ -12,7 +12,7 @@ import { useSession } from 'hooks';
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawer: {
-    width: 240,
+    width: 225,
     [theme.breakpoints.up('lg')]: {
       marginTop: 64,
       height: 'calc(100% - 64px)',
@@ -43,6 +43,7 @@ const Sidebar: any = (props: InferProps<typeof Sidebar>): JSX.Element => {
 
   const pages = [
     {
+      groupname: '',
       routes: [
         {
           title: t('navigation.account'),

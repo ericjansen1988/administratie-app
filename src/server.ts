@@ -1,14 +1,49 @@
 import dotenv from 'dotenv';
-import { httpRedirect as httpRedirectMiddleware, onListening, onError } from 'express-collection';
+import { httpRedirect as httpRedirectMiddleware, onListening, onError } from './app/modules/express-collection';
+import winston from 'winston';
 
 dotenv.config();
-
 const NODE_ENV = (process.env.NODE_ENV || 'development').toLowerCase();
 
-console.log('Starting env ' + NODE_ENV);
-import configs from '../config/database/config';
+/**
+ * Create logger
+ */
+const format = winston.format;
+const customFormat = format.combine(
+    format.label({ label: '[my-label]' }),
+    format.timestamp({
+        format: 'YYYY-MM-DD HH:mm:ss',
+    }),
+    format.printf(info => `[${info.timestamp}] - ${info.level}: ${info.message}`),
+);
+export const logging = winston.createLogger({
+    level: 'info',
+    format: customFormat,
+    //defaultMeta: { service: 'user-service' },
+    transports: [
+        //
+        // - Write all logs with level `error` and below to `error.log`
+        // - Write all logs with level `info` and below to `combined.log`
+        //
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'combined.log' }),
+    ],
+});
+
+if (process.env.NODE_ENV !== 'production') {
+    logging.add(
+        new winston.transports.Console({
+            format: customFormat,
+        }),
+    );
+}
+
+logging.info('Starting application (environment: ' + NODE_ENV + ')');
+
+import configs from './config/database/config';
 const config = configs[NODE_ENV];
 if (!config) {
+    logging.error('No environment with name ' + NODE_ENV + ' found');
     throw 'No environment with name ' + NODE_ENV + ' found';
 }
 
@@ -18,9 +53,9 @@ const httpPort = process.env.PORT ?? 3001;
 const httpsPort = process.env.HTTPS_PORT ?? 3002;
 const httpRedirect = NODE_ENV === 'production' ? true : false;
 
-console.log('HTTP Poort: ' + httpPort);
-console.log('HTTPS Poort: ' + httpsPort);
-console.log('HTTP redirect: ' + httpRedirect);
+logging.info('HTTP Poort: ' + httpPort);
+logging.info('HTTPS Poort: ' + httpsPort);
+logging.info('HTTP redirect: ' + httpRedirect);
 
 import app from './app';
 //TODO: const debug = require('debug')('backend:server');

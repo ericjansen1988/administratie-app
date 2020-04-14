@@ -50,7 +50,6 @@ const fetchBackend = async (url: string, options: any) => {
     options.body = undefined;
   }
   if (options.method === undefined) options.method = 'GET';
-  console.log('Making ' + options.method + ' API call to ' + url, options.body);
   return fetch(url, {
     method: options.method,
     headers: {
@@ -62,7 +61,6 @@ const fetchBackend = async (url: string, options: any) => {
   }) //.catch(error => console.error(error))
     .then(async response => {
       if (!response.ok) {
-        console.log(response);
         throw await response.json();
       }
       return response;

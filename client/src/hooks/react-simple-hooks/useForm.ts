@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import validate from 'validate.js';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 type TypeFormOptions = {
   localStorage?: any;
@@ -178,30 +178,17 @@ function useForm(stateSchema: any, validationSchema: {} = {}, callback: Function
     setState(stateSchema);
   }, []);
 
-  return Object.assign(
-    [
-      hasError,
-      isDirty,
-      state,
-      handleOnChange,
-      handleOnValueChange,
-      setFormValue,
-      handleOnSubmit,
-      submitting,
-      setInitial,
-    ],
-    {
-      hasError,
-      isDirty,
-      state,
-      handleOnChange,
-      handleOnValueChange,
-      setFormValue,
-      handleOnSubmit,
-      submitting,
-      setInitial,
-    },
-  );
+  return {
+    hasError,
+    isDirty,
+    state,
+    handleOnChange,
+    handleOnValueChange,
+    setFormValue,
+    handleOnSubmit,
+    submitting,
+    setInitial,
+  };
 }
 
 export default useForm;

@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import { asyncHandler } from 'express-collection';
 import Encryption from 'simple-encrypt-js';
 
+import { asyncHandler } from '../modules/express-collection';
 import { basicAuthentication } from '../middleware/authentication';
-import db from '../models';
+import { Bunq } from '../models';
 import { appData, getAppData } from '../../app';
 
 const encryption = new Encryption();
@@ -28,11 +28,11 @@ const saveBunqSettings = async (
         encryption_key: encryptionKey, //eslint-disable-line
         environment: environment,
     };
-    let entry = await db.bunq.findOne(conditions);
+    let entry = await Bunq.findOne(conditions);
     if (entry) {
         entry = await entry.update(body);
     } else {
-        entry = await db.bunq.create(body);
+        entry = await Bunq.create(body);
     }
     return entry;
 };
@@ -108,9 +108,9 @@ const doRequestSandboxMoney = async (uid: string): Promise<void> => {
 
 const createSandboxAPIKey = async (req: CustomRequest, res: Response): Promise<Response> => {
     const key = await appData.bunq.getGenericClient().api.sandboxUser.post();
-    const userentry = await saveBunqSettings(req.uid, key, encryption.generateRandomKey(32), 'SANDBOX');
+    const randomKey = encryption.generateRandomKey(16);
     //console.log(userentry);
-    await appData.bunq.load(req.uid, req.uid, key, userentry.encryption_key, 'SANDBOX');
+    await appData.bunq.load(req.uid, key, randomKey, 'SANDBOX');
     const client = appData.bunq.getClient(req.uid);
     const users = await client.getUser();
     try {
@@ -125,6 +125,7 @@ const createSandboxAPIKey = async (req: CustomRequest, res: Response): Promise<R
     await client.createAccount('Spaarrekening');
     await client.createAccount('Afschrijvingen');
     await client.createAccount('Vrije tijd');
+    await saveBunqSettings(req.uid, key, randomKey, 'SANDBOX');
     return res.send({ success: true, data: { users } });
 };
 
@@ -198,16 +199,17 @@ const test = async (req: CustomRequest, res: Response): Promise<Response> => {
     return res.send(request);
 };
 
-router.post('/oauth/exchange', basicAuthentication, asyncHandler(exchangeOAuthTokens));
-router.get('/accounts', basicAuthentication, asyncHandler(getMonetaryAccounts));
-router.get('/accounts/:name', basicAuthentication, asyncHandler(getMonetaryAccountByName));
-router.get('/accounts', basicAuthentication, asyncHandler(getMonetaryAccounts));
-router.post('/payment', basicAuthentication, asyncHandler(postPaymentInternal));
-router.get('/events', basicAuthentication, asyncHandler(getEvents));
-router.post('/draftpayment', basicAuthentication, asyncHandler(postDraftPayment));
-router.get('/cards', basicAuthentication, asyncHandler(getCards));
-router.get('/sandbox', basicAuthentication, asyncHandler(createSandboxAPIKey));
-router.get('/sandbox/request', basicAuthentication, asyncHandler(requestSandboxMoney));
-router.get('/test', basicAuthentication, asyncHandler(test));
+router.use(basicAuthentication);
+router.post('/oauth/exchange', asyncHandler(exchangeOAuthTokens));
+router.get('/accounts', asyncHandler(getMonetaryAccounts));
+router.get('/accounts/:name', asyncHandler(getMonetaryAccountByName));
+router.get('/accounts', asyncHandler(getMonetaryAccounts));
+router.post('/payment', asyncHandler(postPaymentInternal));
+router.get('/events', asyncHandler(getEvents));
+router.post('/draftpayment', asyncHandler(postDraftPayment));
+router.get('/cards', asyncHandler(getCards));
+router.get('/sandbox', asyncHandler(createSandboxAPIKey));
+router.get('/sandbox/request', asyncHandler(requestSandboxMoney));
+router.get('/test', asyncHandler(test));
 
 export default router;

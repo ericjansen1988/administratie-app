@@ -26,7 +26,7 @@ import {
   Events,
   Meterstanden,
   OAuthPage,
-  NotFound
+  NotFound,
 } from './views';
 
 const Routes: FunctionComponent = () => {
@@ -42,7 +42,7 @@ const Routes: FunctionComponent = () => {
       <RouteWithLayout component={Rekeningen} exact layout={MainLayout} path="/rekeningen" protectedRoute />
       <RouteWithLayout component={Bunq} exact layout={MainLayout} path="/bunq/:tab" protectedRoute />
       <RouteWithLayout component={Bunq} exact layout={MainLayout} path="/bunq" protectedRoute />
-      <RouteWithLayout component={OAuthPage} exact layout={MainLayout} path="/oauth/:name" protectedRoute />
+      <RouteWithLayout component={OAuthPage} exact layout={MainLayout} path="/oauth/:action/:name" protectedRoute />
       <RouteWithLayout component={NotFound} exact layout={MinimalLayout} path="/not-found" />
       <Redirect to="/not-found" />
       {/*

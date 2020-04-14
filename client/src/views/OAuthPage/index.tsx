@@ -1,78 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Button, Checkbox, FormControlLabel, Typography } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
-import { fetchBackend } from 'helpers';
 import { useSession, useQueryParams } from 'hooks';
-import { OauthAuthorize } from 'components';
+import { OauthAuthorize, OauthReceiver } from 'components';
+import { refreshOauth } from 'helpers';
 
-const config = {
-  enelogic: {
-    redirectUrl: '/meterstanden',
-    url: '/api/oauth/exchange/enelogic',
-    refreshUrl: '/api/oauth/refresh/enelogic',
-    formatUrl: '/api/oauth/formaturl/enelogic'
-  },bunq: {
-    redirectUrl: '/bunq',
-    url: '/api/bunq/oauth/exchange',
-    formatUrl: '/api/oauth/formaturl/bunq'
-  }
-}
+import { settings as enelogicSettings } from 'appcomponents/SettingCardEnelogic';
+import { settings as bunqSettings } from 'appcomponents/SettingCardBunq';
 
-
-const OAuthPage = ({match}: any) => {
-  const {user, ref, userData} = useSession();
-  const [loading, setLoading] = useState(true);
-  const name: 'bunq' | 'enelogic' = match.params.name.toLowerCase();
+const OAuthPage = (): JSX.Element => {
+  const session = useSession();
   const queryParams = useQueryParams();
-  const settings = config[name]
-  console.log(settings);
+  const urlParams: any = useParams();
+  const action = urlParams.action.toLowerCase();
+  const [forceRefresh, setForceRefresh] = useState(false);
 
-  const exchangeToken = async () => {
-    console.log(queryParams);
-        
-    if(queryParams.code !== undefined){
-      const body = {code: queryParams.code}
-      console.log(body);
-      const accesstoken = await fetchBackend(settings.url, {method: 'POST', body, user}).catch(err => {console.log(err);});
-      console.log(accesstoken);
-      if(accesstoken !== undefined && name !== 'bunq'){
-        ref.update({[`${name}.token`]: accesstoken.data}).then(setLoading(false));
-      }
+  if (!['display', 'format', 'exchange', 'refresh'].includes(action)) {
+    return <div>Geen geldige actie</div>;
+  }
+
+  const oauthConfig: any = {
+    bunq: bunqSettings,
+    enelogic: enelogicSettings,
+  };
+
+  const name = urlParams.name.toLowerCase();
+  const oauthSettings: any = oauthConfig[name];
+  if (!oauthSettings) {
+    return <>Setting niet gevonden</>;
+  }
+
+  if (action === 'format') {
+    return <OauthAuthorize title={name} formatUrl={oauthSettings.formatUrl} formatUrlKey={'format_url_' + name} />;
+  }
+  if (action === 'exchange') {
+    if (queryParams.code) {
+      return (
+        <OauthReceiver
+          code={queryParams.code}
+          exchangeUrl={oauthSettings.exchangeUrl}
+          redirectUrl={oauthSettings.redirectUrl}
+          saveFunction={oauthSettings.saveSettings}
+          state={queryParams.state}
+        />
+      );
+    } else {
+      return <div>Geen code</div>;
     }
   }
+  if (action === 'refresh') {
+    const updateFunction = oauthSettings.updateSettings ?? oauthSettings.saveSettings;
+    const refreshToken = async () => {
+      const refreshedtoken = await refreshOauth(
+        session,
+        '/api/oauth/refresh/enelogic',
+        session.userInfo.enelogic.token,
+        updateFunction,
+        forceRefresh,
+      );
+      if (refreshedtoken) {
+        console.log(refreshedtoken);
+      }
+    };
 
-  const refreshToken = async () => {
-    const body = userData.enelogic.data;
-    const accesstoken = await fetchBackend('/api/oauth/refresh/enelogic', {method: 'POST', body, user}).catch(err => {console.log(err);});
-    console.log(accesstoken);
-    ref.update({
-      [`${name}.token.access_token`]: accesstoken.data.access_token,
-      [`${name}.token.expires_at`] : accesstoken.data.expires_at,
-      [`${name}.token.refresh_token`] : accesstoken.data.refresh_token
-    }).then(setLoading(false));
-    console.log(accesstoken);
+    return (
+      <div>
+        <Typography variant="h1">OAuth 2.0 refresh</Typography>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={forceRefresh}
+              onChange={() => {
+                setForceRefresh(!forceRefresh);
+              }}
+              name="checkedA"
+            />
+          }
+          label="Forceer"
+        />
+        <Button color="primary" variant="contained" onClick={refreshToken}>
+          Refresh
+        </Button>
+      </div>
+    );
   }
-    
-  useEffect(() => {
-    exchangeToken() 
-  }, [])
 
-  return (<div>
-    <OauthAuthorize title={name} formatUrl={settings.formatUrl} />
-    <Typography variant='h1'>OAuth 2.0</Typography>
-    {!loading && <Redirect to={settings.redirectUrl} />}
-    <Button onClick={refreshToken}>Refresh</Button>
-    </div>
-  );
-} 
+  return <div> Nothing to show here.. </div>;
+};
 
-OAuthPage.propTypes = {
-  match: PropTypes.any.isRequired
-}
-
-export default OAuthPage
-
-
+export default OAuthPage;

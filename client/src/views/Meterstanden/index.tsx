@@ -1,15 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import { AppBar, Tab, Tabs, Theme } from '@material-ui/core';
 
 import { OauthReceiver, TabPanel } from 'components';
 import { useQueryParams, useSession, useTabs } from 'hooks';
 import Overzicht from './components/Overzicht';
 import KostenOverzicht from './components/KostenOverzicht';
 import Settings from './components/Settings';
+import Live from './components/Live';
 import { saveEnelogicSettings } from 'modules/Enelogic';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     //padding: theme.spacing(3)
   },
@@ -17,25 +18,12 @@ const useStyles = makeStyles(theme => ({
 
 const Meterstanden = () => {
   const classes = useStyles();
-  const { user, userInfo, ref } = useSession();
-  const params = useQueryParams();
+  const { userInfo } = useSession();
 
-  const { tab, handleTabChange } = useTabs('overzicht');
-
-  //if there is a query-param named code, the OauthReceiver is returned
-  console.log(params);
-  if (params.code) {
-    return (
-      <OauthReceiver
-        code={params.code}
-        exchangeUrl="/api/oauth/exchange/enelogic"
-        saveFunction={saveEnelogicSettings(user, ref, userInfo.enelogic)}
-      />
-    );
-  }
+  const { tab, handleTabChange } = useTabs('live');
 
   if (!userInfo.enelogic.success) {
-    if (tab !== 'settings' && tab !== 'kostenoverzicht') handleTabChange(null, 'settings');
+    if (tab === 'overzicht') handleTabChange(null, 'settings');
   }
 
   return (
@@ -49,18 +37,22 @@ const Meterstanden = () => {
             value={tab}
             variant="scrollable"
           >
+            <Tab label="Live" value="live" />
             <Tab label="Overzicht" value="overzicht" disabled={!userInfo.enelogic.success} />
             <Tab label="Kosten overzicht" value="kostenoverzicht" />
             <Tab label="Instellingen" value="settings" />
           </Tabs>
         </AppBar>
-        <TabPanel visible={tab === 'overzicht'} tab="overzicht">
+        <TabPanel tab={tab} tabKey="live">
+          <Live />
+        </TabPanel>
+        <TabPanel tab={tab} tabKey="overzicht">
           <Overzicht />
         </TabPanel>
-        <TabPanel visible={tab === 'kostenoverzicht'} tab="kostenoverzicht">
+        <TabPanel tab={tab} tabKey="kostenoverzicht">
           <KostenOverzicht />
         </TabPanel>
-        <TabPanel visible={tab === 'settings'} tab="settings">
+        <TabPanel tab={tab} tabKey="settings">
           <Settings />
         </TabPanel>
       </div>

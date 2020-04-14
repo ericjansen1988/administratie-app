@@ -10,7 +10,7 @@ import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    width: '100%',
+    //width: '100%',
     position: 'relative',
     overflow: 'auto',
   },
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'flex-start',
     textTransform: 'none',
     letterSpacing: 0,
-    width: '100%',
+    width: '90%',
     fontWeight: theme.typography.fontWeightMedium,
   },
   icon: {

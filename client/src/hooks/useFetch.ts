@@ -2,12 +2,14 @@
 import { useEffect, useState, useCallback } from 'react';
 //import {auth} from '../helpers/Firebase';
 import { useSession, useCache } from 'hooks';
+import { useSnackbar } from 'notistack';
 
 const isObject = (obj: any): boolean => Object.prototype.toString.call(obj) === '[object Object]';
 
 export function useFetch(arg1: any, arg2: any): any {
-  const { user } = useSession();
+  const { user, log } = useSession();
   const cache = useCache();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   let url: any = null;
   let options = {};
@@ -40,7 +42,8 @@ export function useFetch(arg1: any, arg2: any): any {
     handleOptions(arg1);
   }
 
-  const [data, setData] = useState(arg2.initialData || []);
+  const initialData = arg2.initialData === undefined ? [] : arg2.initialData;
+  const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(onMount);
   const [methodLoading, setMethodLoading] = useState(false);
   const [error, setError] = useState<any>(null);
@@ -65,7 +68,7 @@ export function useFetch(arg1: any, arg2: any): any {
       try {
         setMethodLoading(true);
         const token = await user.getIdToken(true);
-        console.log('Making ' + method + ' request to ' + newUrl);
+        log.info('Making ' + method + ' request to ' + newUrl);
         const response = await fetch(newUrl, {
           method,
           ...options,
@@ -81,7 +84,6 @@ export function useFetch(arg1: any, arg2: any): any {
             .clone()
             .json()
             .catch(() => response.text());
-          console.log('error request', responsedata);
           throw new Error(response.status + ' - ' + response.statusText);
         } else {
           responsedata = await response
@@ -91,7 +93,15 @@ export function useFetch(arg1: any, arg2: any): any {
           console.log('Response data', responsedata);
         }
       } catch (err) {
-        console.log('Error with method ' + method + ': ', err, { data: responsedata });
+        const key = enqueueSnackbar(
+          'Error with method ' + method + ': ' + JSON.stringify(err) + ' ---> ' + JSON.stringify(responsedata),
+          {
+            variant: 'error',
+            onClick: () => {
+              closeSnackbar(key);
+            },
+          },
+        );
         throw err;
       } finally {
         setMethodLoading(false);
@@ -125,7 +135,7 @@ export function useFetch(arg1: any, arg2: any): any {
     try {
       setLoading(true);
       const token = await user.getIdToken(true);
-      console.log('Making GET request to ' + url + query);
+      log.info('Making GET request to ' + url + query);
       const response = await fetch(url + query, {
         method,
         ...options,
@@ -141,14 +151,12 @@ export function useFetch(arg1: any, arg2: any): any {
           .clone()
           .json()
           .catch(() => response.text());
-        console.log('error request', responsedata);
         throw new Error(response.status + ' - ' + response.statusText);
       } else {
         responsedata = await response
           .clone()
           .json()
           .catch(() => response.text());
-        console.log('Response data', responsedata);
         realdata = responsedata.data || responsedata;
         if (arg2.postProcess !== undefined) {
           realdata = await arg2.postProcess(realdata);
@@ -157,8 +165,16 @@ export function useFetch(arg1: any, arg2: any): any {
         cache.set(cacheKey, realdata);
       }
     } catch (err) {
-      console.log('error request', err, responsedata);
       fError = err;
+      const key = enqueueSnackbar(
+        'Error with method ' + method + ': ' + JSON.stringify(err) + ' ---> ' + JSON.stringify(responsedata),
+        {
+          variant: 'error',
+          onClick: () => {
+            closeSnackbar(key);
+          },
+        },
+      );
       setError({ error: err, responsedata });
     } finally {
       setLoading(false);

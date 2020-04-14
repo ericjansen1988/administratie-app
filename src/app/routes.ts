@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
 import path from 'path';
-import { get, find, list, create, update, destroy } from 'express-sequelize-routes';
+//import fs from 'fs';
 import app from '../app';
-import db from './models';
-
-//import { basicAuthentication } from './middleware/authentication';
+//import { logging } from '../server';
 
 //
 //import Cache from 'simple-cache-js';
@@ -85,12 +83,27 @@ import db from './models';
     console.log(walkSync(startDir));
     */
 
-app.get('/api/events/:id', /*basicAuthentication,*/ get(db.events));
-app.get('/api/events', /*basicAuthentication,*/ list(db.events));
-app.get('/api/events/:column/:value', /*basicAuthentication,*/ find(db.events));
-app.post('/api/events', /*basicAuthentication,*/ create(db.events));
-app.put('/api/events/:id', /*basicAuthentication,*/ update(db.events));
-app.delete('/api/events/:id', /*basicAuthentication,*/ destroy(db.events));
+/*
+const normalizedPath = path.join(__dirname, './controllers');
+fs.readdirSync(normalizedPath).forEach(async file => {
+    const controllername = file.replace('.controller.ts', '');
+    const stats = fs.statSync(normalizedPath + '/' + file);
+    if (stats.isFile()) {
+        const controller = await import('./controllers/' + file);
+        console.log(controller);
+        app.use('/api/' + controllername, controller.default);
+    }
+    logging.info('Controller ' + file + ' wordt geladen --> ' + '/api/' + controllername);
+});
+*/
+
+//Events routes
+import eventsController from './controllers/events.controller';
+app.use('/api/events', eventsController);
+
+//Meterstanden routes
+import meterstandenController from './controllers/meterstanden.controller';
+app.use('/api/meterstanden', meterstandenController);
 
 //OAuth routes
 import oauthController from './controllers/oauth.controller';
@@ -110,7 +123,7 @@ app.use('/api/solaredge', solarEdgeController);
 
 //Swagger
 import swaggerController from './controllers/swagger.controller';
-app.use('/', swaggerController);
+app.use('/api-docs', swaggerController);
 
 //Tado
 //app.use('/api/tado', require('./controllers/tado.controller'));

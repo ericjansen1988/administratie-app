@@ -41,27 +41,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Overzicht = () => {
   const classes = useStyles();
-  const { user, userInfo, ref } = useSession();
-  const userInfoRef = useRef(userInfo);
+  const session = useSession();
+  const userInfoRef = useRef(session.userInfo);
+  const [data, setData] = useState([]);
   //userInfoRef.current = userInfo;
-
-  const haalDataOp = async () => {
-    console.log(userInfo.enelogic);
-    try {
-      const refreshedtoken = await refreshOauth(
-        user,
-        '/api/oauth/refresh/enelogic',
-        userInfoRef.current.enelogic.token,
-        updateEnelogicSettings(ref, userInfoRef.current.enelogic),
-      );
-      console.log(refreshedtoken);
-      const data = await getData(user, state.datefrom.value, state.dateto.value, userInfoRef.current);
-      console.log(data);
-      setData(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const datefrom = (moment().date() < 3
     ? moment()
@@ -73,10 +56,26 @@ const Overzicht = () => {
     .add(-1, 'days')
     .toDate();
 
-  const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp);
-  const [data, setData] = useState([]);
+  const haalDataOp = () => async (state: any) => {
+    try {
+      const refreshedtoken = await refreshOauth(
+        session,
+        '/api/oauth/refresh/enelogic',
+        session.userInfo.enelogic.token,
+        updateEnelogicSettings,
+      );
+      session.log.trace(refreshedtoken);
+      const data = await getData(session.user, state.datefrom.value, state.dateto.value, userInfoRef.current);
+      session.log.trace(data);
+      setData(data);
+    } catch (err) {
+      session.log.error(err);
+    }
+  };
 
-  if (!userInfo.enelogic || !userInfo.enelogic.success) return <div></div>;
+  const { state, handleOnValueChange, handleOnSubmit, submitting } = useForm({ datefrom, dateto }, {}, haalDataOp());
+
+  if (!session?.userInfo?.enelogic?.success) return <div></div>;
 
   const columns = [
     {
@@ -126,7 +125,7 @@ const Overzicht = () => {
       field: 'netto',
     },
   ];
-  if (userInfo.solaredge.success)
+  if (session.userInfo.solaredge.success)
     columns.push(
       {
         title: 'Opwekking',
@@ -153,7 +152,7 @@ const Overzicht = () => {
               }}
               label="Datum vanaf"
               margin="normal"
-              minDate={new Date(userInfo.enelogic.measuringpoints.electra.dayMin)}
+              minDate={new Date(session.userInfo.enelogic.measuringpoints.electra.dayMin)}
               onChange={handleOnValueChange('datefrom')}
               value={state.datefrom.value}
               variant="inline"

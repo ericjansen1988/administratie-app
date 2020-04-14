@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import { asyncHandler } from 'express-collection';
 import axios from 'axios';
+
 import { basicAuthentication } from '../middleware/authentication';
+import { asyncHandler } from '../modules/express-collection';
 
 export const redirectCall = async (req: Request, res: Response): Promise<Response> => {
     const { body, headers, url, method } = req.body;
@@ -17,5 +18,6 @@ export const redirectCall = async (req: Request, res: Response): Promise<Respons
     return res.send(data);
 };
 
-router.post('/proxyrequest', basicAuthentication, asyncHandler(redirectCall));
+router.use(basicAuthentication);
+router.post('/proxyrequest', asyncHandler(redirectCall));
 export default router;

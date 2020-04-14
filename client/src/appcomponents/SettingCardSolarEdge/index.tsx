@@ -14,6 +14,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+export const settings = {
+  redirectUrl: '/meterstanden',
+  exchangeUrl: '/api/oauth/exchange/enelogic',
+  refreshUrl: '/api/oauth/refresh/enelogic',
+  formatUrl: '/api/oauth/formaturl/enelogic',
+  saveSettings: saveSolarEdgeSettings,
+  deleteSettings: (ref: any) => () => {
+    ref.update({ solaredge: { success: false } });
+  },
+};
+
 const SettingCardSolaredge = ({}) => {
   const classes = useStyles();
   const { user, userInfo, ref } = useSession();
@@ -49,7 +60,7 @@ const SettingCardSolaredge = ({}) => {
         <Button
           className={classes.deleteButton}
           onClick={() => {
-            deleteSolarEdgeSettings(ref);
+            ref.update({ solaredge: { success: false } });
             setInitial();
           }}
           variant="outlined"

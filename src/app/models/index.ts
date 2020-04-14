@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import pg from 'pg';
 
-import configs from './../../../config/database/config';
+import configs from './../../config/database/config';
 const config = configs[process.env.NODE_ENV];
 
 let sequelizeconnection: any;
@@ -9,9 +9,8 @@ if (config.use_env_variable) {
     if (config.ssl) {
         pg.defaults.ssl = true;
     }
-    sequelizeconnection = new Sequelize(process.env[config.use_env_variable]);
+    sequelizeconnection = new Sequelize(process.env[config.use_env_variable], { logging: false });
 } else if (config.dialect === 'sqlite') {
-    console.log(config);
     sequelizeconnection = new Sequelize({
         database: config.database,
         username: config.username,
@@ -19,17 +18,23 @@ if (config.use_env_variable) {
         dialect: config.dialect,
         storage: config.storage,
         dialectOptions: config.dialectOptions,
+        logging: false,
     });
 }
 
 const db: any = {};
-db.sequelize = sequelizeconnection;
-export default db;
+//db.sequelize = sequelizeconnection;
+export default sequelizeconnection;
+//export default sequelizeconnection;
 
 import Events from './events.model';
 db.events = Events;
 import Bunq from './bunq.model';
 db.bunq = Bunq;
+export { default as Bunq } from './bunq.model';
+export { default as Demo } from './demo.model';
+export { default as Events } from './events.model';
+export { default as Meterstanden } from './meterstanden.model';
 
 /*
 fs.readdirSync(__dirname)

@@ -41,7 +41,7 @@ export default class Oauth {
         if (this.defaultScope) {
             formatUrlOptions['scope'] = this.defaultScope;
         }
-        if (state !== null) {
+        if (state) {
             formatUrlOptions['state'] = state;
         }
         const authorizationUri = this.oauth.authorizationCode.authorizeURL(formatUrlOptions);

@@ -1,7 +1,19 @@
 import moment from 'moment';
 import { Model, DataTypes } from 'sequelize';
 
-import db from './index';
+import Sequelize from './index';
+
+export const swaggerModel = {
+    type: 'object',
+    properties: {
+        datetime: {
+            type: 'string',
+        },
+        value: {
+            type: 'string',
+        },
+    },
+};
 
 export default class Demo extends Model {
     public datetime: Date;
@@ -33,29 +45,9 @@ Demo.init(
     },
     {
         tableName: 'demo',
-        sequelize: db.sequelize,
+        sequelize: Sequelize,
+        defaultScope: {
+            attributes: { exclude: ['userId'] },
+        },
     },
 );
-/**
-module.exports = (sequelize, Sequelize) => {
-    const Demo = sequelize.define('demo', {
-        datetime: {
-            type: Sequelize.DATE,
-            defaultValue: Sequelize.NOW,
-            get: function() {
-                return moment(this.getDataValue('datetime')).tz('Europe/Amsterdam');
-            },
-        },
-        userId: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        },
-        value: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        },
-    });
-
-    return Demo;
-};
-*/
