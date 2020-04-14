@@ -62,11 +62,7 @@ const OauthReceiver: React.FC<OauthReceiverType> = ({
 
   if (newRedirectUrl === undefined) return <CircularProgress />;
 
-  alert('New redirectUrl: ' + newRedirectUrl);
   return <Redirect to={newRedirectUrl} />;
-  //return <div></div>;
-
-  //return <Redirect to={window.location.pathname} />;
 };
 
 export default OauthReceiver;

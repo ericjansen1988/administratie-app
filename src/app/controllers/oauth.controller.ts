@@ -89,15 +89,16 @@ const refresh = async (req: Request, res: Response): Promise<Response> => {
             scope: accessToken.token.scope,
             token_type: accessToken.token.token_type,
         };
-        return res.send({ success: true, data: accessTokenObject });
+        return res.send({ success: true, data: { token: accessTokenObject } });
     } catch (error) {
         console.log(error);
         return res.status(400).send({ success: false, message: error.message, output: error.output });
     }
 };
 
-router.get('/formatUrl/:application', basicAuthentication, cacheMiddleware(oauthCache), asyncHandler(formatUrl));
-router.post('/exchange/:application', basicAuthentication, asyncHandler(exchange));
-router.post('/refresh/:application', basicAuthentication, asyncHandler(refresh));
+router.use(basicAuthentication);
+router.get('/formatUrl/:application', cacheMiddleware(oauthCache), asyncHandler(formatUrl));
+router.post('/exchange/:application', asyncHandler(exchange));
+router.post('/refresh/:application', asyncHandler(refresh));
 
 export default router;

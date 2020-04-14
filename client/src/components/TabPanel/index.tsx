@@ -1,7 +1,8 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 
-function TabPanel({ children, visible, tab, lazyLoad, ...other }: any) {
+const TabPanel = ({ children, tab, tabKey, lazyLoad, ...other }: any): JSX.Element => {
+  const visible = tab === tabKey;
   const loadTab = lazyLoad && !visible ? false : true;
 
   return (
@@ -9,6 +10,6 @@ function TabPanel({ children, visible, tab, lazyLoad, ...other }: any) {
       {loadTab && children}
     </Typography>
   );
-}
+};
 
 export default TabPanel;

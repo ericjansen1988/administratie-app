@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { Redirect, useParams } from 'react-router-dom';
+import { Button, Checkbox, FormControlLabel, Typography } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
 import { useSession, useQueryParams } from 'hooks';
 import { OauthAuthorize, OauthReceiver } from 'components';
-import { saveEnelogicSettings } from 'modules/Enelogic';
+import { refreshOauth } from 'helpers';
 
 import { settings as enelogicSettings } from 'appcomponents/SettingCardEnelogic';
 import { settings as bunqSettings } from 'appcomponents/SettingCardBunq';
 
 const OAuthPage = (): JSX.Element => {
-  const { user, ref, userInfo } = useSession();
-
-  const [loading, setLoading] = useState(true);
-  //const name: 'bunq' | 'enelogic' = match.params.name.toLowerCase();
+  const session = useSession();
   const queryParams = useQueryParams();
   const urlParams: any = useParams();
   const action = urlParams.action.toLowerCase();
+  const [forceRefresh, setForceRefresh] = useState(false);
 
   if (!['display', 'format', 'exchange', 'refresh'].includes(action)) {
     return <div>Geen geldige actie</div>;
@@ -39,7 +35,6 @@ const OAuthPage = (): JSX.Element => {
     return <OauthAuthorize title={name} formatUrl={oauthSettings.formatUrl} formatUrlKey={'format_url_' + name} />;
   }
   if (action === 'exchange') {
-    console.log(queryParams);
     if (queryParams.code) {
       return (
         <OauthReceiver
@@ -55,39 +50,43 @@ const OAuthPage = (): JSX.Element => {
     }
   }
   if (action === 'refresh') {
+    const updateFunction = oauthSettings.updateSettings ?? oauthSettings.saveSettings;
+    const refreshToken = async () => {
+      const refreshedtoken = await refreshOauth(
+        session,
+        '/api/oauth/refresh/enelogic',
+        session.userInfo.enelogic.token,
+        updateFunction,
+        forceRefresh,
+      );
+      if (refreshedtoken) {
+        console.log(refreshedtoken);
+      }
+    };
+
     return (
       <div>
-        <Typography variant="h1">OAuth 2.0</Typography>
-        <Button>Refresh</Button>
+        <Typography variant="h1">OAuth 2.0 refresh</Typography>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={forceRefresh}
+              onChange={() => {
+                setForceRefresh(!forceRefresh);
+              }}
+              name="checkedA"
+            />
+          }
+          label="Forceer"
+        />
+        <Button color="primary" variant="contained" onClick={refreshToken}>
+          Refresh
+        </Button>
       </div>
     );
   }
 
-  /*
-  const refreshToken = async (): Promise<void> => {
-    const body = userData.enelogic.data;
-    const accesstoken = await fetchBackend('/api/oauth/refresh/enelogic', { method: 'POST', body, user }).catch(err => {
-      console.log(err);
-    });
-    console.log(accesstoken);
-    ref
-      .update({
-        [`${name}.token.access_token`]: accesstoken.data.access_token,
-        [`${name}.token.expires_at`]: accesstoken.data.expires_at,
-        [`${name}.token.refresh_token`]: accesstoken.data.refresh_token,
-      })
-      .then(setLoading(false));
-    console.log(accesstoken);
-  };
-  */
-
-  return (
-    <div>
-      <Typography variant="h1">OAuth 2.0</Typography>
-      {!loading && <Redirect to={oauthSettings.redirectUrl} />}
-      <Button>Refresh</Button>
-    </div>
-  );
+  return <div> Nothing to show here.. </div>;
 };
 
 export default OAuthPage;

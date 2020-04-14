@@ -191,7 +191,7 @@ export const getData = async (user: any, datefrom: string, dateto: string, confi
 };
 
 export const saveEnelogicSettings = async (session: any, accesstoken: any) => {
-  console.log(123, 'beginSave', accesstoken);
+  console.log('beginSaveEnelogicToken', accesstoken);
   const saveObject: any = {};
   if (!accesstoken.success) {
     await session.ref.update({ enelogic: { success: false } });
@@ -210,6 +210,7 @@ export const saveEnelogicSettings = async (session: any, accesstoken: any) => {
     if (mpointgas !== undefined) saveObject.measuringpoints.gas = mpointgas;
     saveObject.success = true;
   } catch (err) {
+    console.log(err);
     saveObject.success = false;
   }
   console.log(saveObject);

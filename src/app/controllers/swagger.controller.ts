@@ -4,8 +4,8 @@ import swaggerUi from 'swagger-ui-express';
 const router = express.Router();
 
 import { swaggerModel as Event } from '../models/events.model';
-import { swaggerModel as Meterstand } from '../models/meterstanden.model';
-import { swaggerModel as Demo } from '../models/demo.model';
+//import { swaggerModel as Meterstand } from '../models/meterstanden.model';
+//import { swaggerModel as Demo } from '../models/demo.model';
 
 const apiDocs: any = { //eslint-disable-line
     openapi: '3.0.1',
@@ -233,5 +233,5 @@ const apiDocs: any = { //eslint-disable-line
     },
 };
 
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs, { explorer: true }));
+router.use('/', swaggerUi.serve, swaggerUi.setup(apiDocs, { explorer: true }));
 export default router;

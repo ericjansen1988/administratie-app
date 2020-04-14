@@ -18,5 +18,6 @@ export const redirectCall = async (req: Request, res: Response): Promise<Respons
     return res.send(data);
 };
 
-router.post('/proxyrequest', basicAuthentication, asyncHandler(redirectCall));
+router.use(basicAuthentication);
+router.post('/proxyrequest', asyncHandler(redirectCall));
 export default router;

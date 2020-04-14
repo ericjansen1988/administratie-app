@@ -12,11 +12,12 @@ const eventsCache = new Cache();
 const shortCache = new Cache(60);
 const routes = new SequelizeRoutes({ idColumnName: 'id', userColumnName: 'userId', reqUserProperty: 'uid' });
 
-router.get('/:id', basicAuthentication, cacheMiddleware(eventsCache), asyncHandler(routes.get(Events)));
-router.get('/', basicAuthentication, cacheMiddleware(shortCache), asyncHandler(routes.list(Events)));
-router.post('/', basicAuthentication, asyncHandler(routes.create(Events)));
-router.put('/:id', basicAuthentication, asyncHandler(routes.update(Events)));
-router.delete('/:id', basicAuthentication, asyncHandler(routes.destroy(Events)));
-router.get('/:column/:value', basicAuthentication, cacheMiddleware(eventsCache), asyncHandler(routes.find(Events)));
+router.use(basicAuthentication);
+router.get('/:id', cacheMiddleware(eventsCache), asyncHandler(routes.get(Events)));
+router.get('/', cacheMiddleware(shortCache), asyncHandler(routes.list(Events)));
+router.post('/', asyncHandler(routes.create(Events)));
+router.put('/:id', asyncHandler(routes.update(Events)));
+router.delete('/:id', asyncHandler(routes.destroy(Events)));
+router.get('/:column/:value', cacheMiddleware(eventsCache), asyncHandler(routes.find(Events)));
 
 export default router;

@@ -34,6 +34,9 @@ const checkAuthenticated = async (req: CustomRequest, res: Response, options: an
         const firebaseToken = firebasematch[1];
         try {
             const decodedToken = await admin.auth().verifyIdToken(firebaseToken);
+            if (options.group) {
+                console.log('Group: ' + options.group);
+            }
             return {
                 result: true,
                 jwt: decodedToken,

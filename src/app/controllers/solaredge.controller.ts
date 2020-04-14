@@ -52,13 +52,9 @@ const getEquipmentData = async (req: Request, res: Response): Promise<Response> 
 };
 
 //router.get('/sites/:period/:start/:end', basicAuthentication, cache(enelogicCache), getData);
-router.get('/sites', basicAuthentication, cacheMiddleware(solarEdgeCache), asyncHandler(getSiteData));
-router.get('/:site/equipment', basicAuthentication, asyncHandler(getEquipmentData));
-router.get(
-    '/:site/data/:period/:start/:end',
-    basicAuthentication,
-    cacheMiddleware(solarEdgeCache),
-    asyncHandler(getData),
-);
+router.use(basicAuthentication);
+router.get('/sites', cacheMiddleware(solarEdgeCache), asyncHandler(getSiteData));
+router.get('/:site/equipment', asyncHandler(getEquipmentData));
+router.get('/:site/data/:period/:start/:end', cacheMiddleware(solarEdgeCache), asyncHandler(getData));
 
 export default router;

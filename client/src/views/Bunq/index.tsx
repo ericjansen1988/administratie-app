@@ -67,13 +67,13 @@ const Bunq = ({ match }: any) => {
             <Tab label="Instellingen" value="settings" />
           </Tabs>
         </AppBar>
-        <TabPanel lazyLoad={true} visible={tab === 'overzicht'} tab="overzicht">
+        <TabPanel lazyLoad={true} tab={tab} tabKey="overzicht">
           {tab === 'overzicht' && <AccountsPage />}
         </TabPanel>
-        <TabPanel lazyLoad={true} visible={tab === 'overboeken'} tab="overboeken">
+        <TabPanel lazyLoad={true} tab={tab} tabKey="overboeken">
           <Overboeken />
         </TabPanel>
-        <TabPanel lazyLoad={true} visible={tab === 'settings'} tab="settings">
+        <TabPanel lazyLoad={true} tab={tab} tabKey="settings">
           <Settings />
         </TabPanel>
       </div>

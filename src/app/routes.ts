@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import path from 'path';
+//import fs from 'fs';
 import app from '../app';
+//import { logging } from '../server';
 
 //
 //import Cache from 'simple-cache-js';
@@ -81,6 +83,20 @@ import app from '../app';
     console.log(walkSync(startDir));
     */
 
+/*
+const normalizedPath = path.join(__dirname, './controllers');
+fs.readdirSync(normalizedPath).forEach(async file => {
+    const controllername = file.replace('.controller.ts', '');
+    const stats = fs.statSync(normalizedPath + '/' + file);
+    if (stats.isFile()) {
+        const controller = await import('./controllers/' + file);
+        console.log(controller);
+        app.use('/api/' + controllername, controller.default);
+    }
+    logging.info('Controller ' + file + ' wordt geladen --> ' + '/api/' + controllername);
+});
+*/
+
 //Events routes
 import eventsController from './controllers/events.controller';
 app.use('/api/events', eventsController);
@@ -107,7 +123,7 @@ app.use('/api/solaredge', solarEdgeController);
 
 //Swagger
 import swaggerController from './controllers/swagger.controller';
-app.use('/', swaggerController);
+app.use('/api-docs', swaggerController);
 
 //Tado
 //app.use('/api/tado', require('./controllers/tado.controller'));

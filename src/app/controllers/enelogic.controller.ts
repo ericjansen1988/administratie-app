@@ -43,8 +43,9 @@ const getYearConsumption = async (req: Request, res: Response): Promise<Response
     return res.send(data);
 };
 
-router.get('/data/:period/:start/:end', basicAuthentication, cacheMiddleware(enelogicCache), asyncHandler(getData));
-router.get('/measuringpoints', basicAuthentication, asyncHandler(getMeasuringPoints));
-router.get('/consumption', basicAuthentication, asyncHandler(getYearConsumption));
+router.use(basicAuthentication);
+router.get('/data/:period/:start/:end', cacheMiddleware(enelogicCache), asyncHandler(getData));
+router.get('/measuringpoints', asyncHandler(getMeasuringPoints));
+router.get('/consumption', asyncHandler(getYearConsumption));
 
 export default router;

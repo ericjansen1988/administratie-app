@@ -18,22 +18,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Meterstanden = () => {
   const classes = useStyles();
-  const { user, userInfo, ref } = useSession();
-  const params = useQueryParams();
+  const { userInfo } = useSession();
 
-  const { tab, handleTabChange } = useTabs('overzicht');
-
-  //if there is a query-param named code, the OauthReceiver is returned
-  if (params.code) {
-    return (
-      <OauthReceiver
-        code={params.code}
-        exchangeUrl="/api/oauth/exchange/enelogic"
-        redirectUrl="/meterstanden"
-        saveFunction={saveEnelogicSettings}
-      />
-    );
-  }
+  const { tab, handleTabChange } = useTabs('live');
 
   if (!userInfo.enelogic.success) {
     if (tab === 'overzicht') handleTabChange(null, 'settings');
@@ -56,16 +43,16 @@ const Meterstanden = () => {
             <Tab label="Instellingen" value="settings" />
           </Tabs>
         </AppBar>
-        <TabPanel visible={tab === 'live'} tab="live">
+        <TabPanel tab={tab} tabKey="live">
           <Live />
         </TabPanel>
-        <TabPanel visible={tab === 'overzicht'} tab="overzicht">
+        <TabPanel tab={tab} tabKey="overzicht">
           <Overzicht />
         </TabPanel>
-        <TabPanel visible={tab === 'kostenoverzicht'} tab="kostenoverzicht">
+        <TabPanel tab={tab} tabKey="kostenoverzicht">
           <KostenOverzicht />
         </TabPanel>
-        <TabPanel visible={tab === 'settings'} tab="settings">
+        <TabPanel tab={tab} tabKey="settings">
           <Settings />
         </TabPanel>
       </div>

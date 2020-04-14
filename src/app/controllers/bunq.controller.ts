@@ -199,16 +199,17 @@ const test = async (req: CustomRequest, res: Response): Promise<Response> => {
     return res.send(request);
 };
 
-router.post('/oauth/exchange', basicAuthentication, asyncHandler(exchangeOAuthTokens));
-router.get('/accounts', basicAuthentication, asyncHandler(getMonetaryAccounts));
-router.get('/accounts/:name', basicAuthentication, asyncHandler(getMonetaryAccountByName));
-router.get('/accounts', basicAuthentication, asyncHandler(getMonetaryAccounts));
-router.post('/payment', basicAuthentication, asyncHandler(postPaymentInternal));
-router.get('/events', basicAuthentication, asyncHandler(getEvents));
-router.post('/draftpayment', basicAuthentication, asyncHandler(postDraftPayment));
-router.get('/cards', basicAuthentication, asyncHandler(getCards));
-router.get('/sandbox', basicAuthentication, asyncHandler(createSandboxAPIKey));
-router.get('/sandbox/request', basicAuthentication, asyncHandler(requestSandboxMoney));
-router.get('/test', basicAuthentication, asyncHandler(test));
+router.use(basicAuthentication);
+router.post('/oauth/exchange', asyncHandler(exchangeOAuthTokens));
+router.get('/accounts', asyncHandler(getMonetaryAccounts));
+router.get('/accounts/:name', asyncHandler(getMonetaryAccountByName));
+router.get('/accounts', asyncHandler(getMonetaryAccounts));
+router.post('/payment', asyncHandler(postPaymentInternal));
+router.get('/events', asyncHandler(getEvents));
+router.post('/draftpayment', asyncHandler(postDraftPayment));
+router.get('/cards', asyncHandler(getCards));
+router.get('/sandbox', asyncHandler(createSandboxAPIKey));
+router.get('/sandbox/request', asyncHandler(requestSandboxMoney));
+router.get('/test', asyncHandler(test));
 
 export default router;
