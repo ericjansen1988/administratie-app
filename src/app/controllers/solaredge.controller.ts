@@ -23,7 +23,7 @@ const getData = async (req: Request, res: Response): Promise<Response> => {
             'Geen geldige periode opgegeven (Opgegeven: ' + req.params.period + '). Geldige waarden zijn: ' + timeUnits,
         );
     }
-    const solaredge = new SolarEdge(req.query.access_token);
+    const solaredge = new SolarEdge(req.query.access_token as string);
     const data = await solaredge.getData(
         parseInt(req.params.site),
         req.params.start,
@@ -38,7 +38,7 @@ const getSiteData = async (req: Request, res: Response): Promise<Response> => {
     console.log(123);
     if (req.query.access_token === undefined)
         return res.send({ success: false, message: 'No query param access_token present' });
-    const solaredge = new SolarEdge(req.query.access_token);
+    const solaredge = new SolarEdge(req.query.access_token as string);
     const sites = await solaredge.getSiteData();
     return res.send({ success: true, data: sites });
 };
@@ -46,7 +46,7 @@ const getSiteData = async (req: Request, res: Response): Promise<Response> => {
 const getEquipmentData = async (req: Request, res: Response): Promise<Response> => {
     if (req.query.access_token === undefined)
         return res.send({ success: false, message: 'No query param access_token present' });
-    const solaredge = new SolarEdge(req.query.access_token);
+    const solaredge = new SolarEdge(req.query.access_token as string);
     const equipment = await solaredge.getEquipmentData(parseInt(req.params.site));
     return res.send({ success: true, data: equipment });
 };

@@ -11,7 +11,7 @@ const enelogicCache = new Cache();
 const getMeasuringPoints = async (req: Request, res: Response): Promise<Response> => {
     if (req.query.access_token === undefined)
         return res.send({ success: false, message: 'No query param access_token present' });
-    const enelogic = new Enelogic(req.query.access_token);
+    const enelogic = new Enelogic(req.query.access_token as string);
     const measuringpoints = await enelogic.getMeasuringPoints();
     return res.send({ success: true, data: measuringpoints });
 };
@@ -19,7 +19,7 @@ const getMeasuringPoints = async (req: Request, res: Response): Promise<Response
 const getData = async (req: Request, res: Response): Promise<Response> => {
     if (req.query.access_token === undefined)
         return res.send({ success: false, message: 'No query param access_token present' });
-    const enelogic = new Enelogic(req.query.access_token);
+    const enelogic = new Enelogic(req.query.access_token as string);
     const options = {
         mpointelectra: req.query.mpointelectra,
     };
@@ -35,7 +35,7 @@ const getData = async (req: Request, res: Response): Promise<Response> => {
 const getYearConsumption = async (req: Request, res: Response): Promise<Response> => {
     if (req.query.access_token === undefined)
         return res.send({ success: false, message: 'No query param access_token present' });
-    const enelogic = new Enelogic(req.query.access_token);
+    const enelogic = new Enelogic(req.query.access_token as string);
     const options = {
         mpointelectra: req.query.mpointelectra,
     };
