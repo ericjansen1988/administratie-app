@@ -113,8 +113,7 @@ const SignIn: any = (props: InferProps<typeof SignIn>): JSX.Element => {
     history.goBack();
   };
 
-  const { firebase, user, isInitializing } = useSession();
-  console.log(firebase, 999, user, 999, isInitializing);
+  const { firebase, isInitializing } = useSession();
 
   // Configure FirebaseUI.
   const uiConfig = {

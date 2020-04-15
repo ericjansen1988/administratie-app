@@ -19,9 +19,7 @@ import FirebaseContext from './context/FirebaseContext';
 import { CacheContext, getCache, setCache, clearCache, clearKey } from './context/CacheContext';
 
 // Create logger
-if (process.env.NODE_ENV !== 'production') {
-  localStorage.setItem('debug', 'administratie-app:*');
-}
+localStorage.setItem('debug', 'administratie-app:*');
 const log = new Log(process.env.NODE_ENV !== 'production');
 log.info('Starting application');
 
@@ -126,6 +124,8 @@ const App: FunctionComponent = () => {
   if (authData.isInitializing || (authData.user !== null && !authData.userInfo?.enelogic)) {
     return <div>Loading</div>;
   }
+
+  log.info('Application started', 'App.tsx');
 
   return (
     <I18nextProvider i18n={i18n}>

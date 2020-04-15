@@ -1,23 +1,7 @@
-import dotenv from 'dotenv';
-import { Dialect } from 'sequelize';
+const dotenv = require('dotenv'); // eslint-disable-line
 dotenv.config();
 
-type DatabaseConfig = {
-    [key: string]: {
-        username?: string;
-        password?: string;
-        database?: string;
-        ssl?: boolean;
-        dialect: Dialect;
-        use_env_variable?: string;
-        storage?: string;
-        dialectOptions?: {
-            ssl: boolean;
-        };
-    };
-};
-
-const databases: DatabaseConfig = {
+module.exports = {
     development: {
         database: 'mainDB',
         username: null,
@@ -42,5 +26,3 @@ const databases: DatabaseConfig = {
         },
     },
 };
-
-export = databases;

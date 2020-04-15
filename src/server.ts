@@ -3,7 +3,8 @@ import { httpRedirect as httpRedirectMiddleware, onListening, onError } from './
 import winston from 'winston';
 
 dotenv.config();
-const NODE_ENV = (process.env.NODE_ENV || 'development').toLowerCase();
+
+const NODE_ENV: string = (process.env.NODE_ENV || 'development').toLowerCase();
 
 /**
  * Create logger
@@ -25,23 +26,19 @@ export const logging = winston.createLogger({
         // - Write all logs with level `error` and below to `error.log`
         // - Write all logs with level `info` and below to `combined.log`
         //
-        new winston.transports.File({ filename: 'error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'combined.log' }),
-    ],
-});
-
-if (process.env.NODE_ENV !== 'production') {
-    logging.add(
+        new winston.transports.File({ filename: 'strderr.log', level: 'error' }),
+        new winston.transports.File({ filename: 'stdout.log' }),
         new winston.transports.Console({
             format: customFormat,
         }),
-    );
-}
+    ],
+});
 
 logging.info('Starting application (environment: ' + NODE_ENV + ')');
 
-import configs from './config/database/config';
-const config = configs[NODE_ENV];
+import configs from './config/database';
+const anyConfigs: any = configs;
+const config: any = anyConfigs[NODE_ENV];
 if (!config) {
     logging.error('No environment with name ' + NODE_ENV + ' found');
     throw 'No environment with name ' + NODE_ENV + ' found';

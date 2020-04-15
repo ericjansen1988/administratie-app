@@ -7,7 +7,7 @@ import { lowerCaseQueryParams, loggerMiddleware, create404Error, errorHandler } 
 import Bunq from './app/modules/Bunq';
 import { logging } from './server';
 
-import Sequelize, { Bunq as BunqModel } from './app/models';
+import Sequelize, { Bunq as BunqModel, migrator, seeder } from './app/models';
 
 /**
  * Application cache
@@ -29,6 +29,32 @@ import { firestore } from './app/modules/Firebase';
 const forceUpdate = process.env.NODE_ENV === 'test' ? true : false;
 Sequelize.sync({ force: forceUpdate }).then(async () => {
     logging.info('Sync sequelize models with { force: ' + forceUpdate + ' }');
+
+    /**
+     * Run migrator and seeder
+     */
+    try {
+        if (!forceUpdate) {
+            const pendingMigrations = await migrator.pending();
+            if (pendingMigrations.length > 0) {
+                logging.info('There are ' + pendingMigrations.length + ' migrations pending');
+                console.log(pendingMigrations);
+                await migrator.up();
+            }
+        }
+
+        if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+            const revert = await seeder.down({ to: 0 });
+            const pendingSeeders = await seeder.pending();
+            if (pendingSeeders.length > 0) {
+                logging.info('There are ' + pendingSeeders.length + ' seeders pending');
+                await seeder.up();
+            }
+        }
+    } catch (error) {
+        logging.error('Error running migration and/or seeder. See below for details');
+        console.log(error);
+    }
 
     /**
      * Bunq clients laden
