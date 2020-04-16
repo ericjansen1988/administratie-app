@@ -1,6 +1,6 @@
 import admin, { firestore } from '../modules/Firebase';
 import { Request, Response, NextFunction } from 'express';
-import { logging } from '../../server';
+import { logging } from '../modules/Logging';
 
 interface CustomRequest extends Request {
     headers: any;
@@ -75,7 +75,6 @@ const checkAuthenticated = async (req: CustomRequest, res: Response, options: an
         const uid = req.query.user ?? 'p1ezZHQBsyWQDYm9BrCm2wlpP1o1';
         return {
             result: true,
-            jwt: { claims: { uid: uid } },
             uid,
             message: 'No authentication, environment=development.',
         };
@@ -96,8 +95,8 @@ const authenticationRequired = (options?: any) => (req: CustomRequest, res: Resp
             req.uid = uid;
             next();
         } else {
-            logging.error('Authentication failed');
-            return res.status(401).send(authenticated.message);
+            logging.error('Authentication failed: ' + authenticated.message);
+            return res.status(401).send({ success: false, statuscode: 401, message: authenticated.message });
         }
     });
 };

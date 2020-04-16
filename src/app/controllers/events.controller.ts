@@ -4,7 +4,7 @@ const router = express.Router();
 import SequelizeRoutes from '../modules/express-sequelize-routes';
 import { basicAuthentication } from '../middleware/authentication';
 import { cacheMiddleware, asyncHandler } from '../modules/express-collection';
-import Cache from 'simple-cache-js';
+import Cache from '../modules/Cache';
 
 import { Events } from '../models';
 

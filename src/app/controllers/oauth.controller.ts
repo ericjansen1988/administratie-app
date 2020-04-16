@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import Cache from 'simple-cache-js';
 import jwt from 'jsonwebtoken';
-import Encryption from 'simple-encrypt-js';
-import { logging } from '../../server';
+
+import Cache from '../modules/Cache';
+import Encryption from '../modules/Encryption';
 
 const encryption = new Encryption();
 const key = encryption.generateRandomKey(32);
@@ -12,6 +12,7 @@ const key = encryption.generateRandomKey(32);
 import { getAppData } from '../../app';
 import { basicAuthentication } from '../middleware/authentication';
 import { cacheMiddleware, asyncHandler } from '../modules/express-collection';
+import { logging } from '../modules/Logging';
 
 const oauthCache = new Cache();
 
@@ -22,6 +23,11 @@ const oauthCache = new Cache();
  */
 const formatUrl = (req: Request, res: Response): Response => {
     const oauthobject = getAppData('oauth.' + req.params.application);
+
+    if (!oauthobject) {
+        throw new Error('OauthProvider ' + req.params.application + ' not found!');
+    }
+
     // Authorization oauth2 URI
     const token = jwt.sign(
         {
@@ -43,6 +49,9 @@ const formatUrl = (req: Request, res: Response): Response => {
 const exchange = async (req: Request, res: Response): Promise<Response> => {
     const oauthobject = getAppData('oauth.' + req.params.application);
 
+    if (!oauthobject) {
+        throw new Error('OauthProvider ' + req.params.application + ' not found!');
+    }
     let decoded;
     if (req.body.state) {
         logging.info('State paramter is' + req.body.state);
@@ -55,8 +64,14 @@ const exchange = async (req: Request, res: Response): Promise<Response> => {
     }
 
     // Save the access token
+    let getTokenConfig: any;
+    if (oauthobject.flow === 'authorization') {
+        getTokenConfig = { code: req.body.code, state: decoded };
+    } else if (oauthobject.flow === 'password') {
+        getTokenConfig = { username: req.body.username, password: req.body.password };
+    }
     try {
-        const accessToken = await oauthobject.getToken(req.body.code);
+        const accessToken = await oauthobject.getToken(getTokenConfig);
         const accessTokenObject = {
             access_token: accessToken.token.access_token,
             expires_at: accessToken.token.expires_at,
@@ -78,8 +93,12 @@ const exchange = async (req: Request, res: Response): Promise<Response> => {
  * @param res Response object from Express
  */
 const refresh = async (req: Request, res: Response): Promise<Response> => {
+    const oauthobject = getAppData('oauth.' + req.params.application);
+
+    if (!oauthobject) {
+        throw new Error('OauthProvider ' + req.params.application + ' not found!');
+    }
     try {
-        const oauthobject = getAppData('oauth.' + req.params.application);
         const accessToken = await oauthobject.refresh(req.body);
         const accessTokenObject = {
             access_token: accessToken.token.access_token,
@@ -97,7 +116,7 @@ const refresh = async (req: Request, res: Response): Promise<Response> => {
 };
 
 router.use(basicAuthentication);
-router.get('/formatUrl/:application', cacheMiddleware(oauthCache), asyncHandler(formatUrl));
+router.get('/formatUrl/:application', cacheMiddleware(oauthCache, { log: true, logger: logging.info }), formatUrl);
 router.post('/exchange/:application', asyncHandler(exchange));
 router.post('/refresh/:application', asyncHandler(refresh));
 

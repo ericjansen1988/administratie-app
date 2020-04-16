@@ -16,13 +16,26 @@ module.exports = {
         dialect: 'sqlite',
         storage: './database_test.sqlite',
     },
-    production: {
+    productionOld: {
         ssl: true,
         // eslint-disable-next-line
         use_env_variable: 'DATABASE_URL',
         dialect: 'postgres',
         dialectOptions: {
             ssl: true,
+        },
+    },
+    production: {
+        ssl: {
+            rejectUnauthorized: false,
+        },
+        // eslint-disable-next-line
+        use_env_variable: 'DATABASE_URL',
+        dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                rejectUnauthorized: false,
+            },
         },
     },
 };

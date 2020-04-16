@@ -1,9 +1,10 @@
 import { Model, DataTypes } from 'sequelize';
-import Encryption from 'simple-encrypt-js';
-const encryption = new Encryption();
+
 const key = process.env.SEQUELIZE_ENCRYPTION_KEY;
 
 import Sequelize from './index';
+import Encryption from '../modules/Encryption';
+const encryption = new Encryption();
 
 export default class Bunq extends Model {
     public userId: string;

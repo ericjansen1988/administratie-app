@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
-import Encryption from 'simple-encrypt-js';
 
+import Encryption from '../modules/Encryption';
 import { asyncHandler } from '../modules/express-collection';
 import { basicAuthentication } from '../middleware/authentication';
 import { Bunq } from '../models';

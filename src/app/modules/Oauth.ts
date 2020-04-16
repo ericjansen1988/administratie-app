@@ -1,4 +1,11 @@
-import SimpleOauth2, { ModuleOptions, OAuthClient, AccessToken, AuthorizationTokenConfig, Token } from 'simple-oauth2';
+import SimpleOauth2, {
+    ModuleOptions,
+    OAuthClient,
+    AccessToken,
+    AuthorizationTokenConfig,
+    Token,
+    PasswordTokenConfig,
+} from 'simple-oauth2';
 
 interface CustomModuleOptions extends ModuleOptions {
     flow: 'authorization' | 'password' | 'client_credentials';
@@ -28,9 +35,7 @@ export default class Oauth {
         this.redirectUrl = redirect_url; //eslint-disable-line
         this.defaultScope = defaultScope;
         this.credentials = credentials;
-        if (options.flow === 'authorization') {
-            this.oauth = SimpleOauth2.create(this.credentials);
-        }
+        this.oauth = SimpleOauth2.create(this.credentials);
     }
 
     formatUrl(state: string = null): string {
@@ -48,20 +53,29 @@ export default class Oauth {
         return authorizationUri;
     }
 
-    async getToken(code: string, state: string = null): Promise<AccessToken> { // eslint-disable-line
+    async getToken(options: AuthorizationTokenConfig | PasswordTokenConfig): Promise<AccessToken> { // eslint-disable-line
         // Get the access token object (the authorization code is given from the previous step).
         const url = this.redirectUrl;
-        const tokenConfig: AuthorizationTokenConfig = {
-            code: code,
-            redirect_uri: url, // eslint-disable-line
-        };
-
-        if (this.defaultScope) {
-            tokenConfig['scope'] = this.defaultScope;
-        }
-        console.log(tokenConfig);
         // Save the access token
-        const result = await this.oauth.authorizationCode.getToken(tokenConfig);
+        let result;
+        if (this.flow === 'authorization') {
+            const authorizationTokenConfig: AuthorizationTokenConfig = {
+                code: options.code,
+                redirect_uri: url, // eslint-disable-line
+                scope: options.scope ?? this.defaultScope ?? '',
+            };
+            if (this.defaultScope) {
+                authorizationTokenConfig['scope'] = this.defaultScope;
+            }
+            result = await this.oauth.authorizationCode.getToken(authorizationTokenConfig);
+        } else if (this.flow === 'password') {
+            const passwordTokenConfig: PasswordTokenConfig = {
+                username: options.username,
+                password: options.password,
+                scope: options.scope ?? this.defaultScope ?? '',
+            };
+            result = await this.oauth.ownerPassword.getToken(passwordTokenConfig);
+        }
         const accessToken = this.oauth.accessToken.create(result);
         return accessToken;
     }

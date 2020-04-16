@@ -26,12 +26,16 @@ export const lowerCaseQueryParams = (req: Request, res: Response, next: NextFunc
 type cacheMiddlewareOptions = {
     userSpecific?: boolean;
     reqUserProperty?: string;
+    logger?: (text: any) => void;
+    log?: boolean;
 };
 
 type cache = {
     get: (key: string, saveFunction?: () => void) => any;
     set: (key: string, data: any) => any;
 };
+
+
 
 export const cacheMiddleware = (cache: cache, options?: cacheMiddlewareOptions) => async (
     req: any,
@@ -41,20 +45,27 @@ export const cacheMiddleware = (cache: cache, options?: cacheMiddlewareOptions) 
     if (!options) {
         options = {};
     }
+    const logger = options.logger ?? console.log;
+    const log = options.log ?? false;
     let key = req.originalUrl || req.url;
     if (options.userSpecific && options.reqUserProperty){
         key = req[options.reqUserProperty] + '_' + key;
     } 
     const cachedata = await cache.get(key);
     if (cachedata) {
+        if(log) logger('Getting value from cache with key: ' + key);
         return res.send(cachedata);
     } else {
-        res.sendResponse = res.send;
-        res.send = (body: any): any => {
-            cache.set(key, body);
-            res.sendResponse(body);
-        };
-        next();
+        if(log) logger('Cache key ' + key + ' not found. Retrieving data.');
+       res.sendResponse = res.send;
+       res.send = (body: any): any => {
+           if(res.statusCode < 300){
+              cache.set(key, body);
+           }
+           res.sendResponse(body);
+       };
+       
+       next();
     }
 };
 
@@ -63,16 +74,19 @@ interface Error {
     status?: number;
 }
 
-export const errorHandler = (err: Error, req: Request, res: Response): Response => {
+export const errorHandler = (logger?: any) => (err: Error, req: Request, res: Response, next: NextFunction): Response => {
     // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    console.log(err);
+    const errormessage = err?.message ? err.message : err;
+    if(logger){
+        logger(err);
+    }else{
+        console.error(err);
+    }
     // render the error page
-    res.status(err.status || 500);
+    const statuscode = err.status || 500
     //res.render('error');
-    const errormessage = err.message ? err.message : err;
-    return res.json({ success: false, message: errormessage });
+    //const errormessage = err.message ? err.message : err;
+    return res.status(statuscode).send({ success: false, message: errormessage });
 };
 
 export const httpRedirect = (req: Request, res: Response, next: NextFunction): void => {

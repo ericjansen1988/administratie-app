@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 const router = express.Router();
 import SolarEdge, { Period } from 'solaredge';
-import Cache from 'simple-cache-js';
 
+import Cache from '../modules/Cache';
 import { basicAuthentication } from '../middleware/authentication';
 import { cacheMiddleware, asyncHandler } from '../modules/express-collection';
 

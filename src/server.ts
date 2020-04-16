@@ -1,38 +1,10 @@
 import dotenv from 'dotenv';
 import { httpRedirect as httpRedirectMiddleware, onListening, onError } from './app/modules/express-collection';
-import winston from 'winston';
+import { logging } from './app/modules/Logging';
 
 dotenv.config();
 
 const NODE_ENV: string = (process.env.NODE_ENV || 'development').toLowerCase();
-
-/**
- * Create logger
- */
-const format = winston.format;
-const customFormat = format.combine(
-    format.label({ label: '[my-label]' }),
-    format.timestamp({
-        format: 'YYYY-MM-DD HH:mm:ss',
-    }),
-    format.printf(info => `[${info.timestamp}] - ${info.level}: ${info.message}`),
-);
-export const logging = winston.createLogger({
-    level: 'info',
-    format: customFormat,
-    //defaultMeta: { service: 'user-service' },
-    transports: [
-        //
-        // - Write all logs with level `error` and below to `error.log`
-        // - Write all logs with level `info` and below to `combined.log`
-        //
-        new winston.transports.File({ filename: 'strderr.log', level: 'error' }),
-        new winston.transports.File({ filename: 'stdout.log' }),
-        new winston.transports.Console({
-            format: customFormat,
-        }),
-    ],
-});
 
 logging.info('Starting application (environment: ' + NODE_ENV + ')');
 

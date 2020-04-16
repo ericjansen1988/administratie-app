@@ -3,9 +3,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import { lowerCaseQueryParams, loggerMiddleware, create404Error, errorHandler } from './app/modules/express-collection';
+import { lowerCaseQueryParams, create404Error, errorHandler } from './app/modules/express-collection';
 import Bunq from './app/modules/Bunq';
-import { logging } from './server';
+import { logging, LoggerStream } from './app/modules/Logging';
 
 import Sequelize, { Bunq as BunqModel, migrator, seeder } from './app/models';
 
@@ -47,7 +47,7 @@ Sequelize.sync({ force: forceUpdate }).then(async () => {
             const revert = await seeder.down({ to: 0 });
             const pendingSeeders = await seeder.pending();
             if (pendingSeeders.length > 0) {
-                logging.info('There are ' + pendingSeeders.length + ' seeders pending');
+                logging.info('Seeding: ' + pendingSeeders.length + ' seeders will be executed.');
                 await seeder.up();
             }
         }
@@ -55,11 +55,11 @@ Sequelize.sync({ force: forceUpdate }).then(async () => {
         logging.error('Error running migration and/or seeder. See below for details');
         console.log(error);
     }
-
+    /*
     /**
      * Bunq clients laden
      * inclusief genericClient
-     */
+     
     const bunq = new Bunq(path.resolve(__dirname, './config/bunq'));
     // Generieke client starten
     bunq.loadGenericClient();
@@ -102,6 +102,7 @@ Sequelize.sync({ force: forceUpdate }).then(async () => {
         );
     })();
     setAppData('bunq', bunq);
+    */
 });
 
 // import Oauth module and load into cache
@@ -127,7 +128,7 @@ export default app;
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 
-app.use(logger('dev'));
+app.use(logger('dev', { stream: new LoggerStream() }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -138,11 +139,10 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // Parses JSON in body
 app.use(lowerCaseQueryParams); // Makes all query params lowercase
-app.use(loggerMiddleware(logging.info)); //Logs requests on console
 
 app.get('/health-check', (req: Request, res: Response) => res.sendStatus(200)); //certificate route & simple health check
 
 import './app/routes';
 
 app.use(create404Error); //If route isnt found throw 404
-app.use(errorHandler); // If error throw Error object
+app.use(errorHandler(logging.error)); // If error throw Error object

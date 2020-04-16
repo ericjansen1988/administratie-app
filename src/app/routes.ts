@@ -125,8 +125,12 @@ app.use('/api/solaredge', solarEdgeController);
 import swaggerController from './controllers/swagger.controller';
 app.use('/api-docs', swaggerController);
 
+import customController from './controllers/custom.controller';
+app.use('/api/custom', customController);
+
 //Tado
-//app.use('/api/tado', require('./controllers/tado.controller'));
+import tadoController from './controllers/tado.controller';
+app.use('/api/tado', tadoController);
 
 //DarkSky
 //app.use('/api/darksky', require('./controllers/darksky.controller'));

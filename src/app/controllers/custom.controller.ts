@@ -18,6 +18,12 @@ export const redirectCall = async (req: Request, res: Response): Promise<Respons
     return res.send(data);
 };
 
+const displayCall = async (req: Request, res: Response): Promise<Response> => {
+    console.log('Body', req.body);
+    return res.send(req.body);
+};
+
 router.use(basicAuthentication);
 router.post('/proxyrequest', asyncHandler(redirectCall));
+router.all('/show', asyncHandler(displayCall));
 export default router;

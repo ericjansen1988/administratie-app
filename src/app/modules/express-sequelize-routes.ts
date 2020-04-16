@@ -25,7 +25,6 @@ export default class SequelizeRoutes {
         if (options.verbose === true) {
             console.log('Options for sequelize: ', options);
         }
-        console.log(options);
         return options;
     };
 

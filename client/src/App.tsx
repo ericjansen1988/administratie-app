@@ -115,6 +115,10 @@ const App: FunctionComponent = () => {
         changed = true;
         userInfoData.solaredge = { success: false };
       }
+      if (!userInfoData.tado) {
+        changed = true;
+        userInfoData.tado = { success: false };
+      }
       if (changed) ref.set(userInfoData);
       log.log('UserInfo wijziging', userInfoData);
       setAuthData({ ...authData, userInfo: userInfoData });
@@ -124,8 +128,6 @@ const App: FunctionComponent = () => {
   if (authData.isInitializing || (authData.user !== null && !authData.userInfo?.enelogic)) {
     return <div>Loading</div>;
   }
-
-  log.info('Application started', 'App.tsx');
 
   return (
     <I18nextProvider i18n={i18n}>

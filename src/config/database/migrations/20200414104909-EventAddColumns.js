@@ -1,6 +1,6 @@
 'use strict';
 
-import { Sequelize } from 'sequelize';
+const { Sequelize } = require('sequelize'); // eslint-disable-line
 
 module.exports = {
     up: queryInterface => {
@@ -32,9 +32,9 @@ module.exports = {
 
     down: queryInterface => {
         return queryInterface
-            .addColumn('events', 'application')
+            .removeColumn('events', 'application')
             .then(() => {
-                queryInterface.addColumn('events', 'category');
+                queryInterface.removeColumn('events', 'category');
             })
             .catch(error => {
                 console.log(error);

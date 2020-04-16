@@ -10,7 +10,7 @@ const config: any = anyConfigs[process.env.NODE_ENV];
 let sequelize: any;
 if (config.use_env_variable) {
     if (config.ssl) {
-        pg.defaults.ssl = true;
+        pg.defaults.ssl = config.ssl;
     }
     sequelize = new Sequelize(process.env[config.use_env_variable], { logging: false });
 } else if (config.dialect === 'sqlite') {
