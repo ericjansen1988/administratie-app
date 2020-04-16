@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Cache from 'simple-cache-js';
+import Cache from '../Cache';
 import BunqJSClient from '@bunq-community/bunq-js-client';
 import Amount from '@bunq-community/bunq-js-client/dist/Types/Amount';
 

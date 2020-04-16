@@ -45,6 +45,7 @@
   },
   "homepage": "https://github.com/ericjansen1988/administratie-app#readme",
   "dependencies": {
+    "@bunq-community/bunq-js-client": "^1.1.1",
     "axios": "^0.19.2",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
