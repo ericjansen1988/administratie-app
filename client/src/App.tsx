@@ -83,6 +83,7 @@ const App: FunctionComponent = () => {
           .doc('/env/' + process.env.REACT_APP_FIRESTORE_ENVIRONMENT + '/users/' + returnedUser.uid);
         userDataRef = ref.collection('config');
       }
+      log.log('User auth wijziging', returnedUser);
       setAuthData({ ...authData, user: returnedUser, isInitializing: false, ref, userDataRef });
     });
     // unsubscribe to the listener when unmounting

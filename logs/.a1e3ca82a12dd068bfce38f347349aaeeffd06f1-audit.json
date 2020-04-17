@@ -9,6 +9,11 @@
             "date": 1587055017083,
             "name": "logs\\2020-04-16_stdout.log",
             "hash": "127a1d74254f72f007b906c308383989"
+        },
+        {
+            "date": 1587110415705,
+            "name": "logs\\2020-04-17_stdout.log",
+            "hash": "cdeee55f2337198105ed8bfd393b0394"
         }
     ]
 }

@@ -12,7 +12,7 @@ if (config.use_env_variable) {
     if (config.ssl) {
         pg.defaults.ssl = config.ssl;
     }
-    sequelize = new Sequelize(process.env[config.use_env_variable], { logging: false });
+    sequelize = new Sequelize(process.env[config.use_env_variable], { logging: true });
 } else if (config.dialect === 'sqlite') {
     sequelize = new Sequelize({
         database: config.database,

@@ -15,6 +15,9 @@ export const swaggerModel = {
         category: {
             type: 'string',
         },
+        severity: {
+            type: 'number',
+        },
         value: {
             type: 'string',
         },
@@ -26,6 +29,7 @@ export default class Event extends Model {
     public userId: string;
     public application: string;
     public category: string;
+    public severity: number;
     public value: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -52,6 +56,10 @@ Event.init(
         },
         category: {
             type: DataTypes.STRING,
+            allowNull: true,
+        },
+        severity: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         value: {
