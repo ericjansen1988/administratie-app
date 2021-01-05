@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/ericjansen1988/administratie-app#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bunq-client": "^0.6.3",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
